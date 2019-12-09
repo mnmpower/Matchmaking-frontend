@@ -8,9 +8,16 @@ import { OpdrachtenLijstComponent } from './opdrachten-lijst/opdrachten-lijst.co
 
 
 @NgModule({
-  declarations: [OpdrachtenComponent, FilterComponent, OpdrachtenLijstComponent],
+  declarations: [
+    OpdrachtenComponent,
+    FilterComponent,
+    OpdrachtenLijstComponent
+  ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    OpdrachtenComponent
   ]
 })
 export class MakerModule { }

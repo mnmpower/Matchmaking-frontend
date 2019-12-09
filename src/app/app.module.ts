@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WelkomComponent } from './welkom/welkom.component';
 import { MakerModule } from './maker/maker.module';
 import { LoginComponent } from './login/login.component';
+import { BedrijfModule} from './bedrijf/bedrijf.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MakerModule
+    MakerModule,
+    BedrijfModule
   ],
   providers: [],
   bootstrap: [AppComponent]
