@@ -2,6 +2,9 @@
     --input-padding-x: 1.5rem;
     --input-padding-y: 0.75rem;
   }
+  .container{
+    max-width: 800px;
+  }
   
   .login,
   .image {
@@ -29,12 +32,13 @@
     position: relative;
     margin-bottom: 1rem;
   }
-  
+
   .form-label-group>input,
   .form-label-group>label {
-    padding: var(--input-padding-y) var(--input-padding-x);
-    height: auto;
+    height: 50px;
     border-radius: 2rem;
+    padding-top: 10px;
+    padding-left: 12px;
   }
   
   .form-label-group>label {
