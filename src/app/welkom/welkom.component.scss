@@ -1,3 +1,5 @@
+/* Header video */
+
 header {
   position: relative;
   background-color: black;
@@ -5,7 +7,6 @@ header {
   min-height: 25rem;
   width: 100%;
   overflow: hidden;
-  top: -4px;
 }
 
 header video {
@@ -46,4 +47,60 @@ header .overlay {
   header video {
     display: none;
   }
+}
+
+/* Cards */
+.services {
+	width:100%;
+	height:auto;
+	border-bottom:5px #323233 solid;
+	background:#fff;
+	text-align:center;
+	border-radius:10px;
+	overflow:hidden;
+	position:relative;
+	transition:0.5s;
+	margin-bottom:28px;
+}
+
+.services h3 {
+	font-size:20px;
+	font-weight:700;
+}
+
+.services p {
+	margin-bottom:0;
+}
+
+.service-back {
+	width:100%;
+	height:auto;
+	position:absolute;
+	top:0;
+	left:0;
+	padding:5px 15px 0 15px;
+	text-align:left;
+	background:#fff;
+	
+}
+
+.service-front {
+	width:100%;
+	height:auto;
+	position:relative;
+	z-index:10;
+	background:#fff;
+	padding:15px;
+	bottom:0px;
+	transition: all 0.5s ease;
+}
+
+.services:hover .service-front {
+	bottom:-200px;
+	transition: all 0.5s ease;
+}
+
+.services:hover {
+	border-color:#777;
+	transition:0.5s;
 }
