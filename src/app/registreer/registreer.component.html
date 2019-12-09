@@ -1,0 +1,148 @@
+<div *ngIf="stap1">
+  <div class="justify-content-center">
+    <ol class="cd-breadcrumb triangle justify-content-center">
+      <li class="current"><em class="steps">registreer</em></li>
+      <li class=""><a class="steps">persoonlijke informatie</a></li>
+      <li class=""><a class="steps">overzicht</a></li>
+    </ol>
+  </div>
+
+  <h1>Registreer</h1>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" data-toggle="validator">
+
+    <!-- EMAIL INPUT FORM CONTROL -->
+    <div class="form-group">
+      <label for="inputEmailSignUp" class="">Email address</label>
+      <input type="email" class="form-control" id="inputEmailSignUp" placeholder="Enter email"
+             formControlName="inputEmailSignUp" [ngClass]="{ 'is-invalid': submitted && f.inputEmailSignUp.errors }"
+             appBlockCopyPaste (ngModelChange)="checkAvailableMail()">
+      <div *ngIf="inUse" class="invalid-feedback d-block">
+        <div>Deze email is al in gebruik!</div>
+      </div>
+      <div *ngIf="!inUse && submitted && !f.inputEmailSignUp.errors" class="valid-feedback d-block">
+        <div>Geldig email adres</div>
+      </div>
+      <div *ngIf="submitted && f.inputEmailSignUp.errors" class="invalid-feedback">
+        <div *ngIf="f.inputEmailSignUp.errors.required">Email is required, please fill in a email address!</div>
+        <div *ngIf="f.inputEmailSignUp.errors.email">Email must be a valid email address!</div>
+      </div>
+    </div>
+
+
+    <!-- CONFIRM EMAIL INPUT FORM CONTROL -->
+    <div class="form-group">
+      <label for="inputEmailConfirm">Confirm Email address</label>
+      <input type="email" class="form-control " id="inputEmailConfirm" placeholder="Email"
+             formControlName="inputEmailConfirm" [ngClass]="{ 'is-invalid': submitted && f.inputEmailConfirm.errors }"
+             appBlockCopyPaste>
+      <div *ngIf="submitted && f.inputEmailConfirm.errors" class="invalid-feedback">
+        <div *ngIf="f.inputEmailConfirm.errors.required">Confirmation of you email is required!</div>
+        <div *ngIf="f.inputEmailConfirm.errors.mustMatch">Email must match!</div>
+      </div>
+      <small class="form-text text-muted pb-2">We'll never share your email with anyone else.</small>
+    </div>
+
+
+    <!-- PASSWORD INPUT FORM CONTROL -->
+    <div class="form-group">
+      <label for="inputPasswordSignUp" class="">Password</label>
+      <input type="password" class="form-control " id="inputPasswordSignUp" placeholder="Password"
+             formControlName="inputPasswordSignUp"
+             [ngClass]="{ 'is-invalid': submitted && f.inputPasswordSignUp.errors }"
+             appBlockCopyPaste>
+      <div *ngIf="submitted && f.inputPasswordSignUp.errors" class="invalid-feedback">
+        <div *ngIf="f.inputPasswordSignUp.errors.required">Password is required, please fill in a password!</div>
+        <div *ngIf="f.inputPasswordSignUp.errors.minlength">Username must be at least 8 characters!</div>
+      </div>
+    </div>
+
+
+    <!-- CONFIRM PASSWORD INPUT FORM CONTROL -->
+    <div class="form-group">
+      <label for="inputPasswordConfirm">Confirm your password</label>
+      <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password confirmation"
+             formControlName="inputPasswordConfirm"
+             [ngClass]="{ 'is-invalid': submitted && f.inputPasswordConfirm.errors }" appBlockCopyPaste>
+      <div *ngIf="submitted && f.inputPasswordConfirm.errors" class="invalid-feedback">
+        <div *ngIf="f.inputPasswordConfirm.errors.required">Confirmation of your password is required!</div>
+        <div *ngIf="f.inputPasswordConfirm.errors.mustMatch">Passwords must match!</div>
+      </div>
+      <small class="form-text text-muted pb-2">We'll never share your password with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" formControlName="optradio" name="optradio"
+                 (change)="setTypeMaker()" required>Ik ben een maker
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" formControlName="optradio" name="optradio"
+                 (change)="setTypeBedrijf()" required>Een bedrijf
+          registreren
+        </label>
+        <div *ngIf="submitted && signUpForm.invalid" class="invalid-feedback">
+          <div>Selecteer een optie!</div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Volgende</button>
+  </form>
+</div>
+
+<!-- ------------------------------------------------------- -->
+<!--  ---------------------- STAP 2 ------------------------ -->
+<!--  -----------------------------------------------------  -->
+
+<div *ngIf="stap2">
+  <div class="justify-content-center">
+    <ol class="cd-breadcrumb triangle justify-content-center">
+      <li class="pointer"><a (click)="naarStap(1)" class="steps">registreer</a></li>
+      <li class="current"><em class="steps">persoonlijke informatie</em></li>
+      <li class=""><a class="steps">overzicht</a></li>
+    </ol>
+  </div>
+
+
+  <!-- ------------------------------------------------------ -->
+  <!--  ------------------ STAP 2 BEDRIJF ------------------- -->
+  <!--  ----------------------------------------------------  -->
+  <div *ngIf="typeBedrijf">
+    <h1>Bedrijfsgegevens</h1>
+    <form [formGroup]="signUpFormDeel2" (ngSubmit)="onSubmit()" data-toggle="validator">
+    <!-- EMAIL INPUT FORM CONTROL -->
+    <div class="form-group">
+      <label for="inputBedrijfsnaam" class="">Bedrijfsnaam</label>
+      <input type="email" class="form-control" id="inputBedrijfsnaam" placeholder="Hier uw bedrijfsnaam..."
+             formControlName="inputBedrijfsnaam" [ngClass]="{ 'is-invalid': submitted && f.inputBedrijfsnaam.errors }">
+      <div *ngIf="submitted && f.inputBedrijfsnaam.errors" class="invalid-feedback">
+        <div *ngIf="f.inputBedrijfsnaam.errors.required">Vul een bedrijfsnaam in</div>
+      </div>
+    </div>
+
+    <!-- EMAIL INPUT FORM CONTROL -->
+    <div class="form-group">
+      <label for="inputLocatie" class="">Locatie</label>
+      <input type="email" class="form-control" id="inputLocatie" placeholder="Stad of drop"
+             formControlName="inputLocatie" [ngClass]="{ 'is-invalid': submitted && f.inputBedrijfsnaam.errors }">
+      <div *ngIf="submitted && f.inputLocatie.errors" class="invalid-feedback">
+        <div *ngIf="f.inputLocatie.errors.required">Vul een bedrijfsnaam in</div>
+      </div>
+    </div>
+
+
+    <a class="btn btn-secondary mr-1">vorige</a>
+    <a class="btn btn-primary ml-1">VolgendeBedrijf</a>
+
+
+    </form>
+  </div>
+
+
+  <a class="btn btn-secondary mr-1">vorige</a>
+  <a class="btn btn-primary ml-1">VolgendeMaker</a>
+
+</div>
