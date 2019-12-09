@@ -1,15 +1,29 @@
-<script>
-  $_('#carouselExampleIndicators').carousel()
-</script>
+<!-- Video header -->
+<header>
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="../../assets/pexels-videos-2699.mp4" type="video/mp4">
+  </video>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3">{{ title }}</h1>
+        <p class="lead mb-0">The most easy way to find the right freelancer</p>
+      </div>
+    </div>
+  </div>
+</header>
 
 <div class="container-fluid text-center pb-5 py-2">
-  <div style="text-align:center">
-    <h1>Welcome to {{title}}!</h1>
-    <h2>Created by {{auteur}}</h2>
-    <div>
-      After you have signed up and logged in, you get acces to the application. In this application you can make polls,
-      invite your friends to those polls and check out on the results of those polls. Down below you can find some
-      screenshots of what you can expect after you are logged in.
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Welcome to {{title}}!</h1>
+      <h2>Created by {{auteur}}</h2>
+      <div>
+        After you have signed up and logged in, you get acces to the application. In this application you can make polls,
+        invite your friends to those polls and check out on the results of those polls. Down below you can find some
+        screenshots of what you can expect after you are logged in.
+      </div>
     </div>
   </div>
 </div>
