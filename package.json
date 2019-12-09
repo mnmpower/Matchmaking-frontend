@@ -21,13 +21,9 @@
     "@angular/platform-browser": "~8.1.1",
     "@angular/platform-browser-dynamic": "~8.1.1",
     "@angular/router": "~8.1.1",
-<<<<<<< HEAD
-    "bootstrap": "^4.4.1",
-=======
     "angular-material-icons": "^0.7.1",
     "bootstrap": "^4.4.1",
     "material-design-icons": "^3.0.1",
->>>>>>> dfa747de44dd9239283209c37f3c8a6aa39bfab8
     "material-icons": "^0.3.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
