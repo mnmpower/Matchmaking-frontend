@@ -9,6 +9,8 @@ export class WelkomComponent implements OnInit {
 
   title = 'EZ-Match';
   auteur = 'DOT JS';
+  aantalFreelancers = 102;
+  aantalOpdrachten = 26;
 
   constructor() { }
 
