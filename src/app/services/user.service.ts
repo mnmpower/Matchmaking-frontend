@@ -1,46 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Admin } from '../models/admin.model'
+import { User } from '../models/user.model'
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  //haal alle admins op
-  getAdmins(): Observable<Admin[]> {
-    return this.http.get<Admin[]>("https://localhost:44316/api/admin", {
+  //haal alle users op
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>("https://localhost:44316/api/user", {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
 
-  //haal admin op voor id
-  getAdmin(id: number): Observable<Admin> {
-    return this.http.get<Admin>("https://localhost:44316/api/admin/" + id, {
+  //haal user op voor id
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>("https://localhost:44316/api/user/" + id, {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
 
-  //voeg een nieuw admin toe
-  addAdmin(admin: Admin) {
-    return this.http.post<Admin>("https://localhost:44316/api/admin", admin, {
+  //voeg een nieuw user toe
+  addUser(user: User) {
+    return this.http.post<User>("https://localhost:44316/api/user", user, {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
 
-  //wijzig admin
-  updateAdmin(admin: Admin) {
-    return this.http.put<Admin>("https://localhost:44316/api/admin/" + admin.adminID, admin, {
+  //wijzig user
+  updateUser(user: User) {
+    return this.http.put<User>("https://localhost:44316/api/user/" + user.userID, user, {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
 
-  //verwijder admin
-  deleteAdmin(id: number) {
-    return this.http.delete<Admin>("https://localhost:44316/api/admin/" + id, {
+  //verwijder user
+  deleteUser(id: number) {
+    return this.http.delete<User>("https://localhost:44316/api/user/" + id, {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
