@@ -8,14 +8,16 @@ import { WelkomComponent } from './welkom/welkom.component';
 import { MakerModule } from './maker/maker.module';
 import { LoginComponent } from './login/login.component';
 import { BedrijfModule} from './bedrijf/bedrijf.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaakopdrachtComponent} from './bedrijf/maakopdracht/maakopdracht.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     WelkomComponent,
-    LoginComponent
+    LoginComponent,
+    MaakopdrachtComponent
   ],
   imports: [
     BrowserModule,
