@@ -8,6 +8,7 @@ import { WelkomComponent } from './welkom/welkom.component';
 import { MakerModule } from './maker/maker.module';
 import { LoginComponent } from './login/login.component';
 import { BedrijfModule} from './bedrijf/bedrijf.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BedrijfModule} from './bedrijf/bedrijf.module';
     BrowserModule,
     AppRoutingModule,
     MakerModule,
-    BedrijfModule
+    BedrijfModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

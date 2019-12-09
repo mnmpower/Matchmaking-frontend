@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
-import { MaakopdrachtComponent } from './maakopdracht/maakopdracht.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MaakopdrachtComponent} from './maakopdracht/maakopdracht.component';
 import {CommonModule} from '@angular/common';
 
 
