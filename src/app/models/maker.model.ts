@@ -2,7 +2,6 @@ export class Maker {
   constructor(
     public makerID: number,
     public nickname: string,
-    public email: string,
     public naam: string,
     public geboortedatum: string,
     public biografie: string,
