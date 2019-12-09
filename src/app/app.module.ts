@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WelkomComponent } from './welkom/welkom.component';
 import { MakerModule } from './maker/maker.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    WelkomComponent
+    WelkomComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
