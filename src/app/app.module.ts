@@ -9,13 +9,15 @@ import { WelkomComponent } from './welkom/welkom.component';
 import { MakerModule } from './maker/maker.module';
 import { LoginComponent } from './login/login.component';
 import { BedrijfModule} from './bedrijf/bedrijf.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RegistreerComponent } from './registreer/registreer.component';
-import {BlockCopyPasteCutDirective} from './helpers/block-copy-paste-cut.directive';
+import { BlockCopyPasteCutDirective} from './helpers/block-copy-paste-cut.directive';
 
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS } from '@angular/common/http';
 import {SecurityInterceptor} from './security/security.interceptor';
 import {UserService} from './services/user.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

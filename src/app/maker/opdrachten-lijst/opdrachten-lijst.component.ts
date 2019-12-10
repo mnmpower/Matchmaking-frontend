@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OpdrachtService } from 'src/app/services/opdracht.service';
+import { Opdracht } from 'src/app/models/opdracht.model';
 
 @Component({
   selector: 'app-opdrachten-lijst',
@@ -7,14 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpdrachtenLijstComponent implements OnInit {
 
-  constructor() { }
+  opdrachten: Opdracht[];
+
+  constructor(private _opdrachtService: OpdrachtService) {
+  }
 
   ngOnInit() {
   }
 
-  doSomething($event)
+  doFilter(filter)
   {
-    console.log("list");
-  }
+    console.log("Inside list:", filter);
 
+    this._opdrachtService.getOpdrachten().subscribe(result => {
+      this.opdrachten = result;
+    });
+  }
 }

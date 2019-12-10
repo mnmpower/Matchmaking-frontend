@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { FilterComponent } from './filter/filter.component';
 import { OpdrachtenLijstComponent } from './opdrachten-lijst/opdrachten-lijst.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { OpdrachtenLijstComponent } from './opdrachten-lijst/opdrachten-lijst.co
     OpdrachtenLijstComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     OpdrachtenComponent
