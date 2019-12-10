@@ -3,6 +3,7 @@
 @import '~material-design-icons/iconfont/material-icons.css';
 
 
+
 body {
   margin-top: 60px;
   height: 90vh;
@@ -51,7 +52,7 @@ h1{
 .pointer{
   cursor: pointer;
 }
-#inputOmschrijving{
+textarea{
   max-height: 150px;
   min-height: 150px;
 }

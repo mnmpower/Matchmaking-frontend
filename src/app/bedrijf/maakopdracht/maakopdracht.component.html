@@ -3,22 +3,22 @@
 
   <!-- TITLE INPUT FORM CONTROL -->
   <div class="form-group">
-    <label for="inputTitle" class="pt-3">Titel</label>
-    <input type="text" class="form-control" id="inputTitle" placeholder="Voer een titel in."
-           formControlName="inputTitle" [ngClass]="{ 'is-invalid': submitted && f.inputTitle.errors }">
-    <div *ngIf="submitted && f.inputTitle.errors" class="invalid-feedback">
-      <div *ngIf="f.inputTitle.errors.required">Dit is een verplicht veld! Vul een titel in!</div>
+    <label for="titel" class="pt-3">Titel</label>
+    <input type="text" class="form-control" id="titel" placeholder="Voer een titel in."
+           formControlName="titel" [ngClass]="{ 'is-invalid': submitted && f.titel.errors }">
+    <div *ngIf="submitted && f.titel.errors" class="invalid-feedback">
+      <div *ngIf="f.titel.errors.required">Dit is een verplicht veld! Vul een titel in!</div>
     </div>
   </div>
 
 
   <!-- OMSCHRIJVING INPUT FORM CONTROL -->
   <div class="form-group">
-    <label for="inputOmschrijving" class="pt-3">Omschrijving</label>
-    <textarea  type="text" class="form-control" id="inputOmschrijving" placeholder="Uitgebreide omschrijving van de opdracht"
-               formControlName="inputOmschrijving" [ngClass]="{ 'is-invalid': submitted && f.inputOmschrijving.errors }"></textarea>
-    <div *ngIf="submitted && f.inputOmschrijving.errors" class="invalid-feedback">
-      <div *ngIf="f.inputOmschrijving.errors.required">Dit is een verplicht veld! Vul een omschrijving in!</div>
+    <label for="omschrijving" class="pt-3">Omschrijving</label>
+    <textarea  type="text" class="form-control" id="omschrijving" placeholder="Uitgebreide omschrijving van de opdracht"
+               formControlName="omschrijving" [ngClass]="{ 'is-invalid': submitted && f.omschrijving.errors }"></textarea>
+    <div *ngIf="submitted && f.omschrijving.errors" class="invalid-feedback">
+      <div *ngIf="f.omschrijving.errors.required">Dit is een verplicht veld! Vul een omschrijving in!</div>
     </div>
   </div>
 
@@ -26,26 +26,31 @@
 
   <!-- LOCATIE INPUT FORM CONTROL -->
   <div class="form-group">
-    <label for="inputLocatie" class="pt-3">Locatie</label>
-    <input type="text" class="form-control" id="inputLocatie" placeholder="Plaats waar de opdracht gemaakt mag/moet worden"
-           formControlName="inputLocatie" [ngClass]="{ 'is-invalid': submitted && f.inputLocatie.errors }">
-    <div *ngIf="submitted && f.inputLocatie.errors" class="invalid-feedback">
-      <div *ngIf="f.inputLocatie.errors.required">Dit is een verplicht veld! Vul een locatie in!</div>
+    <label for="locatie" class="pt-3">Locatie</label>
+    <input type="text" class="form-control" id="locatie" placeholder="Plaats waar de opdracht gemaakt mag/moet worden"
+           formControlName="locatie" [ngClass]="{ 'is-invalid': submitted && f.locatie.errors }">
+    <div *ngIf="submitted && f.locatie.errors" class="invalid-feedback">
+      <div *ngIf="f.locatie.errors.required">Dit is een verplicht veld! Vul een locatie in!</div>
     </div>
   </div>
+
 
 
 
   <!-- AANTAL PERSONENEN FORM CONTROL -->
   <div class="form-group">
-    <label for="inputAantalPersonen" class="pt-3">Aantal personen</label>
-    <input type="number" class="form-control" id="inputAantalPersonen" placeholder="Vul een positief getal in"
-           formControlName="inputAantalPersonen" [ngClass]="{ 'is-invalid': submitted && f.inputAantalPersonen.errors }">
-    <div *ngIf="submitted && f.inputAantalPersonen.errors" class="invalid-feedback">
-      <div *ngIf="f.inputAantalPersonen.errors.required">Dit is een verplicht veld! Vul een aantal personen in!</div>
-      <div *ngIf="f.inputAantalPersonen.errors.min">Er moet minstens 1 persoon kunnen deelenemen!</div>
-      <div *ngIf="f.inputAantalPersonen.errors.max">Is meer als 100 personen niet een beetje veel?</div>
+    <label for="aantalPersonen" class="pt-3">Aantal personen</label>
+    <input type="number" class="form-control" id="aantalPersonen" placeholder="Vul een positief getal in"
+           formControlName="aantalPersonen" [ngClass]="{ 'is-invalid': submitted && f.aantalPersonen.errors }">
+    <div *ngIf="submitted && f.aantalPersonen.errors" class="invalid-feedback">
+      <div *ngIf="f.aantalPersonen.errors.required">Dit is een verplicht veld! Vul een aantal personen in!</div>
+      <div *ngIf="f.aantalPersonen.errors.min">Er moet minstens 1 persoon kunnen deelenemen!</div>
+      <div *ngIf="f.aantalPersonen.errors.max">Is meer als 100 personen niet een beetje veel?</div>
     </div>
   </div>
+  <div class="custom-control custom-checkbox mb-3">
+      <input type="checkbox" class="custom-control-input" id="customCheck1" name="customCheck1" (change)="setCompetitie()">
+      <label class="custom-control-label" for="customCheck1"  >competitie</label>
+    </div>
   <button type="submit" class="btn btn-primary">Maak opdracht</button>
 </form>
