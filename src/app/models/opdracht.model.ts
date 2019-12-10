@@ -1,3 +1,5 @@
+import { Bedrijf } from './bedrijf.model';
+
 export class Opdracht {
   constructor(
     public opdrachtID: number,
@@ -7,7 +9,8 @@ export class Opdracht {
     public competitie: boolean,
     public bedrijfID: number,
     public aantalPersonen: number,
-    public statusID: number
+    public statusID: number,
+    public bedrijf: Bedrijf
   ) {
   }
 }
