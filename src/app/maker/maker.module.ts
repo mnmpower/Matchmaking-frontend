@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { FilterComponent } from './filter/filter.component';
 import { OpdrachtenLijstComponent } from './opdrachten-lijst/opdrachten-lijst.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -16,7 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   exports: [
     OpdrachtenComponent
