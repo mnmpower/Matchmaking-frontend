@@ -9,6 +9,8 @@ import { Opdracht } from 'src/app/models/opdracht.model';
 })
 export class OpdrachtenLijstComponent implements OnInit {
 
+  isLoading: boolean = false;
+
   opdrachten: Opdracht[];
 
   constructor(private _opdrachtService: OpdrachtService) {
@@ -19,10 +21,12 @@ export class OpdrachtenLijstComponent implements OnInit {
 
   doFilter(filter)
   {
+    this.isLoading = true;
     console.log("Inside list:", filter);
 
     this._opdrachtService.getOpdrachtenFilter(filter).subscribe(result => {
       this.opdrachten = result;
+      this.isLoading = false;
     });
   }
 }
