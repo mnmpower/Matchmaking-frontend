@@ -13,6 +13,8 @@ export class OpdrachtenLijstComponent implements OnInit {
   public currentPage = 0;
   public totalSize = 100;
 
+
+
   opdrachten: Opdracht[];
 
   constructor(private _opdrachtService: OpdrachtService) {
@@ -25,7 +27,7 @@ export class OpdrachtenLijstComponent implements OnInit {
   {
     console.log("Inside list:", filter);
 
-    this._opdrachtService.getOpdrachten().subscribe(result => {
+    this._opdrachtService.getOpdrachtenFilter(filter).subscribe(result => {
       this.opdrachten = result;
     });
   }

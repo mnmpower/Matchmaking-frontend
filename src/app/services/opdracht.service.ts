@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Opdracht } from '../models/opdracht.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { OpdrachtenFilter } from '../maker/filter/opdrachten-filter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class OpdrachtService {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
+
+    //haal alle opdrachten op
+    getOpdrachtenFilter(filter: OpdrachtenFilter): Observable<Opdracht[]> {
+      return this.http.post<Opdracht[]>("https://localhost:44316/api/opdracht/filter", filter);
+    }
 
   //haal opdracht op voor id
   getOpdracht(id: number): Observable<Opdracht> {
