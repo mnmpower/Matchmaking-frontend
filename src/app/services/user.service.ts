@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { User } from '../models/user.model';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {User} from '../models/user.model';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   // haal alle users op
   getUsers(): Observable<User[]> {
@@ -39,4 +40,10 @@ export class UserService {
   bestaatMailadres(mail: string) {
     return this.http.get<boolean>('https://localhost:44316/api/user/bestaatMail/' + mail);
   }
+
+  // haal permissions op
+  getPermissions(): Observable<String[]> {
+    return this.http.get<String[]>('https://localhost:44316/api/user/permissions');
+  }
+
 }

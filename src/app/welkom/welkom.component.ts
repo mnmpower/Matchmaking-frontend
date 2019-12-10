@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OpdrachtService } from '../services/opdracht.service';
+import { MakerService } from '../services/maker.service';
 
 @Component({
   selector: 'app-welkom',
@@ -7,14 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelkomComponent implements OnInit {
 
-  title = 'DOT JS';
+  title = 'ZLANCE';
   auteur = 'DOT JS';
-  aantalFreelancers = 102;
-  aantalOpdrachten = 26;
+  aantalFreelancers = 0;
+  aantalOpdrachten = 0;
 
-  constructor() { }
+  constructor(private _opdrachtService: OpdrachtService, private _makerService: MakerService) { }
 
   ngOnInit() {
+    this._opdrachtService.getAantalOpdrachten().subscribe(result => {
+      this.aantalOpdrachten = result;
+    });
+
+    this._makerService.getAantalMakers().subscribe(result => {
+      this.aantalFreelancers = result;
+    });
   }
 
 }

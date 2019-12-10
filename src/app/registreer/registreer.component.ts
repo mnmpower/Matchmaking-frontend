@@ -32,7 +32,7 @@ export class RegistreerComponent implements OnInit {
   signUpFormDeel2Maker: FormGroup;
 
   nieuweUser: User = new User(null, null, null, null, null);
-  nieuwBedrijf: Bedrijf = new Bedrijf(null, null, null, null, null);
+  nieuwBedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null);
   nieuweMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null);
 
   constructor(
@@ -153,7 +153,7 @@ export class RegistreerComponent implements OnInit {
 
     this.nieuweMaker.makerID = 0;
     this.nieuweMaker.voornaam = this.signUpFormDeel2Maker.get(['inputVoornaam']).value;
-    this.nieuweMaker.naam = this.signUpFormDeel2Maker.get(['inputNaam']).value;
+    this.nieuweMaker.achternaam = this.signUpFormDeel2Maker.get(['inputNaam']).value;
     this.nieuweMaker.geboortedatum = this.signUpFormDeel2Maker.get(['inputGeboortedatum']).value;
     this.nieuweMaker.biografie = this.signUpFormDeel2Maker.get(['inputBiografieMaker']).value;
     this.nieuweMaker.linkedIn = this.signUpFormDeel2Maker.get(['inputLinkenIn']).value;
