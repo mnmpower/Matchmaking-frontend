@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { Router } from '@angular/router';
-import { AuthenticateService } from '../services/authenticate.service';
+import {Router} from '@angular/router';
+import {AuthenticateService} from '../services/authenticate.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private fb: FormBuilder, private router: Router, private _authenticatieService: AuthenticateService) {
-   }
+  }
 
   submitted: boolean = false;
 
@@ -29,7 +29,18 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', result.token);
       localStorage.setItem('functie', result.functie);
       this._authenticatieService.isLoggedin.next(result.token ? true : false);
-      this.router.navigate(['']);
+
+      switch (result.functie) {
+        case 'Maker':
+          this.router.navigate(['maker/dashboard'], {replaceUrl: true});
+          break;
+        case 'Admin':
+          this.router.navigate(['admin'], {replaceUrl: true});
+          break;
+        case 'Bedrijf':
+          this.router.navigate(['bedrijf/dashboard'], {replaceUrl: true});
+          break;
+      }
     });
   }
 
