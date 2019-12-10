@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     console.log(this.loginForm.value);
     this._authenticatieService.authenticate(this.loginForm.value).subscribe(result => {
-      localStorage.clear();
-      console.log(result);
       localStorage.setItem('token', result.token);
       localStorage.setItem('userID', result.userID + '');
       this._authenticatieService.isLoggedin.next(result.token ? true : false);
