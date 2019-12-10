@@ -9,12 +9,6 @@ import { Opdracht } from 'src/app/models/opdracht.model';
 })
 export class OpdrachtenLijstComponent implements OnInit {
 
-  public pageSize = 10;
-  public currentPage = 0;
-  public totalSize = 100;
-
-
-
   opdrachten: Opdracht[];
 
   constructor(private _opdrachtService: OpdrachtService) {

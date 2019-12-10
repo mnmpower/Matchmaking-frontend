@@ -3,7 +3,7 @@ import { BedrijfService } from 'src/app/services/bedrijf.service';
 import { Bedrijf } from 'src/app/models/bedrijf.model';
 import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
 import { OpdrachtenFilter } from './opdrachten-filter.model';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import { LocationService } from 'src/app/services/location.service';
 
 @Component({
@@ -32,31 +32,34 @@ export class FilterComponent implements OnInit {
 
     this.filterForm = this._fb.group({
       zoekterm: ['', { updateOn: 'submit' }],
-      maxAfstand: 10,
+      maxAfstand: 150,
       minPersonen: 0,
       maxPersonen: 100,
       competitie: 'all',
       bedrijven: this._fb.array([])
     });
 
-    this.filterForm.valueChanges.pipe(
-      distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b))
-    ).subscribe(val => {
-      let filter = new OpdrachtenFilter();
-      filter = Object.assign(filter, val);
+    this.filterForm.valueChanges
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b))
+      )
+      .subscribe(val => {
+        let filter = new OpdrachtenFilter();
+        filter = Object.assign(filter, val);
 
-      filter.longitude = this.position.lng;
-      filter.latitude = this.position.lat;
+        filter.longitude = this.position.lng;
+        filter.latitude = this.position.lat;
 
-      filter.bedrijven = [];
+        filter.bedrijven = [];
 
-      this.bedrijven.forEach(function (b, i) {
-        if (val.bedrijven[i])
-          filter.bedrijven.push(b.bedrijfID);
+        this.bedrijven.forEach(function (b, i) {
+          if (val.bedrijven[i])
+            filter.bedrijven.push(b.bedrijfID);
+        });
+
+        this.filterOutput.emit(filter);
       });
-
-      this.filterOutput.emit(filter);
-    });
 
     _bedrijfService.getBedrijven().subscribe(result => {
       this.bedrijven = result;
