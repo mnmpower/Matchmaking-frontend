@@ -6,7 +6,7 @@ export class OpdrachtenFilter {
         public maxAfstand: number = 0,
         public minPersonen: number = 0,
         public maxPersonen: number = 0,
-        public competitie: boolean = false,
+        public competitie: string = 'all',
         public bedrijven: number[] = [])
     {}
 }

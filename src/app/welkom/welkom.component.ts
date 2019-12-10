@@ -9,7 +9,7 @@ import { MakerService } from '../services/maker.service';
 })
 export class WelkomComponent implements OnInit {
 
-  title = 'DOT JS';
+  title = 'ZLANCE';
   auteur = 'DOT JS';
   aantalFreelancers = 0;
   aantalOpdrachten = 0;

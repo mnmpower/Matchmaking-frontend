@@ -9,17 +9,19 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class NavbarComponent implements OnInit {
 
-  title = 'DOT JS';
-  isLoggedIn = false;
+  title = 'ZLANCE';
+  isLoggedIn: boolean;
+
 
   constructor(private router: Router, private _authenticationService: AuthenticateService ) {
-     this._authenticationService.isLoggedin.subscribe(e => {
-       if (this._authenticationService.isLoggedin.value == true) {
-         this.isLoggedIn = true;
-       } else {
-         this.isLoggedIn = false;
-       }
-     });
+      this._authenticationService.isLoggedin.subscribe(e => {
+
+        if (e) {
+          this.isLoggedIn = true;
+        } else {
+          this.isLoggedIn = false;
+        }
+      });
   }
 
   ngOnInit() {

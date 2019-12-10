@@ -4,7 +4,8 @@ export class Bedrijf {
     public bedrijfsnaam: string,
     public locatie: string,
     public biografie: string,
-    public fotoBedrijf: string
+    public fotoBedrijf: string,
+    public userID: number
   ) {
   }
 }
