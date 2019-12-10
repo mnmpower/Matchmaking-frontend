@@ -39,4 +39,10 @@ export class UserService {
   bestaatMailadres(mail: string) {
     return this.http.get<boolean>('https://localhost:44316/api/user/bestaatMail/' + mail);
   }
+
+  // haal permissions op
+  getPermissions(): Observable<String[]> {
+    return this.http.get<String[]>('https://localhost:44316/api/user/permissions');
+  }
+
 }

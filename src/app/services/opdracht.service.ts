@@ -50,4 +50,11 @@ export class OpdrachtService {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
+
+  //haal aantal opdrachten op
+  getAantalOpdrachten(): Observable<number> {
+    return this.http.get<number>("https://localhost:44316/api/opdracht/count", {
+      headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
+    });
+  }
 }

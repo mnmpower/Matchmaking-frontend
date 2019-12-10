@@ -45,4 +45,11 @@ export class MakerService {
     });
   }
 
+  //haal aantal makers op
+  getAantalMakers(): Observable<number> {
+    return this.http.get<number>("https://localhost:44316/api/maker/count", {
+      headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
+    });
+  }
+
 }
