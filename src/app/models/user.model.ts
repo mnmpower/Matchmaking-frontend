@@ -3,6 +3,7 @@ export class User {
         public userID: number,
         public email: string,
         public paswoord: string,
-        public functie: string
+        public functie: string,
+        public token: string
     ){}
 }
