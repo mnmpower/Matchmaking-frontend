@@ -48,7 +48,7 @@ export class MaakopdrachtComponent implements OnInit {
   getBedrijf(){
     console.log(localStorage.getItem('token'));
       // tslint:disable-next-line: align
-      this._bedrijfService.getBedrijf().subscribe(result => {
+      this._bedrijfService.getBedrijfID().subscribe(result => {
         this.bedrijfID = result;
         console.log(result);
 

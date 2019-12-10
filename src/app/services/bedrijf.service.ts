@@ -19,8 +19,8 @@ export class BedrijfService {
   }
 
   // haal bedrijf op voor id
-  getBedrijf(): Observable<number> {
-    return this.http.get<number>('https://localhost:44316/api/bedrijf/getbedrijf', {
+  getBedrijfID(): Observable<number> {
+    return this.http.get<number>('https://localhost:44316/api/bedrijf/getbedrijfID', {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
