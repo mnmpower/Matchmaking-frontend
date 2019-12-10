@@ -32,4 +32,5 @@ export class StatusService {
       return this.http.delete<Status>("https://localhost:44316/api/status/" + statusID, {
         headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
       });
+  }
 }
