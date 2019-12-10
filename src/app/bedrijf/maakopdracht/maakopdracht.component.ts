@@ -46,8 +46,7 @@ export class MaakopdrachtComponent implements OnInit {
   }
 
   getBedrijf(){
-      this.userID = parseInt(localStorage.getItem('userID'));
-      this._bedrijfService.getBedrijf(this.userID).subscribe(result => {
+      this._bedrijfService.getBedrijf().subscribe(result => {
         this.bedrijfID = result.bedrijfID;
       });
   }

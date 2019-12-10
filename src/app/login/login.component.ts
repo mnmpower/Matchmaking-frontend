@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this._authenticatieService.authenticate(this.loginForm.value).subscribe(result => {
       localStorage.setItem('token', result.token);
-      localStorage.setItem('userID', result.userID + '');
       this._authenticatieService.isLoggedin.next(result.token ? true : false);
       this.router.navigate(['']);
     });
