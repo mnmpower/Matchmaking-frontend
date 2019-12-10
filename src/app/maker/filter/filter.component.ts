@@ -4,6 +4,7 @@ import { Bedrijf } from 'src/app/models/bedrijf.model';
 import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
 import { OpdrachtenFilter } from './opdrachten-filter.model';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-filter',
@@ -16,9 +17,18 @@ export class FilterComponent implements OnInit {
 
   filterForm: FormGroup;
 
+  position: any;
+
   @Output() filterOutput = new EventEmitter<OpdrachtenFilter>();
 
-  constructor(private _bedrijfService: BedrijfService, private _fb: FormBuilder) {
+  constructor(
+    private _bedrijfService: BedrijfService,
+    private _fb: FormBuilder,
+    private _locationService: LocationService) {
+
+    this._locationService.getPosition().then(pos => {
+      this.position = pos;
+    });
 
     this.filterForm = this._fb.group({
       zoekterm: ['', { updateOn: 'submit' }],
@@ -35,6 +45,9 @@ export class FilterComponent implements OnInit {
       let filter = new OpdrachtenFilter();
       filter = Object.assign(filter, val);
 
+      filter.longitude = this.position.lng;
+      filter.latitude = this.position.lat;
+
       filter.bedrijven = [];
 
       this.bedrijven.forEach(function (b, i) {
@@ -42,7 +55,6 @@ export class FilterComponent implements OnInit {
           filter.bedrijven.push(b.bedrijfID);
       });
 
-      //console.log(filter);
       this.filterOutput.emit(filter);
     });
 
