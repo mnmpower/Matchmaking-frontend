@@ -1,5 +1,7 @@
 export class OpdrachtenFilter {
     public constructor(
+        public offset: number = 0,
+        public limit: number = 0,
         public zoekterm: string = '',
         public maxAfstand: number = 0,
         public minPersonen: number = 0,
