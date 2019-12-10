@@ -9,7 +9,7 @@ import {DashboardComponent as DashboardBedrijf} from './bedrijf/dashboard/dashbo
 import {TagsComponent as TagsBedrijf} from './bedrijf/tags/tags.component';
 import {ReviewComponent as ReviewBedrijf} from './maker/review/review.component';
 
-import {AdminComponent} from './admin/admin-overzicht/admin-overzicht.component';
+import {AdminComponent} from './admin/adminoverzicht/adminoverzicht.component';
 
 import {DashboardComponent as DashboardMaker} from './maker/dashboard/dashboard.component';
 import {ProfielComponent} from './maker/profiel/profiel.component';
