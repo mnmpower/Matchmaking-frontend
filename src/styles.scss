@@ -1,7 +1,8 @@
+$primary: #96c03d;
+
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/scss/bootstrap";
 @import '~material-design-icons/iconfont/material-icons.css';
-
 
 body {
   margin-top: 60px;
@@ -9,7 +10,13 @@ body {
   background-color: #f4f4f4;
   min-width: 400px;
 }
+
+.stickyfooter{
+   min-height: 80vh !important;
+ }
+
 .container{
+
   margin-bottom: 20px;
 }
 h1{
@@ -51,7 +58,7 @@ h1{
 .pointer{
   cursor: pointer;
 }
-#inputOmschrijving{
+textarea{
   max-height: 150px;
   min-height: 150px;
 }

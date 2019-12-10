@@ -4,6 +4,9 @@ import {Router} from '@angular/router';
 import {MustMatch} from '../helpers/must-match.validator';
 import {User} from '../models/user.model';
 import {UserService} from '../services/user.service';
+import {MakerService} from '../services/maker.service';
+import {Bedrijf} from '../models/bedrijf.model';
+import {Maker} from '../models/maker.model';
 
 @Component({
   selector: 'app-registreer',
@@ -16,21 +19,28 @@ export class RegistreerComponent implements OnInit {
   stap3 = false;
 
   typeMaker = false;
-  typeBedrijf = true;
-  inUse: boolean = false;
+  typeBedrijf = false;
+  inUseEmail = false;
   mailadresOk = false;
+
   submitted = false;
+  submittedMaker = false;
+  submittedBedrijf = false;
+
   signUpForm: FormGroup;
-  signUpFormDeel2: FormGroup;
-  nieuweUser: User = new User(null, null, null, null,null);
+  signUpFormDeel2Bedrijf: FormGroup;
+  signUpFormDeel2Maker: FormGroup;
+
+  nieuweUser: User = new User(null, null, null, null, null);
+  nieuwBedrijf: Bedrijf = new Bedrijf(null, null, null, null, null);
+  nieuweMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null);
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    private _makerService: MakerService
   ) {
-    this.naarStap(2);
-    this.typeMaker = true;
   }
 
   ngOnInit() {
@@ -38,21 +48,38 @@ export class RegistreerComponent implements OnInit {
       inputEmailSignUp: ['', [Validators.required, Validators.email]],
       inputEmailConfirm: ['', Validators.required],
       inputPasswordSignUp: ['', [Validators.required, Validators.minLength(8)]],
-      inputPasswordConfirm: ['', Validators.required],
-      optradio: ['', Validators.required]
+      inputPasswordConfirm: ['', Validators.required]
     }, {
       validator: [MustMatch('inputPasswordSignUp', 'inputPasswordConfirm'),
         MustMatch('inputEmailSignUp', 'inputEmailConfirm')]
     });
 
-    this.signUpFormDeel2 = this.fb.group({
-      inputBedrijfsnaam: ['', [Validators.required, Validators.email]],
-      inputLocatie: ['', Validators.required]
+    this.signUpFormDeel2Bedrijf = this.fb.group({
+      inputBedrijfsnaam: ['', Validators.required],
+      inputLocatie: ['', Validators.required],
+      inputBiografie: ['', Validators.required]
+    });
+
+    this.signUpFormDeel2Maker = this.fb.group({
+      inputVoornaam: ['', Validators.required],
+      inputNaam: ['', Validators.required],
+      inputGeboortedatum: ['', Validators.required],
+      inputBiografieMaker: ['', Validators.required],
+      inputLinkenIn: [''],
+      inputErvaring: ['', Validators.required],
     });
   }
 
   get f() {
     return this.signUpForm.controls;
+  }
+
+  get f2B() {
+    return this.signUpFormDeel2Bedrijf.controls;
+  }
+
+  get f2M() {
+    return this.signUpFormDeel2Maker.controls;
   }
 
   naarStap(stapnr: number) {
@@ -92,12 +119,11 @@ export class RegistreerComponent implements OnInit {
   }
 
   checkAvailableMail() {
-    // AANPASSEN DAT HIJ VIA API KIJKE OF USERNAME VRIJ IS
     this._userService.bestaatMailadres(this.signUpForm.get(['inputEmailSignUp']).value).subscribe(
       r => {
-        this.inUse = r.valueOf();
+        this.inUseEmail = r.valueOf();
 
-        if (this.inUse === false) {
+        if (this.inUseEmail === false) {
           this.signUpForm.controls.inputEmailSignUp.setErrors(null);
           this.mailadresOk = true;
         } else {
@@ -107,6 +133,7 @@ export class RegistreerComponent implements OnInit {
       });
   }
 
+
   setTypeMaker() {
     this.typeMaker = true;
     this.typeBedrijf = false;
@@ -115,6 +142,43 @@ export class RegistreerComponent implements OnInit {
   setTypeBedrijf() {
     this.typeMaker = false;
     this.typeBedrijf = true;
+  }
+
+  ToonMaker() {
+    this.submittedMaker = true;
+
+    if (this.signUpFormDeel2Maker.invalid) {
+      return;
+    }
+
+    this.nieuweMaker.makerID = 0;
+    this.nieuweMaker.voornaam = this.signUpFormDeel2Maker.get(['inputVoornaam']).value;
+    this.nieuweMaker.naam = this.signUpFormDeel2Maker.get(['inputNaam']).value;
+    this.nieuweMaker.geboortedatum = this.signUpFormDeel2Maker.get(['inputGeboortedatum']).value;
+    this.nieuweMaker.biografie = this.signUpFormDeel2Maker.get(['inputBiografieMaker']).value;
+    this.nieuweMaker.linkedIn = this.signUpFormDeel2Maker.get(['inputLinkenIn']).value;
+    this.nieuweMaker.ervaring = this.signUpFormDeel2Maker.get(['inputErvaring']).value;
+
+    console.log(this.nieuweMaker);
+
+    this.naarStap(3);
+  }
+
+  toonBedrijf() {
+    this.submittedBedrijf = true;
+
+    if (this.signUpFormDeel2Bedrijf.invalid) {
+      return;
+    }
+
+    this.nieuwBedrijf.bedrijfID = 0;
+    this.nieuwBedrijf.bedrijfsnaam = this.signUpFormDeel2Bedrijf.get(['inputBedrijfsnaam']).value;
+    this.nieuwBedrijf.locatie = this.signUpFormDeel2Bedrijf.get(['inputLocatie']).value;
+    this.nieuwBedrijf.biografie = this.signUpFormDeel2Bedrijf.get(['inputBiografie']).value;
+
+    console.log(this.nieuwBedrijf);
+
+    this.naarStap(3);
   }
 }
 

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelkomComponent implements OnInit {
 
-  title = 'EZ-Match';
+  title = 'DOT JS';
   auteur = 'DOT JS';
   aantalFreelancers = 102;
   aantalOpdrachten = 26;
