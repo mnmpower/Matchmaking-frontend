@@ -9,7 +9,8 @@ import { UserLogin } from '../models/user-login.model';
 })
 export class AuthenticateService {
 
-  isLoggedin = new BehaviorSubject(false);
+  
+  isLoggedin = new BehaviorSubject(localStorage.getItem('token') ? true : false);
 
   constructor(private _httpClient: HttpClient) { }
 
