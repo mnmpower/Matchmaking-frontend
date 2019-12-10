@@ -18,15 +18,15 @@
          person_outline
       </i></a>
 
-   <div class="float-right ml-auto">
-         <a class="navbar-brand" routerLink="/userOverzicht" routerLinkActive="active" *ngIf="isLoggedIn"
-         [routerLinkActiveOptions]="{ exact: true }"><i class="fas fa-user"></i></a>
-         
+   <div class="float-right ml-auto">         
       <a class="navbar-brand" routerLink="/registreer" routerLinkActive="active" *ngIf="!isLoggedIn"
          [routerLinkActiveOptions]="{ exact: true }">Sign up</a>
 
       <a class="navbar-brand" routerLink="/logIn" routerLinkActive="active" *ngIf="!isLoggedIn"
          [routerLinkActiveOptions]="{ exact: true }">Log in</a>
+
+      <a class="navbar-brand" routerLink="/userOverzicht" routerLinkActive="active" *ngIf="isLoggedIn"
+         [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons">account_box</i></a>
 
       <a class="navbar-brand" routerLink="/Welkom" routerLinkActive="active" *ngIf="isLoggedIn"
          [routerLinkActiveOptions]="{ exact: true }" (click)="logUit()">Log out</a>

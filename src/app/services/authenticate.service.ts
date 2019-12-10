@@ -10,7 +10,7 @@ import { UserLogin } from '../models/user-login.model';
 export class AuthenticateService {
 
   isLoggedin = new BehaviorSubject(false);
-  
+
   constructor(private _httpClient: HttpClient) { }
 
   authenticate(userLogin: UserLogin): Observable<User> {

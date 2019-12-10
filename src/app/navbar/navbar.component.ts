@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,14 +12,14 @@ export class NavbarComponent implements OnInit {
   title = 'EZ-Match';
   isLoggedIn = false;
 
-  constructor(private router: Router, ) {
-    // this._authenticationService.isLoggedin.subscribe(e => {
-    //   if (this._authenticationService.isLoggedin.value == true) {
-    //     this.isLoggedIn = true;
-    //   } else {
-    //     this.isLoggedIn = false;
-    //   }
-    // });
+  constructor(private router: Router, private _authenticationService: AuthenticateService ) {
+     this._authenticationService.isLoggedin.subscribe(e => {
+       if (this._authenticationService.isLoggedin.value == true) {
+         this.isLoggedIn = true;
+       } else {
+         this.isLoggedIn = false;
+       }
+     });
   }
 
   ngOnInit() {
@@ -27,8 +28,8 @@ export class NavbarComponent implements OnInit {
   logUit() {
     localStorage.removeItem('token');
     sessionStorage.clear();
-    // this.isLoggedIn = false;
-    // this._authenticationService.isLoggedin.next(false);
+     this.isLoggedIn = false;
+     this._authenticationService.isLoggedin.next(false);
     this.router.navigate(['logIn'], {replaceUrl: true});
   }
 
