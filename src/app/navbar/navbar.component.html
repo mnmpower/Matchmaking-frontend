@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top ">
 
    <a class="navbar-brand" routerLink="/" routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }">{{title}}</a>
+      [routerLinkActiveOptions]="{ exact: true }">{{ title }}</a>
 
    <a class="navbar-brand" routerLink="/dashboard" routerLinkActive="active" *ngIf="isLoggedIn"
       [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
@@ -23,13 +23,13 @@
          [routerLinkActiveOptions]="{ exact: true }"><i class="fas fa-user"></i></a>
          
       <a class="navbar-brand" routerLink="/registreer" routerLinkActive="active" *ngIf="!isLoggedIn"
-         [routerLinkActiveOptions]="{ exact: true }">Sign up</a>
+         [routerLinkActiveOptions]="{ exact: true }">Registreer</a>
 
       <a class="navbar-brand" routerLink="/logIn" routerLinkActive="active" *ngIf="!isLoggedIn"
-         [routerLinkActiveOptions]="{ exact: true }">Log in</a>
+         [routerLinkActiveOptions]="{ exact: true }">Login</a>
 
       <a class="navbar-brand" routerLink="/Welkom" routerLinkActive="active" *ngIf="isLoggedIn"
-         [routerLinkActiveOptions]="{ exact: true }" (click)="logUit()">Log out</a>
+         [routerLinkActiveOptions]="{ exact: true }" (click)="logUit()">Logout</a>
    </div>
 
 </nav>

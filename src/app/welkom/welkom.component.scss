@@ -1,3 +1,9 @@
+/* Basic layout */
+
+section {
+  padding-top: 7.5vh;
+}
+
 /* Header video */
 
 header {
@@ -53,7 +59,7 @@ header .overlay {
 .services {
 	width:100%;
 	height:auto;
-	border-bottom:5px #323233 solid;
+	border-bottom:5px #96c03d solid;
 	background:#fff;
 	text-align:center;
 	border-radius:10px;
@@ -101,6 +107,6 @@ header .overlay {
 }
 
 .services:hover {
-	border-color:#777;
+	border-color:darken(#96c03d, 10%);
 	transition:0.5s;
 }
