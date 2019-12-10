@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'bedrijf/maakOpdracht', component: MaakopdrachtComponent },
 
   // authenticatien toevoegen bij alle onderstaande!!!
-  { path: 'maker/opdrachten', component: OpdrachtenComponent },
+  { path: 'maker/opdrachten', component: OpdrachtenComponent }
 ];
 
 @NgModule({
