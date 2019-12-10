@@ -7,7 +7,8 @@ export class Maker {
     public biografie: string,
     public linkedIn: string,
     public ervaring: string,
-    public fotoMaker: string
+    public fotoMaker: string,
+    public userID: number
   ) {
   }
 }
