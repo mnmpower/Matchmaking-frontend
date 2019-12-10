@@ -1,5 +1,10 @@
 <!-- Fixed navbar -->
 <app-navbar></app-navbar>
 
-<!-- Router outlet -->
-<router-outlet></router-outlet>
+<!-- Router outlet + fix for mysterious padding below navbar -->
+<div style="position: relative; top: -4px;">
+    <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

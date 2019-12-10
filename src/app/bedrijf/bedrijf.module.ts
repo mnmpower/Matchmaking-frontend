@@ -1,12 +1,22 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {SharedModule} from '../shared/shared.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MaakopdrachtComponent} from './maakopdracht/maakopdracht.component';
+import {CommonModule} from '@angular/common';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MaakopdrachtComponent
+  ],
   imports: [
+    SharedModule,
+    ReactiveFormsModule,
     CommonModule
-  ]
+  ],
+  exports: [
+    MaakopdrachtComponent
+  ],
 })
 export class BedrijfModule { }
