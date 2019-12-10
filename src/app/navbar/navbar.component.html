@@ -13,7 +13,7 @@
          poll
       </i></a>
 
-   <a class="navbar-brand" routerLink="/friends" routerLinkActive="active" *ngIf="isLoggedIn"
+   <a class="navbar-brand" routerLink="/userOverzicht" routerLinkActive="active" *ngIf="isLoggedIn"
       [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
          person_outline
       </i></a>
@@ -24,9 +24,6 @@
 
       <a class="navbar-brand" routerLink="/logIn" routerLinkActive="active" *ngIf="!isLoggedIn"
          [routerLinkActiveOptions]="{ exact: true }">Login</a>
-
-      <a class="navbar-brand" routerLink="/userOverzicht" routerLinkActive="active" *ngIf="isLoggedIn"
-         [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons">account_box</i></a>
 
       <a class="navbar-brand" routerLink="/Welkom" routerLinkActive="active" *ngIf="isLoggedIn"
          [routerLinkActiveOptions]="{ exact: true }" (click)="logUit()">Logout</a>

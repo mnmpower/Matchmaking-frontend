@@ -9,7 +9,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class NavbarComponent implements OnInit {
 
-  title = 'EZ-Match';
+  title = 'DOT JS';
   isLoggedIn = false;
 
   constructor(private router: Router, private _authenticationService: AuthenticateService ) {

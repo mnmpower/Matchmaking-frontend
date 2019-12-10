@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  title = 'EZ-Match';
+  title = 'DOT JS';
   auteur = 'DOT JS';
 
   constructor() { }
