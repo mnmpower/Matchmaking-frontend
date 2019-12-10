@@ -24,8 +24,8 @@ export class FilterComponent implements OnInit {
       zoekterm: ['', { updateOn: 'submit' }],
       maxAfstand: 10,
       minPersonen: 0,
-      maxPersonen: 0,
-      competitie: false,
+      maxPersonen: 100,
+      competitie: 'all',
       bedrijven: this._fb.array([])
     });
 
