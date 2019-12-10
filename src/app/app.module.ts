@@ -19,6 +19,7 @@ import {SecurityInterceptor} from './security/security.interceptor';
 import {UserService} from './services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './admin/admin-overzicht/admin-overzicht.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     WelkomComponent,
     LoginComponent,
     RegistreerComponent,
+    AdminComponent,
     BlockCopyPasteCutDirective
   ],
   imports: [

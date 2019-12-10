@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 
 import { MaakopdrachtComponent} from './bedrijf/maakopdracht/maakopdracht.component';
 import {RegistreerComponent} from './registreer/registreer.component';
+import { AdminComponent } from './admin/admin-overzicht/admin-overzicht.component';
 
 
 const routes: Routes = [
@@ -13,9 +14,11 @@ const routes: Routes = [
   { path: 'logIn', component: LoginComponent },
   { path: 'registreer', component: RegistreerComponent },
   { path: 'bedrijf/maakOpdracht', component: MaakopdrachtComponent },
+  { path: 'admin/overzicht', component: AdminComponent },
 
   // authenticatien toevoegen bij alle onderstaande!!!
   { path: 'maker/opdrachten', component: OpdrachtenComponent }
+
 ];
 
 @NgModule({
