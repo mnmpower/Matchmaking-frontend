@@ -12,37 +12,27 @@ export class UserService {
 
   // haal alle users op
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('https://localhost:44316/api/user', {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    });
+    return this.http.get<User[]>('https://localhost:44316/api/user');
   }
 
   // haal user op voor id
   getUser(id: number): Observable<User> {
-    return this.http.get<User>('https://localhost:44316/api/user/' + id, {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    });
+    return this.http.get<User>('https://localhost:44316/api/user/' + id);
   }
 
   // voeg een nieuw user toe
   addUser(user: User) {
-    return this.http.post<User>('https://localhost:44316/api/user', user, {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    });
+    return this.http.post<User>('https://localhost:44316/api/user', user);
   }
 
   // wijzig user
   updateUser(user: User) {
-    return this.http.put<User>('https://localhost:44316/api/user/' + user.userID, user, {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    });
+    return this.http.put<User>('https://localhost:44316/api/user/' + user.userID, user);
   }
 
   // verwijder user
   deleteUser(id: number) {
-    return this.http.delete<User>('https://localhost:44316/api/user/' + id, {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    });
+    return this.http.delete<User>('https://localhost:44316/api/user/' + id);
   }
 
   // check voor bruikbaar Mailadress
