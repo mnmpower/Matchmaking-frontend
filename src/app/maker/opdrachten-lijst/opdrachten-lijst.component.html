@@ -1,30 +1,10 @@
 <div class="container">
     <div class="span8">
-        <h1>Article name first</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum ex eget porttitor sollicitudin. Morbi
-            cursus tempor placerat. Pellentesque suscipit tortor in orci pretium, ac facilisis ex pretium. Fusce
-            hendrerit orci diam, vitae tristique quam porttitor eu. Donec ligula orci, ultricies in sagittis non, porta
-            sed lorem. Aenean interdum posuere mattis. Curabitur dignissim dictum quam, vitae malesuada velit tristique
-            a. </p>
-        <div>
-            <div class="more label">Read more</div>
-            <div class="tags">
-                <span class="btn-info">energy</span><span class="btn-info">reality</span><span class="btn-info">world</span>
-            </div>
+        <div *ngFor="let opdracht of opdrachten">
+            <h1>{{opdracht.titel}}</h1>
+            <p>{{opdracht.omschrijving}}</p>
+            <p>{{opdracht.locatie}}</p>
+            <hr>
         </div>
-        <div class="clear"></div>
-        <hr>
-        <h1>Article name second</h1>
-        <p>Sed interdum massa ac pretium faucibus. Integer semper euismod lorem faucibus molestie. Aenean luctus ut
-            metus eget dignissim. Sed tincidunt augue non elementum pharetra. Suspendisse non feugiat urna. Etiam
-            egestas neque euismod neque sollicitudin consectetur. Fusce facilisis augue a velit porta scelerisque. Sed
-            mattis justo sapien. Sed ultrices lectus diam, id vestibulum ante finibus a. </p>
-        <div>
-            <div class="more label">Read more</div>
-            <div class="tags">
-                <span class="btn-info">energy</span><span class="btn-info">reality</span><span class="btn-info">world</span>
-            </div>
-        </div>
-        <hr>
     </div>
 </div>
