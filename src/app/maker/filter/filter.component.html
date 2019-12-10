@@ -40,11 +40,13 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Min</label>
-                            <input type="number" formControlName="minPersonen" class="form-control" placeholder="1">
+                            <input type="number" min="0" max="100" formControlName="minPersonen" class="form-control"
+                                placeholder="1">
                         </div>
                         <div class="form-group col-md-6 text-right">
                             <label>Max</label>
-                            <input type="number" formControlName="maxPersonen" class="form-control" placeholder="5">
+                            <input type="number" min="0" max="100" formControlName="maxPersonen" class="form-control"
+                                placeholder="5">
                         </div>
                     </div>
                 </div> <!-- card-body.// -->
@@ -58,9 +60,21 @@
             <div class="filter-content">
                 <div class="card-body">
                     <label class="form-check">
-                        <input class="form-check-input" formControlName="competitie" type="checkbox" value="">
+                        <input class="form-check-input" formControlName="competitie" type="radio" value="yes">
                         <span class="form-check-label">
                             Ja
+                        </span>
+                    </label> <!-- form-check.// -->
+                    <label class="form-check">
+                        <input class="form-check-input" formControlName="competitie" type="radio" value="no">
+                        <span class="form-check-label">
+                            Nee
+                        </span>
+                    </label> <!-- form-check.// -->
+                    <label class="form-check">
+                        <input class="form-check-input" formControlName="competitie" type="radio" value="all">
+                        <span class="form-check-label">
+                            Alles
                         </span>
                     </label> <!-- form-check.// -->
                 </div> <!-- card-body.// -->
