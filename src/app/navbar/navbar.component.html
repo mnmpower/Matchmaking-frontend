@@ -1,32 +1,76 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top ">
 
-   <a class="navbar-brand" routerLink="/" routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }">{{ title }}</a>
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">{{ title }}</a>
 
-   <a class="navbar-brand" routerLink="/dashboard" routerLinkActive="active" *ngIf="isLoggedIn"
-      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
-         dashboard
-      </i></a>
+<!--   -------------- -->
+<!-- ALLES VOOR MAKER -->
+<!--   -------------- -->
+  <a class="navbar-brand" routerLink="/maker/dashboard" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    dashboard
+  </i></a>
 
-   <a class="navbar-brand" routerLink="/polls" routerLinkActive="active" *ngIf="isLoggedIn"
-      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
-         poll
-      </i></a>
+  <a class="navbar-brand" routerLink="/maker/opdrachten" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    location_city
+  </i></a>
 
-   <a class="navbar-brand" routerLink="/userOverzicht" routerLinkActive="active" *ngIf="isLoggedIn"
-      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
-         person_outline
-      </i></a>
+  <a class="navbar-brand" routerLink="/maker/profiel" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    person_outline
+  </i></a>
 
-   <div class="float-right ml-auto">         
-      <a class="navbar-brand" routerLink="/registreer" routerLinkActive="active" *ngIf="!isLoggedIn"
-         [routerLinkActiveOptions]="{ exact: true }">Registreer</a>
+  <a class="navbar-brand" routerLink="/maker/tags" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    local_offer
+  </i></a>
 
-      <a class="navbar-brand" routerLink="/logIn" routerLinkActive="active" *ngIf="!isLoggedIn"
-         [routerLinkActiveOptions]="{ exact: true }">Login</a>
+  <a class="navbar-brand" routerLink="/maker/reviews" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    rate_review
+  </i></a>
+  <!--   -------------- -->
+  <!-- ALLES VOOR BEDRIJF -->
+  <!--   -------------- -->
+  <a class="navbar-brand" routerLink="/bedrijf/dashboard" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    dashboard
+  </i></a>
 
-      <a class="navbar-brand" routerLink="/Welkom" routerLinkActive="active" *ngIf="isLoggedIn"
-         [routerLinkActiveOptions]="{ exact: true }" (click)="logUit()">Logout</a>
-   </div>
+  <a class="navbar-brand" routerLink="/bedrijf/maakopdracht" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    note_add
+  </i></a>
+
+  <a class="navbar-brand" routerLink="/bedrijf/tags" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    local_offer
+  </i></a>
+
+  <a class="navbar-brand" routerLink="/bedrijf/reviews" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    rate_review
+  </i></a>
+
+
+  <!--   -------------- -->
+  <!-- ALLES VOOR ADMIN (NIETS DUS) -->
+  <!--   -------------- -->
+
+
+  <!--   -------------- -->
+  <!-- ALLES VOOR IEDEREEN -->
+  <!--   -------------- -->
+  <div class="float-right ml-auto">
+    <a class="navbar-brand" routerLink="/registreer" routerLinkActive="active" *ngIf="!isLoggedIn"
+       [routerLinkActiveOptions]="{ exact: true }">Registreer</a>
+
+    <a class="navbar-brand" routerLink="/login" routerLinkActive="active" *ngIf="!isLoggedIn"
+       [routerLinkActiveOptions]="{ exact: true }">Login</a>
+
+    <a class="navbar-brand" routerLink="/Welkom" routerLinkActive="active" *ngIf="isLoggedIn"
+       [routerLinkActiveOptions]="{ exact: true }" (click)="logUit()">Logout</a>
+  </div>
 
 </nav>
