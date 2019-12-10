@@ -47,5 +47,9 @@
       <div *ngIf="f.aantalPersonen.errors.max">Is meer als 100 personen niet een beetje veel?</div>
     </div>
   </div>
+  <div class="custom-control custom-checkbox mb-3">
+      <input type="checkbox" class="custom-control-input" id="customCheck1" name="customCheck1" (change)="setCompetitie()">
+      <label class="custom-control-label" for="customCheck1"  >competitie</label>
+    </div>
   <button type="submit" class="btn btn-primary">Maak opdracht</button>
 </form>

@@ -16,6 +16,7 @@ export class MaakopdrachtComponent implements OnInit {
   inUse: boolean = false;
   userID: number;
   bedrijfID: number;
+  competitie: boolean = false;
 
   constructor(
     private router: Router,
@@ -35,8 +36,9 @@ export class MaakopdrachtComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-    console.log('gemaakte opdracht form: ', this.CreateOpdrachtForm.value);
     this.CreateOpdrachtForm.addControl('bedrijfID', new FormControl(this.bedrijfID));
+    this.CreateOpdrachtForm.addControl('competitie', new FormControl(this.competitie));
+    console.log('gemaakte opdracht form: ', this.CreateOpdrachtForm.value);
     this._opdrachtService.addOpdracht(this.CreateOpdrachtForm.value).subscribe(result => {
        console.log('gemaakte opdracht: ', result);
     });
@@ -48,6 +50,12 @@ export class MaakopdrachtComponent implements OnInit {
       this._bedrijfService.getBedrijf(this.userID).subscribe(result => {
         this.bedrijfID = result.bedrijfID;
       });
+  }
+
+  setCompetitie() {
+
+    this.competitie = !this.competitie;
+    console.log('competitie: ',this.competitie);
   }
 
 
