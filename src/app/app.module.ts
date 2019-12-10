@@ -18,7 +18,6 @@ import {SecurityInterceptor} from './security/security.interceptor';
 import {UserService} from './services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UserOverzichtComponent } from './user-overzicht/user-overzicht.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { UserOverzichtComponent } from './user-overzicht/user-overzicht.componen
     WelkomComponent,
     LoginComponent,
     RegistreerComponent,
-    BlockCopyPasteCutDirective,
-    UserOverzichtComponent
+    BlockCopyPasteCutDirective
   ],
   imports: [
     BrowserModule,
