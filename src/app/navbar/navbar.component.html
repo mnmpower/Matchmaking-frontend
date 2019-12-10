@@ -19,6 +19,9 @@
       </i></a>
 
    <div class="float-right ml-auto">
+         <a class="navbar-brand" routerLink="/userOverzicht" routerLinkActive="active" *ngIf="isLoggedIn"
+         [routerLinkActiveOptions]="{ exact: true }"><i class="fas fa-user"></i></a>
+         
       <a class="navbar-brand" routerLink="/registreer" routerLinkActive="active" *ngIf="!isLoggedIn"
          [routerLinkActiveOptions]="{ exact: true }">Sign up</a>
 

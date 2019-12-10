@@ -22,7 +22,7 @@ export class RegistreerComponent implements OnInit {
   submitted = false;
   signUpForm: FormGroup;
   signUpFormDeel2: FormGroup;
-  nieuweUser: User = new User(null, null, null, null);
+  nieuweUser: User = new User(null, null, null, null,null);
 
   constructor(
     private fb: FormBuilder,
