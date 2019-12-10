@@ -5,6 +5,10 @@ import { FilterComponent } from './filter/filter.component';
 import { OpdrachtenLijstComponent } from './opdrachten-lijst/opdrachten-lijst.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfielComponent } from './profiel/profiel.component';
+import { TagsComponent } from './tags/tags.component';
+import { ReviewComponent } from './review/review.component';
 
 
 
@@ -12,7 +16,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   declarations: [
     OpdrachtenComponent,
     FilterComponent,
-    OpdrachtenLijstComponent
+    OpdrachtenLijstComponent,
+    DashboardComponent,
+    ProfielComponent,
+    TagsComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule,
