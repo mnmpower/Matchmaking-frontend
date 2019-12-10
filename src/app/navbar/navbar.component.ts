@@ -9,7 +9,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class NavbarComponent implements OnInit {
 
-  title = 'DOT JS';
+  title = 'ZLANCE';
   isLoggedIn = false;
 
   constructor(private router: Router, private _authenticationService: AuthenticateService ) {
