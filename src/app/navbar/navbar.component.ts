@@ -19,15 +19,13 @@ export class NavbarComponent implements OnInit {
     title = 'ZLANCE';
     isLoggedIn: boolean;
     isMaker: boolean;
-    maker: Maker = null;
+    makerId: number = null;
     isAdmin: boolean;
-    admin: Admin = null;
+    adminId: number = null;
     isBedrijf: boolean;
-    bedrijf: Bedrijf = null;
-    id: number = 0;
+    bedrijfId: number = null;
 
-
-    constructor(private router: Router, private _authenticationService: AuthenticateService, private _userService: UserService, private _adminService: AdminService, private _bedrijfService: BedrijfService, private _makerService: MakerService) {
+    constructor(private router: Router, private _authenticationService: AuthenticateService, private _userService: UserService) {
         this._authenticationService.isLoggedin.subscribe(e => {
 
             if (e) {
@@ -38,35 +36,33 @@ export class NavbarComponent implements OnInit {
             }
 
             this._userService.getIdOfCurrentUser().subscribe(r => {
-                this.id = r.valueOf();
+                switch (localStorage.getItem('functie')) {
+                    case 'Maker':
+                        this.isMaker = true;
+                        this.isAdmin = false;
+                        this.isBedrijf = false;
+                        this.makerId = r.valueOf();
+                        this.adminId = null;
+                        this.bedrijfId = null;
+                        break;
+                    case 'Admin':
+                        this.isMaker = false;
+                        this.isAdmin = true;
+                        this.isBedrijf = false;
+                        this.makerId = null;
+                        this.adminId = r.valueOf();
+                        this.bedrijfId = null;
+                        break;
+                    case 'Bedrijf':
+                        this.isMaker = false;
+                        this.isAdmin = false;
+                        this.isBedrijf = true;
+                        this.makerId = null;
+                        this.adminId = null;
+                        this.bedrijfId = r.valueOf();
+                        break;
+                }
             });
-
-            switch (localStorage.getItem('functie')) {
-                case 'Maker':
-                    this.isMaker = true;
-                    this.isAdmin = false;
-                    this.isBedrijf = false;
-                    this._makerService.getMaker(this.id).subscribe(r => {
-                        this.maker = r;
-                    });
-                    break;
-                case 'Admin':
-                    this.isMaker = false;
-                    this.isAdmin = true;
-                    this.isBedrijf = false;
-                    this._adminService.getAdmin(this.id).subscribe(r => {
-                        this.admin = r;
-                    });
-                    break;
-                case 'Bedrijf':
-                    this.isMaker = false;
-                    this.isAdmin = false;
-                    this.isBedrijf = true;
-                    this._bedrijfService.getBedrijf(this.id).subscribe(r => {
-                        this.bedrijf = r;
-                    });
-                    break;
-            }
         });
     }
 
