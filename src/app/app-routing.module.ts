@@ -5,7 +5,7 @@ import {LoginComponent} from './login/login.component';
 
 import {MaakopdrachtComponent} from './bedrijf/maakopdracht/maakopdracht.component';
 import {RegistreerComponent} from './registreer/registreer.component';
-import {AdminComponent} from './admin/admin-overzicht/admin-overzicht.component';
+import {AdminComponent} from './admin/adminoverzicht/adminoverzicht.component';
 
 import {DashboardComponent} from './maker/dashboard/dashboard.component';
 import {ProfielComponent} from './maker/profiel/profiel.component';
