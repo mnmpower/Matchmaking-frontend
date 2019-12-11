@@ -28,6 +28,7 @@ import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/
 import { AdmintagsbeherenComponent } from './admin/admintagsbeheren/admintagsbeheren.component';
 import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypesbeheren.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import {SkillService} from './services/skill.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     useClass: SecurityInterceptor,
     multi: true,
   },
-    UserService
+    UserService,
+    SkillService
   ],
   bootstrap: [AppComponent]
 })

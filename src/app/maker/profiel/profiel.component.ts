@@ -30,24 +30,26 @@ export class ProfielComponent implements OnInit {
       if (result.indexOf('VIEW_PROFIEL') == -1) {
         this.router.navigate(['/forbidden']);
       }
-    });
 
 
-    this.makerID = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
-    this._makerService.getMaker(this.makerID).subscribe(r => {
-      this.maker.makerID = r.makerID;
-      this.maker.userID = r.userID;
-      this.maker.ervaring = r.ervaring;
-      this.maker.linkedIn = r.linkedIn;
-      this.maker.biografie = r.biografie;
-      this.maker.geboortedatum = r.geboortedatum;
-      this.maker.voornaam = r.voornaam;
-      this.maker.achternaam = r.achternaam;
-      this.maker.fotoMaker = r.fotoMaker;
+      this.makerID = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
+      this._makerService.getMaker(this.makerID).subscribe(r => {
+        this.maker.makerID = r.makerID;
+        this.maker.userID = r.userID;
+        this.maker.ervaring = r.ervaring;
+        this.maker.linkedIn = r.linkedIn;
+        this.maker.biografie = r.biografie;
+        this.maker.geboortedatum = r.geboortedatum;
+        this.maker.voornaam = r.voornaam;
+        this.maker.achternaam = r.achternaam;
+        this.maker.fotoMaker = r.fotoMaker;
 
-      this._skillService.getSkillsByMakerID(this.makerID).subscribe(re => {
-        this.skills = re;
+        this._skillService.getSkillsByMakerID(this.makerID).subscribe(re => {
+          this.skills = re;
+          console.log(this.skills);
+        });
       });
+
     });
   }
 
