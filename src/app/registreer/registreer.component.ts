@@ -46,7 +46,7 @@ export class RegistreerComponent implements OnInit {
   ngOnInit() {
     this.signUpForm = this.fb.group({
       inputEmailSignUp: ['', [Validators.required, Validators.email]],
-      inputEmailConfirm: ['', Validators.required],
+      inputEmailConfirm: ['', [Validators.required, Validators.email]],
       inputPasswordSignUp: ['', [Validators.required, Validators.minLength(8)]],
       inputPasswordConfirm: ['', Validators.required]
     }, {
