@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../models/user.model';
+import {Maker} from '../../models/maker.model';
+import {UserService} from '../../services/user.service';
+import {MakerService} from '../../services/maker.service';
 
 @Component({
   selector: 'app-profiel',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfielComponent implements OnInit {
 
-  constructor() { }
+  nieuweMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null);
+
+  constructor(
+    private _makerService: MakerService
+  ) {
+  }
 
   ngOnInit() {
+
   }
 
 }
