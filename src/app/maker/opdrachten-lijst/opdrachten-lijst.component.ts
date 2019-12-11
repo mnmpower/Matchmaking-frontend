@@ -9,11 +9,7 @@ import { Opdracht } from 'src/app/models/opdracht.model';
 })
 export class OpdrachtenLijstComponent implements OnInit {
 
-  public pageSize = 10;
-  public currentPage = 0;
-  public totalSize = 100;
-
-
+  isLoading: boolean = false;
 
   opdrachten: Opdracht[];
 
@@ -25,10 +21,12 @@ export class OpdrachtenLijstComponent implements OnInit {
 
   doFilter(filter)
   {
+    this.isLoading = true;
     console.log("Inside list:", filter);
 
     this._opdrachtService.getOpdrachtenFilter(filter).subscribe(result => {
       this.opdrachten = result;
+      this.isLoading = false;
     });
   }
 }

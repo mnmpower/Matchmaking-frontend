@@ -1,14 +1,18 @@
-<div class="container">
-    <div class="span8">
-        <div *ngFor="let opdracht of opdrachten">
-            <h1>{{opdracht.titel}}</h1>
-            <p>{{opdracht.omschrijving}}</p>
-            <p>{{opdracht.locatie}}</p>
-            <hr>
-        </div>
-<!--
+<div class="container-fluid">
+    <div class="overlay" *ngIf="isLoading"></div>
+    <div class="container">
+        <div class="span8">
+            <div *ngFor="let opdracht of opdrachten">
+                <h1>{{opdracht.titel}}</h1>
+                <p>{{opdracht.omschrijving}}</p>
+                <p>{{opdracht.locatie}}</p>
+                <hr>
+            </div>
+            <p *ngIf="!opdrachten?.length">Geen resultaten. Probeer minder zoekcriteria te gebruiken.</p>
+            <!--
         <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
             [length]="totalSize" [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
         </mat-paginator>-->
+        </div>
     </div>
 </div>

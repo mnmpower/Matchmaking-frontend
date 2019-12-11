@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['maker/dashboard'], {replaceUrl: true});
           break;
         case 'Admin':
-          this.router.navigate(['admin'], {replaceUrl: true});
+          this.router.navigate(['admin/overzicht'], {replaceUrl: true});
           break;
         case 'Bedrijf':
           this.router.navigate(['bedrijf/dashboard'], {replaceUrl: true});

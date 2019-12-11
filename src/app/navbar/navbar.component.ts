@@ -11,6 +11,9 @@ export class NavbarComponent implements OnInit {
 
     title = 'ZLANCE';
     isLoggedIn: boolean;
+    isMaker: boolean;
+    isAdmin: boolean;
+    isBedrijf: boolean;
 
 
     constructor(private router: Router, private _authenticationService: AuthenticateService) {
@@ -22,6 +25,24 @@ export class NavbarComponent implements OnInit {
             } else {
                 this.isLoggedIn = false;
             }
+
+            switch (localStorage.getItem('functie')) {
+                case 'Maker':
+                    this.isMaker = true;
+                    this.isAdmin = false;
+                    this.isBedrijf = false;
+                    break;
+                case 'Admin':
+                    this.isMaker = false;
+                    this.isAdmin = true;
+                    this.isBedrijf = false;
+                    break;
+                case 'Bedrijf':
+                    this.isMaker = false;
+                    this.isAdmin = false;
+                    this.isBedrijf = true;
+                    break;
+            }
         });
     }
 
@@ -29,11 +50,14 @@ export class NavbarComponent implements OnInit {
     }
 
     logUit() {
-        localStorage.removeItem('token');
         sessionStorage.clear();
+        localStorage.clear();
         this.isLoggedIn = false;
+        this.isMaker = false;
+        this.isAdmin = false;
+        this.isBedrijf = false;
         this._authenticationService.isLoggedin.next(false);
-        this.router.navigate(['logIn'], {replaceUrl: true});
+        this.router.navigate(['login'], {replaceUrl: true});
     }
 
 }
