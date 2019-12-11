@@ -19,11 +19,8 @@ import {SecurityInterceptor} from './security/security.interceptor';
 import {UserService} from './services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { AdminComponent } from './admin/adminoverzicht/adminoverzicht.component';
-=======
-import { AdminComponent} from './admin/adminoverzicht/adminoverzicht.component';
->>>>>>> d24e2383637d4c0cd4b16c6ee6e304f1ff0e8441
+
 
 @NgModule({
   declarations: [
