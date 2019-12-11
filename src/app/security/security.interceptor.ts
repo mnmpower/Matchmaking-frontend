@@ -33,7 +33,7 @@ export class SecurityInterceptor implements HttpInterceptor {
 
         }
 
-        return throwError('unauthorized');
+        return throwError(err);
 
       }));
   }

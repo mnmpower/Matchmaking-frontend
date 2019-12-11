@@ -22,7 +22,8 @@
             </header>
             <div class="filter-content">
                 <div class="card-body">
-                    <input type="number" formControlName="maxAfstand" class="form-control" placeholder="5">
+                    <span>{{maxAfstand.value}} km</span>
+                    <input type="range" min="0" max="500" #maxAfstand formControlName="maxAfstand" class="custom-range form-control" placeholder="5">
                 </div> <!-- card-body.// -->
             </div>
         </article> <!-- card-group-item.// -->

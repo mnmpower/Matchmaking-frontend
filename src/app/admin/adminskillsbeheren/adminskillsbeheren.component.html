@@ -1,0 +1,54 @@
+<h1>Skills beheren</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Naam</th>
+            <th scope="col">MakerID</th>
+            <th scope="col">Aantal Likes</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let skill of skills">
+            <th scope="row">{{skill.skillID}}</th>
+            <td>{{skill.naam}}</td>
+            <td>{{skill.makerID}}</td>
+            <td>{{skill.aantalLikes}}</td>
+            <td>
+                <button type="button" class="btn btn-warning knop" (click)="updateSkill(skill)"><i
+                        class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-danger knop" (click)="deleteSkill(skill.skillID)"><i
+                        class="fas fa-trash-alt"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="button button--nuka" (click)="toevoegenPopup()">Skill toevoegen</button>
+
+<div class="popupBox" *ngIf="popup">
+    <div class="popup">
+        <div (click)="closePopup()" id="close"><i class="fas fa-times fa-2x exitIcon"></i></div>
+        <h1>Skill toevoegen</h1>
+        <form #skillForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="naam">Naam</label>
+                <input type="text" class="form-control" id="naam" [(ngModel)]="skill.naam" name="skillform1"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="maker">MakerID</label>
+                <input type="text" class="form-control" id="maker" [(ngModel)]="skill.makerID"
+                    name="skillform2" required>
+            </div>
+            <div class="form-group">
+                <label for="aantalLikes">Aantal Likes</label>
+                <input type="text" class="form-control" id="aantalLikes" [(ngModel)]="skill.aantalLikes" name="skillform3"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary submitKnop">Toevoegen</button>
+        </form>
+    </div>
+</div>

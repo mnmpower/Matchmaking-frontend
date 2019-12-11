@@ -46,15 +46,19 @@ export class MaakopdrachtComponent implements OnInit {
   }
 
   getBedrijf(){
-      this._bedrijfService.getBedrijf().subscribe(result => {
-        this.bedrijfID = result.bedrijfID;
+    console.log(localStorage.getItem('token'));
+      // tslint:disable-next-line: align
+      this._bedrijfService.getBedrijfID().subscribe(result => {
+        this.bedrijfID = result;
+        console.log(result);
+
       });
   }
 
   setCompetitie() {
 
     this.competitie = !this.competitie;
-    console.log('competitie: ',this.competitie);
+    console.log('competitie: ',  this.competitie);
   }
 
 
