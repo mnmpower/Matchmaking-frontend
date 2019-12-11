@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import { OpdrachtService } from 'src/app/services/opdracht.service';
 import { BedrijfService } from 'src/app/services/bedrijf.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-maakopdracht',
@@ -22,8 +23,18 @@ export class MaakopdrachtComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private _opdrachtService: OpdrachtService,
-    private _bedrijfService: BedrijfService
-  ) { this.getBedrijf(); }
+    private _bedrijfService: BedrijfService,
+    private _userService: UserService
+  ) {
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("ADD_OPDRACHT") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
+    
+    this.getBedrijf();
+  }
 
   ngOnInit() {
     this.CreateOpdrachtForm = this.fb.group({

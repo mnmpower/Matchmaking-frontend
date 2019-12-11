@@ -7,7 +7,7 @@ import {RegistreerComponent} from './registreer/registreer.component';
 import {MaakopdrachtComponent} from './bedrijf/maakopdracht/maakopdracht.component';
 import {DashboardComponent as DashboardBedrijf} from './bedrijf/dashboard/dashboard.component';
 import {TagsComponent as TagsBedrijf} from './bedrijf/tags/tags.component';
-import {ReviewComponent as ReviewBedrijf} from './maker/review/review.component';
+import {ReviewComponent as ReviewBedrijf} from './bedrijf/review/review.component';
 
 import {AdminComponent} from './admin/adminoverzicht/adminoverzicht.component';
 
