@@ -48,7 +48,7 @@
                     <div *ngIf="submitted && f.inputEmailConfirm.errors" class="invalid-feedback">
                       <div *ngIf="f.inputEmailConfirm.errors.required">Bevestiging van uw email is verplicht!</div>
                       <div *ngIf="f.inputEmailConfirm.errors.mustMatch">Emailadressen moeten overeen komen!</div>
-                      <div *ngIf="f.inputEmailSignUp.errors.email">Email bevestiging moet een geldig emailadres zijn!
+                      <div *ngIf="f.inputEmailConfirm.errors.email">Email bevestiging moet een geldig emailadres zijn!
                       </div>
                     </div>
                     <small class="form-text text-muted pb-2">We zullen uw emailadres nooit met anderen delen.</small>
