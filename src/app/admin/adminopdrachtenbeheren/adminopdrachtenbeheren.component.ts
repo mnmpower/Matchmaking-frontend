@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Opdracht } from 'src/app/models/opdracht.model';
 import { OpdrachtService } from 'src/app/services/opdracht.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminopdrachtenbeheren',
@@ -14,8 +16,15 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
   popup: boolean = false;
 
 
-  constructor(private _opdrachtService: OpdrachtService)
+  constructor(private _opdrachtService: OpdrachtService, private _userService: UserService, private router: Router)
   {
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_OPDRACHTEN") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
+
     this.getOpdrachten();
   }
 

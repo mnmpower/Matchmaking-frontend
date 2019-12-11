@@ -27,6 +27,7 @@ import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminr
 import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/adminopdrachtenbeheren.component';
 import { AdmintagsbeherenComponent } from './admin/admintagsbeheren/admintagsbeheren.component';
 import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypesbeheren.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypes
     AdminopdrachtenbeherenComponent,
     AdmintagsbeherenComponent,
     AdmintypesbeherenComponent,
-    BlockCopyPasteCutDirective
+    BlockCopyPasteCutDirective,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top ">
 
-  <a class="navbar-brand" routerLink="/" routerLinkActive="active"
+  <a class="navbar-brand mr-4" routerLink="/" routerLinkActive="active"
      [routerLinkActiveOptions]="{ exact: true }">{{ title }}</a>
 
 <!--   -------------- -->
@@ -55,8 +55,12 @@
 
 
   <!--   -------------- -->
-  <!-- ALLES VOOR ADMIN (NIETS DUS) -->
+  <!-- ALLES VOOR ADMIN -->
   <!--   -------------- -->
+  <a class="navbar-brand" routerLink="/admin/overzicht" routerLinkActive="active" *ngIf="isLoggedIn && isAdmin"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    dashboard
+  </i></a>
 
 
   <!--   -------------- -->

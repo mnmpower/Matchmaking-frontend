@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MakerService } from 'src/app/services/maker.service';
 import { Maker } from 'src/app/models/maker.model';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminmakersbeheren',
@@ -15,8 +17,15 @@ export class AdminmakersbeherenComponent implements OnInit {
 
 
   // FIX USERID NOG BIJ HET AANMAKEN VAN DE MAKER
-  constructor(private _makerService: MakerService)
+  constructor(private _makerService: MakerService, private _userService: UserService, private router: Router)
   {
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_MAKERS") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
+
     this.getMakers();
   }
 

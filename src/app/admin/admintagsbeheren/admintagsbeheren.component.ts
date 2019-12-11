@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Tag } from 'src/app/models/tag.model';
 import { TagService } from 'src/app/services/tag.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admintagsbeheren',
@@ -14,8 +16,15 @@ export class AdmintagsbeherenComponent implements OnInit {
   popup: boolean = false;
 
 
-  constructor(private _tagService: TagService)
+  constructor(private _tagService: TagService, private _userService: UserService, private router: Router)
   {
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_TAGS") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
+
     this.gettags();
   }
 

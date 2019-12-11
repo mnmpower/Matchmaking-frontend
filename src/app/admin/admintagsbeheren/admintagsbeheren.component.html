@@ -1,29 +1,34 @@
-<h1>Tags beheren</h1>
+<div class="container-fluid stickyfooter pt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Tags beheren</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Naam</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let tag of tags">
-            <th scope="row">{{tag.tagID}}</th>
-            <td>{{tag.naam}}</td>
-            <td>
-                <button type="button" class="btn btn-warning knop" (click)="updateTag(tag)"><i
-                        class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger knop" (click)="deleteTag(tag.tagID)"><i
-                        class="fas fa-trash-alt"></i></button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Naam</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tag of tags">
+                        <th scope="row">{{tag.tagID}}</th>
+                        <td>{{tag.naam}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning knop" (click)="updateTag(tag)"><i
+                                    class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger knop" (click)="deleteTag(tag.tagID)"><i
+                                    class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-<button class="button button--nuka" (click)="toevoegenPopup()">Tag toevoegen</button>
-
+            <button class="button button--nuka" (click)="toevoegenPopup()">Tag toevoegen</button>
+        </div>
+    </div>
+</div>
 <div class="popupBox" *ngIf="popup">
     <div class="popup">
         <div (click)="closePopup()" id="close"><i class="fas fa-times fa-2x exitIcon"></i></div>
@@ -31,8 +36,7 @@
         <form #tagForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="naam">Naam</label>
-                <input type="text" class="form-control" id="naam" [(ngModel)]="tag.naam" name="tagform1"
-                    required>
+                <input type="text" class="form-control" id="naam" [(ngModel)]="tag.naam" name="tagform1" required>
             </div>
             <button type="submit" class="btn btn-primary submitKnop">Toevoegen</button>
         </form>

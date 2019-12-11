@@ -1,38 +1,45 @@
+<div class="container-fluid stickyfooter pt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Makers beheren</h1>
 
-<h1>Makers beheren</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Voornaam</th>
+                        <th scope="col">Achternaam</th>
+                        <th scope="col">Geboortedatum</th>
+                        <th scope="col">Biografie</th>
+                        <th scope="col">Ervaring</th>
+                        <th scope="col">Foto</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let maker of makers">
+                        <th scope="row">{{maker.makerID}}</th>
+                        <td>{{maker.voornaam}} {{maker.achternaam}}</td>
+                        <td>{{maker.geboortedatum}}</td>
+                        <td>{{maker.biografie}}</td>
+                        <td>{{maker.linkedIn}}</td>
+                        <td>{{maker.ervaring}}</td>
+                        <td>{{maker.fotomaker}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning knop" (click)="updatemaker(maker)"><i
+                                    class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger knop" (click)="deletemaker(maker.makerID)"><i
+                                    class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Voornaam</th>
-            <th scope="col">Achternaam</th>
-            <th scope="col">Geboortedatum</th>
-            <th scope="col">Biografie</th>
-            <th scope="col">Ervaring</th>
-            <th scope="col">Foto</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let maker of makers">
-            <th scope="row">{{maker.makerID}}</th>
-            <td>{{maker.voornaam}} {{maker.achternaam}}</td>
-            <td>{{maker.geboortedatum}}</td>
-            <td>{{maker.biografie}}</td>
-            <td>{{maker.linkedIn}}</td>
-            <td>{{maker.ervaring}}</td>
-            <td>{{maker.fotomaker}}</td>
-            <td>
-                <button type="button" class="btn btn-warning knop" (click)="updatemaker(maker)"><i class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger knop" (click)="deletemaker(maker.makerID)"><i
-                        class="fas fa-trash-alt"></i></button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            <button class="button button--nuka" (click)="toevoegenPopup()">Maker toevoegen</button>
 
-<button class="button button--nuka" (click)="toevoegenPopup()">Maker toevoegen</button>
+        </div>
+    </div>
+</div>
 
 <div class="popupBox" *ngIf="popup">
     <div class="popup">
@@ -41,34 +48,34 @@
         <form #makerForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="voornaam">Voornaam</label>
-                <input type="text" class="form-control" id="voornaam" [(ngModel)]="maker.voornaam"
-                    name="makerform1" required>
-            </div>
-            <div class="form-group">
-                    <label for="achternaam">Achternaam</label>
-                    <input type="text" class="form-control" id="achternaam" [(ngModel)]="maker.achternaam"
-                        name="makerform2" required>
-                </div>
-            <div class="form-group">
-                <label for="geboortedatum">Geboortedatum</label>
-                <input type="text" class="form-control" id="geboortedatum" [(ngModel)]="maker.geboortedatum" name="makerform3"
+                <input type="text" class="form-control" id="voornaam" [(ngModel)]="maker.voornaam" name="makerform1"
                     required>
             </div>
             <div class="form-group">
+                <label for="achternaam">Achternaam</label>
+                <input type="text" class="form-control" id="achternaam" [(ngModel)]="maker.achternaam" name="makerform2"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="geboortedatum">Geboortedatum</label>
+                <input type="text" class="form-control" id="geboortedatum" [(ngModel)]="maker.geboortedatum"
+                    name="makerform3" required>
+            </div>
+            <div class="form-group">
                 <label for="biografie">Biografie</label>
-                <input type="text" class="form-control" id="biografie" [(ngModel)]="maker.biografie"
-                    name="makerform4" required>
+                <input type="text" class="form-control" id="biografie" [(ngModel)]="maker.biografie" name="makerform4"
+                    required>
             </div>
             <div class="form-group">
                 <label for="linkedIn">LinkedIn link</label>
-                <input type="text" class="form-control" id="linkedIn" [(ngModel)]="maker.linkedIn"
-                    name="makerform5" required>
+                <input type="text" class="form-control" id="linkedIn" [(ngModel)]="maker.linkedIn" name="makerform5"
+                    required>
             </div>
             <div class="form-group">
-                    <label for="fotoMaker">Foto link</label>
-                    <input type="text" class="form-control" id="fotoMaker" [(ngModel)]="maker.fotoMaker"
-                        name="makerform6" required>
-                </div>
+                <label for="fotoMaker">Foto link</label>
+                <input type="text" class="form-control" id="fotoMaker" [(ngModel)]="maker.fotoMaker" name="makerform6"
+                    required>
+            </div>
             <button type="submit" class="btn btn-primary submitKnop">Toevoegen</button>
         </form>
     </div>

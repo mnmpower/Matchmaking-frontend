@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BedrijfService } from 'src/app/services/bedrijf.service';
 import { Bedrijf } from 'src/app/models/bedrijf.model';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminbedrijvenbeheren',
@@ -14,8 +16,15 @@ export class AdminbedrijvenbeherenComponent implements OnInit {
   bedrijf: Bedrijf;
 
   // USERID NOG KOPPELEN AAN EEN NIEUW BEDRIJF
-  constructor(private _bedrijfService: BedrijfService)
+  constructor(private _bedrijfService: BedrijfService, private _userService: UserService, private router: Router)
   {
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_BEDRIJVEN") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
+
     this.getBedrijven();
   }
 

@@ -23,12 +23,14 @@ import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminr
 import { AdminskillsbeherenComponent } from './admin/adminskillsbeheren/adminskillsbeheren.component';
 import { AdmintagsbeherenComponent } from './admin/admintagsbeheren/admintagsbeheren.component';
 import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypesbeheren.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 const routes: Routes = [
   {path: '', component: WelkomComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registreer', component: RegistreerComponent},
+  {path: 'forbidden', component: ForbiddenComponent},
 
   // authenticatien toevoegen bij alle onderstaande!!!
   {path: 'maker/dashboard', component: DashboardMaker},
@@ -49,8 +51,10 @@ const routes: Routes = [
   {path: 'admin/reviews', component: AdminreviewsbeherenComponent},
   {path: 'admin/skills', component: AdminskillsbeherenComponent},
   {path: 'admin/tags', component: AdmintagsbeherenComponent},
-  {path: 'admin/types', component: AdmintypesbeherenComponent}
+  {path: 'admin/types', component: AdmintypesbeherenComponent},
 
+  //al de rest doorsturen naar home
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

@@ -1,34 +1,41 @@
-<h1>Reviews beheren</h1>
+<div class="container-fluid stickyfooter pt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Reviews beheren</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Text</th>
-            <th scope="col">MakerID</th>
-            <th scope="col">BedrijfID</th>
-            <th scope="col">Aantal Likes</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let review of reviews">
-            <th scope="row">{{review.reviewID}}</th>
-            <td>{{review.text}}</td>
-            <td>{{review.makerID}}</td>
-            <td>{{review.bedrijfID}}</td>
-            <td>{{review.aantalLikes}}</td>
-            <td>
-                <button type="button" class="btn btn-warning knop" (click)="updateReview(review)"><i
-                        class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger knop" (click)="deleteReview(review.reviewID)"><i
-                        class="fas fa-trash-alt"></i></button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Text</th>
+                        <th scope="col">MakerID</th>
+                        <th scope="col">BedrijfID</th>
+                        <th scope="col">Aantal Likes</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let review of reviews">
+                        <th scope="row">{{review.reviewID}}</th>
+                        <td>{{review.text}}</td>
+                        <td>{{review.makerID}}</td>
+                        <td>{{review.bedrijfID}}</td>
+                        <td>{{review.aantalLikes}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning knop" (click)="updateReview(review)"><i
+                                    class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger knop" (click)="deleteReview(review.reviewID)"><i
+                                    class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-<button class="button button--nuka" (click)="toevoegenPopup()">Review toevoegen</button>
+            <button class="button button--nuka" (click)="toevoegenPopup()">Review toevoegen</button>
+
+        </div>
+    </div>
+</div>
 
 <div class="popupBox" *ngIf="popup">
     <div class="popup">
@@ -37,13 +44,12 @@
         <form #reviewForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="text">Text</label>
-                <input type="text" class="form-control" id="text" [(ngModel)]="review.text" name="reviewform1"
-                    required>
+                <input type="text" class="form-control" id="text" [(ngModel)]="review.text" name="reviewform1" required>
             </div>
             <div class="form-group">
                 <label for="maker">MakerID</label>
-                <input type="text" class="form-control" id="maker" [(ngModel)]="review.makerID"
-                    name="reviewform2" required>
+                <input type="text" class="form-control" id="maker" [(ngModel)]="review.makerID" name="reviewform2"
+                    required>
             </div>
             <div class="form-group">
                 <label for="bedrijf">BedrijfID</label>

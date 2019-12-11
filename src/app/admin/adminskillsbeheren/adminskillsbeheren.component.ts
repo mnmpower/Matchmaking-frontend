@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Skill } from 'src/app/models/skill.model';
 import { SkillService } from 'src/app/services/skill.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminskillsbeheren',
@@ -14,8 +16,15 @@ export class AdminskillsbeherenComponent implements OnInit {
   popup: boolean = false;
 
 
-  constructor(private _skillService: SkillService)
+  constructor(private _skillService: SkillService, private _userService: UserService, private router: Router)
   {
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_SKILLS") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
+
     this.getSkills();
   }
 

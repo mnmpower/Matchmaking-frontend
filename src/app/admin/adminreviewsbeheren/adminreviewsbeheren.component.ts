@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Review } from 'src/app/models/review.model';
 import { ReviewService } from 'src/app/services/review.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminreviewsbeheren',
@@ -14,8 +16,15 @@ export class AdminreviewsbeherenComponent implements OnInit {
   popup: boolean = false;
 
 
-  constructor(private _reviewService: ReviewService)
+  constructor(private _reviewService: ReviewService, private _userService: UserService, private router: Router)
   {
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_REVIEWS") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
+
     this.getReviews();
   }
 

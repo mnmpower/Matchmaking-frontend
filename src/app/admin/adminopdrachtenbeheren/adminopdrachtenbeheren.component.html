@@ -1,40 +1,47 @@
-<h1>pdrachten beheren</h1>
+<div class="container-fluid stickyfooter pt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Opdrachten beheren</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Titel</th>
-            <th scope="col">Omschrijving</th>
-            <th scope="col">Locatie</th>
-            <th scope="col">Competitie</th>
-            <th scope="col">Bedrijf</th>
-            <th scope="col">Aantal personen</th>
-            <th scope="col">Status</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let opdracht of opdrachten">
-            <th scope="row">{{opdracht.opdrachtID}}</th>
-            <td>{{opdracht.titel}}</td>
-            <td>{{opdracht.omschrijving}}</td>
-            <td>{{opdracht.locatie}}</td>
-            <td>{{opdracht.competitie}}</td>
-            <td>{{opdracht.bedrijfID}}</td>
-            <td>{{opdracht.aantalPersonen}}</td>
-            <td>{{opdracht.statusID}}</td>
-            <td>
-                <button type="button" class="btn btn-warning knop" (click)="updateOpdracht(opdracht)"><i
-                        class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger knop" (click)="deleteOpdracht(opdracht.opdrachtID)"><i
-                        class="fas fa-trash-alt"></i></button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Titel</th>
+                        <th scope="col">Omschrijving</th>
+                        <th scope="col">Locatie</th>
+                        <th scope="col">Competitie</th>
+                        <th scope="col">Bedrijf</th>
+                        <th scope="col">Aantal personen</th>
+                        <th scope="col">Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let opdracht of opdrachten">
+                        <th scope="row">{{opdracht.opdrachtID}}</th>
+                        <td>{{opdracht.titel}}</td>
+                        <td>{{opdracht.omschrijving}}</td>
+                        <td>{{opdracht.locatie}}</td>
+                        <td>{{opdracht.competitie}}</td>
+                        <td>{{opdracht.bedrijfID}}</td>
+                        <td>{{opdracht.aantalPersonen}}</td>
+                        <td>{{opdracht.statusID}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning knop" (click)="updateOpdracht(opdracht)"><i
+                                    class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger knop"
+                                (click)="deleteOpdracht(opdracht.opdrachtID)"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-<button class="button button--nuka" (click)="toevoegenPopup()">Opdracht toevoegen</button>
+            <button class="button button--nuka" (click)="toevoegenPopup()">Opdracht toevoegen</button>
+
+        </div>
+    </div>
+</div>
 
 <div class="popupBox" *ngIf="popup">
     <div class="popup">

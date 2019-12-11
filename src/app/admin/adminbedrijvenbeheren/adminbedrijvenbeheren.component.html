@@ -1,34 +1,42 @@
+<div class="container-fluid stickyfooter pt-4">
+    <div class="row">
+        <div class="col-md-12">
 
-<h1>Bedrijven beheren</h1>
+            <h1>Bedrijven beheren</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Naam</th>
-            <th scope="col">Locatie</th>
-            <th scope="col">Biografie</th>
-            <th scope="col">Foto</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let bedrijf of bedrijven">
-            <th scope="row">{{bedrijf.bedrijfID}}</th>
-            <td>{{bedrijf.bedrijfsnaam}}</td>
-            <td>{{bedrijf.locatie}}</td>
-            <td>{{bedrijf.biografie}}</td>
-            <td>{{bedrijf.fotoBedrijf}}</td>
-            <td>
-                <button type="button" class="btn btn-warning knop" (click)="updateBedrijf(bedrijf)"><i class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger knop" (click)="deleteBedrijf(bedrijf.bedrijfID)"><i
-                        class="fas fa-trash-alt"></i></button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Locatie</th>
+                        <th scope="col">Biografie</th>
+                        <th scope="col">Foto</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bedrijf of bedrijven">
+                        <th scope="row">{{bedrijf.bedrijfID}}</th>
+                        <td>{{bedrijf.bedrijfsnaam}}</td>
+                        <td>{{bedrijf.locatie}}</td>
+                        <td>{{bedrijf.biografie}}</td>
+                        <td>{{bedrijf.fotoBedrijf}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning knop" (click)="updateBedrijf(bedrijf)"><i
+                                    class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger knop"
+                                (click)="deleteBedrijf(bedrijf.bedrijfID)"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-<button class="button button--nuka" (click)="toevoegenPopup()">Bedrijf toevoegen</button>
+            <button class="button button--nuka" (click)="toevoegenPopup()">Bedrijf toevoegen</button>
+
+        </div>
+    </div>
+</div>
 
 <div class="popupBox" *ngIf="popup">
     <div class="popup">
