@@ -9,35 +9,6 @@ import {AuthenticateService} from '../services/authenticate.service';
 })
 export class NavbarComponent implements OnInit {
 
-<<<<<<< HEAD
-  title = 'ZLANCE';
-  isLoggedIn: boolean;
-  functie: string = "";
-
-
-  constructor(private router: Router, private _authenticationService: AuthenticateService ) {
-      this._authenticationService.isLoggedin.subscribe(e => {
-
-        if (e) {
-          this.isLoggedIn = true;
-        } else {
-          this.isLoggedIn = false;
-        }
-      });
-  }
-
-  ngOnInit() {
-  }
-
-  logUit() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('functie');
-    sessionStorage.clear();
-     this.isLoggedIn = false;
-     this._authenticationService.isLoggedin.next(false);
-    this.router.navigate(['logIn'], {replaceUrl: true});
-  }
-=======
     title = 'ZLANCE';
     isLoggedIn: boolean;
     isMaker: boolean;
@@ -88,6 +59,5 @@ export class NavbarComponent implements OnInit {
         this._authenticationService.isLoggedin.next(false);
         this.router.navigate(['login'], {replaceUrl: true});
     }
->>>>>>> e9e05790d28cc385234fe6384c6179574459d4fc
 
 }

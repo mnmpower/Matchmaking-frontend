@@ -20,7 +20,7 @@
 
                   <!-- EMAIL INPUT FORM CONTROL -->
                   <div class="form-group">
-                    <label for="inputEmailSignUp" class="">Email address</label>
+                    <label for="inputEmailSignUp" class="">Emailadres</label>
                     <input type="email" class="form-control" id="inputEmailSignUp" placeholder="Enter email"
                       formControlName="inputEmailSignUp"
                       [ngClass]="{ 'is-invalid': submitted && f.inputEmailSignUp.errors }" appBlockCopyPaste
@@ -32,68 +32,65 @@
                       <div>Geldig email adres</div>
                     </div>
                     <div *ngIf="submitted && f.inputEmailSignUp.errors" class="invalid-feedback">
-                      <div *ngIf="f.inputEmailSignUp.errors.required">Email is required, please fill in a email address!
+                      <div *ngIf="f.inputEmailSignUp.errors.required">Email is verplicht, vul aub een emailadres in!
                       </div>
-                      <div *ngIf="f.inputEmailSignUp.errors.email">Email must be a valid email address!</div>
+                      <div *ngIf="f.inputEmailSignUp.errors.email">Email moet een geldig emailadres zijn!</div>
                     </div>
                   </div>
 
 
                   <!-- CONFIRM EMAIL INPUT FORM CONTROL -->
                   <div class="form-group">
-                    <label for="inputEmailConfirm">Confirm Email address</label>
+                    <label for="inputEmailConfirm">Bevestig uw emailadres</label>
                     <input type="email" class="form-control " id="inputEmailConfirm" placeholder="Email"
                       formControlName="inputEmailConfirm"
                       [ngClass]="{ 'is-invalid': submitted && f.inputEmailConfirm.errors }" appBlockCopyPaste>
                     <div *ngIf="submitted && f.inputEmailConfirm.errors" class="invalid-feedback">
-                      <div *ngIf="f.inputEmailConfirm.errors.required">Confirmation of you email is required!</div>
-                      <div *ngIf="f.inputEmailConfirm.errors.mustMatch">Email must match!</div>
+                      <div *ngIf="f.inputEmailConfirm.errors.required">Bevestiging van uw email is verplicht!</div>
+                      <div *ngIf="f.inputEmailConfirm.errors.mustMatch">Emailadressen moeten overeen komen!</div>
                     </div>
-                    <small class="form-text text-muted pb-2">We'll never share your email with anyone else.</small>
+                    <small class="form-text text-muted pb-2">We zullen uw emailadres nooit met anderen delen.</small>
                   </div>
 
 
                   <!-- PASSWORD INPUT FORM CONTROL -->
                   <div class="form-group">
-                    <label for="inputPasswordSignUp" class="">Password</label>
+                    <label for="inputPasswordSignUp" class="">Paswoord</label>
                     <input type="password" class="form-control " id="inputPasswordSignUp" placeholder="Password"
                       formControlName="inputPasswordSignUp"
                       [ngClass]="{ 'is-invalid': submitted && f.inputPasswordSignUp.errors }" appBlockCopyPaste>
                     <div *ngIf="submitted && f.inputPasswordSignUp.errors" class="invalid-feedback">
-                      <div *ngIf="f.inputPasswordSignUp.errors.required">Password is required, please fill in a
-                        password!</div>
-                      <div *ngIf="f.inputPasswordSignUp.errors.minlength">Username must be at least 8 characters!</div>
+                      <div *ngIf="f.inputPasswordSignUp.errors.required">Paswoord is verplicht, vul aub een paswoord in!</div>
+                      <div *ngIf="f.inputPasswordSignUp.errors.minlength">Paswoord moet minstens 8 tekens bevatten!</div>
                     </div>
                   </div>
 
 
                   <!-- CONFIRM PASSWORD INPUT FORM CONTROL -->
                   <div class="form-group">
-                    <label for="inputPasswordConfirm">Confirm your password</label>
+                    <label for="inputPasswordConfirm">Bevestig uw paswoord</label>
                     <input type="password" class="form-control" id="inputPasswordConfirm"
                       placeholder="Password confirmation" formControlName="inputPasswordConfirm"
                       [class.is-invalid]="submitted && f.inputPasswordConfirm.errors" appBlockCopyPaste>
                     <div class="invalid-feedback">
-                      <div *ngIf="f.inputPasswordConfirm.errors?.required">Confirmation of your password is required!
+                      <div *ngIf="f.inputPasswordConfirm.errors?.required">Bevestiging van uw paswoord is verplicht!
                       </div>
-                      <div *ngIf="(f.inputPasswordConfirm.errors || {}).mustMatch">Passwords must match!</div>
+                      <div *ngIf="(f.inputPasswordConfirm.errors || {}).mustMatch">Paswoorden moeten overeen komen!</div>
                     </div>
-                    <small class="form-text text-muted pb-2">We'll never share your password with anyone else.</small>
                   </div>
 
                   <div class="form-group">
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="radio" class="form-check-input" name="optradio" (change)="setTypeMaker()"
-                          required>Ik ben een maker
+                          required>Ik wil me als maker registreren
                       </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="radio" class="form-check-input"
                           [class.is-invalid]="submitted && !typeMaker && !typeBedrijf" name="optradio"
-                          (change)="setTypeBedrijf()" required>Een bedrijf
-                        registreren
+                          (change)="setTypeBedrijf()" required>Ik wil een bedrijf registreren
                         <div class="invalid-feedback">
                           <div>Selecteer een optie!</div>
                         </div>
@@ -132,8 +129,7 @@
                         placeholder="Hier uw bedrijfsnaam..." formControlName="inputBedrijfsnaam"
                         [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputBedrijfsnaam.errors }">
                       <div *ngIf="submittedBedrijf && f2B.inputBedrijfsnaam.errors" class="invalid-feedback">
-                        <div *ngIf="f2B.inputBedrijfsnaam.errors.required">Dit is een verplicht veld! Vul een
-                          bedrijfsnaam in!</div>
+                        <div *ngIf="f2B.inputBedrijfsnaam.errors.required">Dit is een verplicht veld! Vul een bedrijfsnaam in!</div>
                       </div>
                     </div>
 
@@ -144,8 +140,7 @@
                         formControlName="inputLocatie"
                         [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputLocatie.errors }">
                       <div *ngIf="submittedBedrijf && f2B.inputLocatie.errors" class="invalid-feedback">
-                        <div *ngIf="f2B.inputLocatie.errors.required">Dit is een verplicht veld! Vul een locatie in!
-                        </div>
+                        <div *ngIf="f2B.inputLocatie.errors.required">Dit is een verplicht veld! Vul een locatie in!</div>
                       </div>
                     </div>
 
@@ -156,14 +151,13 @@
                         placeholder="Uitgebreide biografie van het bedrijf" formControlName="inputBiografie"
                         [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputBiografie.errors }"></textarea>
                       <div *ngIf="submittedBedrijf && f2B.inputBiografie.errors" class="invalid-feedback">
-                        <div *ngIf="f2B.inputBiografie.errors.required">Dit is een verplicht veld! Vul een omschrijving
-                          in!</div>
+                        <div *ngIf="f2B.inputBiografie.errors.required">Dit is een verplicht veld! Vul een biografie in!</div>
                       </div>
                     </div>
                     <p>HIER NOG EEN LOGO UPLOAD TOEVOEGEN</p>
 
 
-                    <button class="btn btn-secondary mr-1" (click)="naarStap(1)">vorige</button>
+                    <button class="btn btn-secondary mr-1" (click)="naarStap(1)">Vorige</button>
                     <button type="submit" class="btn btn-primary ml-1">Volgende</button>
                   </form>
                 </div>
@@ -206,8 +200,7 @@
                         formControlName="inputGeboortedatum"
                         [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputGeboortedatum.errors }">
                       <div *ngIf="submittedMaker && f2M.inputGeboortedatum.errors" class="invalid-feedback">
-                        <div *ngIf="f2M.inputGeboortedatum.errors.required">Dit is een verplicht veld! Vul een
-                          geboortedatum in!
+                        <div *ngIf="f2M.inputGeboortedatum.errors.required">Dit is een verplicht veld! Vul een geboortedatum in!
                         </div>
                       </div>
                     </div>
@@ -216,11 +209,10 @@
                     <div class="form-group">
                       <label for="inputBiografieMaker" class="pt-3">Biografie</label>
                       <textarea type="text" class="form-control" id="inputBiografieMaker"
-                        placeholder="Uitgebreide biografie." formControlName="inputBiografieMaker"
+                        placeholder="Uitgebreide biografie" formControlName="inputBiografieMaker"
                         [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputBiografieMaker.errors }"></textarea>
                       <div *ngIf="submittedMaker && f2M.inputBiografieMaker.errors" class="invalid-feedback">
-                        <div *ngIf="f2M.inputBiografieMaker.errors.required">Dit is een verplicht veld! Vul een
-                          biografie in!</div>
+                        <div *ngIf="f2M.inputBiografieMaker.errors.required">Dit is een verplicht veld! Vul een biografie in!</div>
                       </div>
                     </div>
 
@@ -240,8 +232,7 @@
                         placeholder="Uitgebreide werkervaring" formControlName="inputErvaring"
                         [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputErvaring.errors }"></textarea>
                       <div *ngIf="submittedMaker && f2M.inputErvaring.errors" class="invalid-feedback">
-                        <div *ngIf="f2M.inputErvaring.errors.required">Dit is een verplicht veld! Vul jou ervaringen in!
-                        </div>
+                        <div *ngIf="f2M.inputErvaring.errors.required">Dit is een verplicht veld! Vul jouw ervaringen in!</div>
                       </div>
                     </div>
 
