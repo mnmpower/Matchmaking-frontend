@@ -70,13 +70,13 @@ export class NavbarComponent implements OnInit {
     }
 
     logUit() {
-        sessionStorage.clear();
-        localStorage.clear();
         this.isLoggedIn = false;
         this.isMaker = false;
         this.isAdmin = false;
         this.isBedrijf = false;
         this._authenticationService.isLoggedin.next(false);
+        sessionStorage.clear();
+        localStorage.clear();
         this.router.navigate(['login'], {replaceUrl: true});
     }
 

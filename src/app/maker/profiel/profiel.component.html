@@ -1,3 +1,50 @@
 <div class="container stickyfooter">
-  <p>profiel works!</p>
+  <div class="row">
+    <div class="col-sm-12 col-md-9">
+      <h3 class="login-heading mb-4">Profiel</h3>
+      <!-- COL PROFIEL-->
+
+      <div class="card">
+        <div class="mt-4 text-center">
+          <img src="../assets/images/noProfile.jpg" class="card-img-top center-cropped " alt="Profielfoto">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{nieuweMaker.achternaam}}, {{nieuweMaker.voornaam}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h5 class="card-title">Geboortedatum</h5>
+            <p class="card-text">{{nieuweMaker.geboortedatum}}</p>
+          </li>
+          <li class="list-group-item">
+            <h5 class="card-title">Biografie</h5>
+            <p class="card-text">{{nieuweMaker.biografie}}</p>
+          </li>
+          <li class="list-group-item">
+            <h5 class="card-title">Ervaring</h5>
+            <p class="card-text">{{nieuweMaker.ervaring}}</p>
+          </li>
+
+        </ul>
+        <div class="card-body">
+          <h5 class="card-title">LinkedIn</h5>
+          <a href="{{nieuweMaker.linkedIn}}">{{nieuweMaker.linkedIn}}</a>
+        </div>
+      </div>
+    </div>
+
+    <!--      COL TAGS -->
+    <div class="col-sm-12 col-md-3">
+      <h3 class="login-heading mt-4 mb-2">Tags</h3>
+      <!--        <div *ngFor="let tag of tags">-->
+      <div>
+        <div class="list-group text-center col-sm-6 col-md-12">
+          <div class="list-group-item list-group-item-action list list-group-item-primary">
+            HIER NAAM
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

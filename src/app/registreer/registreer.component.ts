@@ -43,8 +43,6 @@ export class RegistreerComponent implements OnInit {
     private _makerService: MakerService,
     private _bedrijfService: BedrijfService
   ) {
-    // this.naarStap(3);
-    // this.typeMaker = true;
   }
 
   ngOnInit() {
