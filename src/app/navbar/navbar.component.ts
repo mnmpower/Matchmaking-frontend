@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
 
   title = 'ZLANCE';
   isLoggedIn: boolean;
+  functie: string = "";
 
 
   constructor(private router: Router, private _authenticationService: AuthenticateService ) {
@@ -29,6 +30,7 @@ export class NavbarComponent implements OnInit {
 
   logUit() {
     localStorage.removeItem('token');
+    localStorage.removeItem('functie');
     sessionStorage.clear();
      this.isLoggedIn = false;
      this._authenticationService.isLoggedin.next(false);

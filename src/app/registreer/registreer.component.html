@@ -1,322 +1,337 @@
-<div class="container stickyfooter">
-  <div *ngIf="stap1">
-    <div class="justify-content-center">
-      <ol class="cd-breadcrumb triangle justify-content-center">
-        <li class="current"><em class="steps">registreer</em></li>
-        <li class=""><a class="steps">persoonlijke informatie</a></li>
-        <li class=""><a class="steps">overzicht</a></li>
-      </ol>
-    </div>
+<div class="container-fluid stickyfooter">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 bg-image"></div>
+    <div class="col-md-8">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mx-auto">
+              <div *ngIf="stap1">
+                <div class="justify-content-center custom-progress">
+                  <ol class="cd-breadcrumb triangle justify-content-center">
+                    <li class="current"><em class="steps">Registreer</em></li>
+                    <li class=""><a class="steps">Persoonlijke informatie</a></li>
+                    <li class=""><a class="steps">Overzicht</a></li>
+                  </ol>
+                </div>
 
-    <h1>Registreer</h1>
-    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" data-toggle="validator">
+                <h3 class="login-heading mb-4">Registreer</h3>
+                <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" data-toggle="validator">
 
-      <!-- EMAIL INPUT FORM CONTROL -->
-      <div class="form-group">
-        <label for="inputEmailSignUp" class="">Email address</label>
-        <input type="email" class="form-control" id="inputEmailSignUp" placeholder="Enter email"
-               formControlName="inputEmailSignUp" [ngClass]="{ 'is-invalid': submitted && f.inputEmailSignUp.errors }"
-               appBlockCopyPaste (ngModelChange)="checkAvailableMail()">
-        <div *ngIf="inUseEmail" class="invalid-feedback d-block">
-          <div>Deze email is al in gebruik!</div>
-        </div>
-        <div *ngIf="!inUseEmail && submitted && !f.inputEmailSignUp.errors" class="valid-feedback d-block">
-          <div>Geldig email adres</div>
-        </div>
-        <div *ngIf="submitted && f.inputEmailSignUp.errors" class="invalid-feedback">
-          <div *ngIf="f.inputEmailSignUp.errors.required">Email is required, please fill in a email address!</div>
-          <div *ngIf="f.inputEmailSignUp.errors.email">Email must be a valid email address!</div>
-        </div>
-      </div>
-
-
-      <!-- CONFIRM EMAIL INPUT FORM CONTROL -->
-      <div class="form-group">
-        <label for="inputEmailConfirm">Confirm Email address</label>
-        <input type="email" class="form-control " id="inputEmailConfirm" placeholder="Email"
-               formControlName="inputEmailConfirm" [ngClass]="{ 'is-invalid': submitted && f.inputEmailConfirm.errors }"
-               appBlockCopyPaste>
-        <div *ngIf="submitted && f.inputEmailConfirm.errors" class="invalid-feedback">
-          <div *ngIf="f.inputEmailConfirm.errors.required">Confirmation of you email is required!</div>
-          <div *ngIf="f.inputEmailConfirm.errors.mustMatch">Email must match!</div>
-        </div>
-        <small class="form-text text-muted pb-2">We'll never share your email with anyone else.</small>
-      </div>
+                  <!-- EMAIL INPUT FORM CONTROL -->
+                  <div class="form-group">
+                    <label for="inputEmailSignUp" class="">Email address</label>
+                    <input type="email" class="form-control" id="inputEmailSignUp" placeholder="Enter email"
+                      formControlName="inputEmailSignUp"
+                      [ngClass]="{ 'is-invalid': submitted && f.inputEmailSignUp.errors }" appBlockCopyPaste
+                      (ngModelChange)="checkAvailableMail()">
+                    <div *ngIf="inUseEmail" class="invalid-feedback d-block">
+                      <div>Deze email is al in gebruik!</div>
+                    </div>
+                    <div *ngIf="!inUseEmail && submitted && !f.inputEmailSignUp.errors" class="valid-feedback d-block">
+                      <div>Geldig email adres</div>
+                    </div>
+                    <div *ngIf="submitted && f.inputEmailSignUp.errors" class="invalid-feedback">
+                      <div *ngIf="f.inputEmailSignUp.errors.required">Email is required, please fill in a email address!
+                      </div>
+                      <div *ngIf="f.inputEmailSignUp.errors.email">Email must be a valid email address!</div>
+                    </div>
+                  </div>
 
 
-      <!-- PASSWORD INPUT FORM CONTROL -->
-      <div class="form-group">
-        <label for="inputPasswordSignUp" class="">Password</label>
-        <input type="password" class="form-control " id="inputPasswordSignUp" placeholder="Password"
-               formControlName="inputPasswordSignUp"
-               [ngClass]="{ 'is-invalid': submitted && f.inputPasswordSignUp.errors }"
-               appBlockCopyPaste>
-        <div *ngIf="submitted && f.inputPasswordSignUp.errors" class="invalid-feedback">
-          <div *ngIf="f.inputPasswordSignUp.errors.required">Password is required, please fill in a password!</div>
-          <div *ngIf="f.inputPasswordSignUp.errors.minlength">Username must be at least 8 characters!</div>
-        </div>
-      </div>
+                  <!-- CONFIRM EMAIL INPUT FORM CONTROL -->
+                  <div class="form-group">
+                    <label for="inputEmailConfirm">Confirm Email address</label>
+                    <input type="email" class="form-control " id="inputEmailConfirm" placeholder="Email"
+                      formControlName="inputEmailConfirm"
+                      [ngClass]="{ 'is-invalid': submitted && f.inputEmailConfirm.errors }" appBlockCopyPaste>
+                    <div *ngIf="submitted && f.inputEmailConfirm.errors" class="invalid-feedback">
+                      <div *ngIf="f.inputEmailConfirm.errors.required">Confirmation of you email is required!</div>
+                      <div *ngIf="f.inputEmailConfirm.errors.mustMatch">Email must match!</div>
+                    </div>
+                    <small class="form-text text-muted pb-2">We'll never share your email with anyone else.</small>
+                  </div>
 
 
-      <!-- CONFIRM PASSWORD INPUT FORM CONTROL -->
-      <div class="form-group">
-        <label for="inputPasswordConfirm">Confirm your password</label>
-        <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password confirmation"
-               formControlName="inputPasswordConfirm"
-               [class.is-invalid]="submitted && f.inputPasswordConfirm.errors"
-               appBlockCopyPaste>
-        <div class="invalid-feedback">
-          <div *ngIf="f.inputPasswordConfirm.errors?.required">Confirmation of your password is required!</div>
-          <div *ngIf="(f.inputPasswordConfirm.errors || {}).mustMatch">Passwords must match!</div>
-        </div>
-        <small class="form-text text-muted pb-2">We'll never share your password with anyone else.</small>
-      </div>
+                  <!-- PASSWORD INPUT FORM CONTROL -->
+                  <div class="form-group">
+                    <label for="inputPasswordSignUp" class="">Password</label>
+                    <input type="password" class="form-control " id="inputPasswordSignUp" placeholder="Password"
+                      formControlName="inputPasswordSignUp"
+                      [ngClass]="{ 'is-invalid': submitted && f.inputPasswordSignUp.errors }" appBlockCopyPaste>
+                    <div *ngIf="submitted && f.inputPasswordSignUp.errors" class="invalid-feedback">
+                      <div *ngIf="f.inputPasswordSignUp.errors.required">Password is required, please fill in a
+                        password!</div>
+                      <div *ngIf="f.inputPasswordSignUp.errors.minlength">Username must be at least 8 characters!</div>
+                    </div>
+                  </div>
 
-      <div class="form-group">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input"
-                   name="optradio"
-                   (change)="setTypeMaker()" required>Ik ben een maker
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input" [class.is-invalid]="submitted && !typeMaker && !typeBedrijf"
-                   name="optradio"
-                   (change)="setTypeBedrijf()" required>Een bedrijf
-            registreren
-            <div class="invalid-feedback">
-              <div>Selecteer een optie!</div>
+
+                  <!-- CONFIRM PASSWORD INPUT FORM CONTROL -->
+                  <div class="form-group">
+                    <label for="inputPasswordConfirm">Confirm your password</label>
+                    <input type="password" class="form-control" id="inputPasswordConfirm"
+                      placeholder="Password confirmation" formControlName="inputPasswordConfirm"
+                      [class.is-invalid]="submitted && f.inputPasswordConfirm.errors" appBlockCopyPaste>
+                    <div class="invalid-feedback">
+                      <div *ngIf="f.inputPasswordConfirm.errors?.required">Confirmation of your password is required!
+                      </div>
+                      <div *ngIf="(f.inputPasswordConfirm.errors || {}).mustMatch">Passwords must match!</div>
+                    </div>
+                    <small class="form-text text-muted pb-2">We'll never share your password with anyone else.</small>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio" (change)="setTypeMaker()"
+                          required>Ik ben een maker
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input"
+                          [class.is-invalid]="submitted && !typeMaker && !typeBedrijf" name="optradio"
+                          (change)="setTypeBedrijf()" required>Een bedrijf
+                        registreren
+                        <div class="invalid-feedback">
+                          <div>Selecteer een optie!</div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Volgende</button>
+                </form>
+              </div>
+
+              <!-- ------------------------------------------------------- -->
+              <!--  ---------------------- STAP 2 ------------------------ -->
+              <!--  -----------------------------------------------------  -->
+
+              <div *ngIf="stap2">
+                <div class="justify-content-center custom-progress">
+                  <ol class="cd-breadcrumb triangle justify-content-center">
+                    <li class="pointer"><a (click)="naarStap(1)" class="steps">Registreer</a></li>
+                    <li class="current"><em class="steps">Persoonlijke informatie</em></li>
+                    <li class=""><a class="steps">Overzicht</a></li>
+                  </ol>
+                </div>
+
+
+                <!-- ------------------------------------------------------ -->
+                <!--  ------------------ STAP 2 BEDRIJF ------------------- -->
+                <!--  ----------------------------------------------------  -->
+                <div *ngIf="typeBedrijf">
+                    <h3 class="login-heading mb-4">Bedrijfsgegevens</h3>
+                  <form [formGroup]="signUpFormDeel2Bedrijf" (ngSubmit)="toonBedrijf()" data-toggle="validator">
+                    <!-- EMAIL INPUT FORM CONTROL -->
+                    <div class="form-group">
+                      <label for="inputBedrijfsnaam" class="">Bedrijfsnaam</label>
+                      <input type="email" class="form-control" id="inputBedrijfsnaam"
+                        placeholder="Hier uw bedrijfsnaam..." formControlName="inputBedrijfsnaam"
+                        [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputBedrijfsnaam.errors }">
+                      <div *ngIf="submittedBedrijf && f2B.inputBedrijfsnaam.errors" class="invalid-feedback">
+                        <div *ngIf="f2B.inputBedrijfsnaam.errors.required">Dit is een verplicht veld! Vul een
+                          bedrijfsnaam in!</div>
+                      </div>
+                    </div>
+
+                    <!-- LOCATIE INPUT FORM CONTROL -->
+                    <div class="form-group">
+                      <label for="inputLocatie" class="pt-3">Locatie</label>
+                      <input type="text" class="form-control" id="inputLocatie" placeholder="Stad of drop"
+                        formControlName="inputLocatie"
+                        [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputLocatie.errors }">
+                      <div *ngIf="submittedBedrijf && f2B.inputLocatie.errors" class="invalid-feedback">
+                        <div *ngIf="f2B.inputLocatie.errors.required">Dit is een verplicht veld! Vul een locatie in!
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- BIOGRAFIE INPUT FORM CONTROL -->
+                    <div class="form-group">
+                      <label for="inputBiografie" class="pt-3">Biografie</label>
+                      <textarea type="text" class="form-control" id="inputBiografie"
+                        placeholder="Uitgebreide biografie van het bedrijf" formControlName="inputBiografie"
+                        [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputBiografie.errors }"></textarea>
+                      <div *ngIf="submittedBedrijf && f2B.inputBiografie.errors" class="invalid-feedback">
+                        <div *ngIf="f2B.inputBiografie.errors.required">Dit is een verplicht veld! Vul een omschrijving
+                          in!</div>
+                      </div>
+                    </div>
+                    <p>HIER NOG EEN LOGO UPLOAD TOEVOEGEN</p>
+
+
+                    <button class="btn btn-secondary mr-1" (click)="naarStap(1)">vorige</button>
+                    <button type="submit" class="btn btn-primary ml-1">Volgende</button>
+                  </form>
+                </div>
+
+                <!-- ------------------------------------------------------ -->
+                <!--  ------------------ STAP 2 MAKER --------------------- -->
+                <!--  ----------------------------------------------------  -->
+                <div *ngIf="typeMaker">
+                  <h3 class="login-heading mb-4">Persoonsgegevens</h3>
+                  <form [formGroup]="signUpFormDeel2Maker" (ngSubmit)="ToonMaker()" data-toggle="validator">
+
+                    <!-- Voornaam -->
+                    <div class="form-group">
+                      <label for="inputVoornaam" class="">Voornaam</label>
+                      <input type="email" class="form-control" id="inputVoornaam" placeholder="Hier uw voornaam"
+                        formControlName="inputVoornaam"
+                        [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputVoornaam.errors }">
+                      <div *ngIf="submittedMaker && f2M.inputVoornaam.errors" class="invalid-feedback">
+                        <div *ngIf="f2M.inputVoornaam.errors.required">Dit veld is verplicht! Vul een voornaam in!</div>
+                      </div>
+                    </div>
+
+                    <!-- achternaam -->
+                    <div class="form-group">
+                      <label for="inputNaam" class="">Naam</label>
+                      <input type="email" class="form-control" id="inputNaam" placeholder="Hier uw achternaam"
+                        formControlName="inputNaam"
+                        [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputNaam.errors }">
+
+                      <div *ngIf="submittedMaker && f2M.inputNaam.errors" class="invalid-feedback">
+                        <div *ngIf="f2M.inputNaam.errors.required">Dit veld is verplicht! Vul een naam in!</div>
+                      </div>
+                    </div>
+
+
+                    <!-- LOCATIE INPUT FORM CONTROL -->
+                    <div class="form-group">
+                      <label for="inputGeboortedatum" class="pt-3">Geboortedatum</label>
+                      <input type="text" class="form-control" id="inputGeboortedatum" placeholder="DD/MM/JJJJ"
+                        formControlName="inputGeboortedatum"
+                        [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputGeboortedatum.errors }">
+                      <div *ngIf="submittedMaker && f2M.inputGeboortedatum.errors" class="invalid-feedback">
+                        <div *ngIf="f2M.inputGeboortedatum.errors.required">Dit is een verplicht veld! Vul een
+                          geboortedatum in!
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- BIOGRAFIE INPUT FORM CONTROL -->
+                    <div class="form-group">
+                      <label for="inputBiografieMaker" class="pt-3">Biografie</label>
+                      <textarea type="text" class="form-control" id="inputBiografieMaker"
+                        placeholder="Uitgebreide biografie." formControlName="inputBiografieMaker"
+                        [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputBiografieMaker.errors }"></textarea>
+                      <div *ngIf="submittedMaker && f2M.inputBiografieMaker.errors" class="invalid-feedback">
+                        <div *ngIf="f2M.inputBiografieMaker.errors.required">Dit is een verplicht veld! Vul een
+                          biografie in!</div>
+                      </div>
+                    </div>
+
+                    <!-- LINKEDIN INPUT FORM CONTROL -->
+                    <div class="form-group">
+                      <label for="inputLinkenIn" class="pt-3">LinkedIn</label>
+                      <input type="text" class="form-control" id="inputLinkenIn" placeholder="https://www.linkedin..."
+                        formControlName="inputLinkenIn"
+                        [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputLinkenIn.errors }">
+                    </div>
+
+
+                    <!-- ERVARING INPUT FORM CONTROL -->
+                    <div class="form-group">
+                      <label for="inputErvaring" class="pt-3">Ervaring</label>
+                      <textarea type="text" class="form-control" id="inputErvaring"
+                        placeholder="Uitgebreide werkervaring" formControlName="inputErvaring"
+                        [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputErvaring.errors }"></textarea>
+                      <div *ngIf="submittedMaker && f2M.inputErvaring.errors" class="invalid-feedback">
+                        <div *ngIf="f2M.inputErvaring.errors.required">Dit is een verplicht veld! Vul jou ervaringen in!
+                        </div>
+                      </div>
+                    </div>
+
+                    <p>PLAATS HIER DE UPLOAD FOOR EEN FOTO</p>
+
+
+                    <button class="btn btn-secondary mr-1" (click)="naarStap(1)">Vorige</button>
+                    <button type="submit" class="btn btn-primary ml-1">Volgende</button>
+                  </form>
+                </div>
+              </div>
+
+
+              <!-- ------------------------------------------------------- -->
+              <!--  ---------------------- STAP 3 ------------------------ -->
+              <!--  -----------------------------------------------------  -->
+
+              <div *ngIf="stap3">
+                <div class="justify-content-center">
+                  <ol class="cd-breadcrumb triangle justify-content-center custom-progress">
+                    <li class="pointer"><a (click)="naarStap(1)" class="steps">Registreer</a></li>
+                    <li class="pointer"><a (click)="naarStap(2)" class="steps">Persoonlijke informatie</a></li>
+                    <li class="current"><em class="steps">Overzicht</em></li>
+                  </ol>
+                </div>
+
+
+                <!-- ------------------------------------------------------ -->
+                <!--  ------------------ STAP 3 BEDRIJF ------------------- -->
+                <!--  ----------------------------------------------------  -->
+                <div *ngIf="typeBedrijf">
+                  <h3 class="login-heading mb-4">Overzicht</h3>
+
+                  <div class="card">
+                    <img src="HIER DE URL VAN DE FOTO" class="card-img-top" alt="HIER DE URL VAN DE FOTO">
+                    <div class="card-body">
+                      <h5 class="card-title">{{nieuwBedrijf.bedrijfsnaam}}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <h5 class="card-title">Biografie</h5>
+                        <p class="card-text">{{nieuwBedrijf.biografie}}</p>
+                      </li>
+                      <li class="list-group-item">
+                        <h5 class="card-title">Locatie</h5>
+                        <p class="card-text">{{nieuwBedrijf.locatie}}</p>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- ------------------------------------------------------ -->
+                <!--  ------------------ STAP 3 MAKER --------------------- -->
+                <!--  ----------------------------------------------------  -->
+                <div *ngIf="typeMaker">
+                  <h3 class="login-heading mb-4">Overzicht</h3>
+
+
+                  <div class="card">
+                    <img src="HIER DE URL VAN DE FOTO" class="card-img-top" alt="HIER DE URL VAN DE FOTO">
+                    <div class="card-body">
+                      <h5 class="card-title">{{nieuweMaker.voornaam}}, {{nieuweMaker.achternaam}}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <h5 class="card-title">Geboortedatum</h5>
+                        <p class="card-text">{{nieuweMaker.geboortedatum}}</p>
+                      </li>
+                      <li class="list-group-item">
+                        <h5 class="card-title">Biografie</h5>
+                        <p class="card-text">{{nieuweMaker.biografie}}</p>
+                      </li>
+                      <li class="list-group-item">
+                        <h5 class="card-title">Ervaring</h5>
+                        <p class="card-text">{{nieuweMaker.ervaring}}</p>
+                      </li>
+
+                    </ul>
+                    <div class="card-body">
+                      <h5 class="card-title">LinkedIn</h5>
+                      <a href=""></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </label>
+          </div>
         </div>
       </div>
-
-      <button type="submit" class="btn btn-primary">Volgende</button>
-    </form>
-  </div>
-
-  <!-- ------------------------------------------------------- -->
-  <!--  ---------------------- STAP 2 ------------------------ -->
-  <!--  -----------------------------------------------------  -->
-
-  <div *ngIf="stap2">
-    <div class="justify-content-center">
-      <ol class="cd-breadcrumb triangle justify-content-center">
-        <li class="pointer"><a (click)="naarStap(1)" class="steps">registreer</a></li>
-        <li class="current"><em class="steps">persoonlijke informatie</em></li>
-        <li class=""><a class="steps">overzicht</a></li>
-      </ol>
     </div>
-
-
-    <!-- ------------------------------------------------------ -->
-    <!--  ------------------ STAP 2 BEDRIJF ------------------- -->
-    <!--  ----------------------------------------------------  -->
-    <div *ngIf="typeBedrijf">
-      <h1>Bedrijfsgegevens</h1>
-      <form [formGroup]="signUpFormDeel2Bedrijf" (ngSubmit)="toonBedrijf()" data-toggle="validator">
-        <!-- EMAIL INPUT FORM CONTROL -->
-        <div class="form-group">
-          <label for="inputBedrijfsnaam" class="">Bedrijfsnaam</label>
-          <input type="email" class="form-control" id="inputBedrijfsnaam" placeholder="Hier uw bedrijfsnaam..."
-                 formControlName="inputBedrijfsnaam"
-                 [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputBedrijfsnaam.errors }">
-          <div *ngIf="submittedBedrijf && f2B.inputBedrijfsnaam.errors" class="invalid-feedback">
-            <div *ngIf="f2B.inputBedrijfsnaam.errors.required">Dit is een verplicht veld! Vul een bedrijfsnaam in!</div>
-          </div>
-        </div>
-
-        <!-- LOCATIE INPUT FORM CONTROL -->
-        <div class="form-group">
-          <label for="inputLocatie" class="pt-3">Locatie</label>
-          <input type="text" class="form-control" id="inputLocatie" placeholder="Stad of drop"
-                 formControlName="inputLocatie"
-                 [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputLocatie.errors }">
-          <div *ngIf="submittedBedrijf && f2B.inputLocatie.errors" class="invalid-feedback">
-            <div *ngIf="f2B.inputLocatie.errors.required">Dit is een verplicht veld! Vul een locatie in!</div>
-          </div>
-        </div>
-
-        <!-- BIOGRAFIE INPUT FORM CONTROL -->
-        <div class="form-group">
-          <label for="inputBiografie" class="pt-3">Biografie</label>
-          <textarea type="text" class="form-control" id="inputBiografie"
-                    placeholder="Uitgebreide biografie van het bedrijf"
-                    formControlName="inputBiografie"
-                    [ngClass]="{ 'is-invalid': submittedBedrijf && f2B.inputBiografie.errors }"></textarea>
-          <div *ngIf="submittedBedrijf && f2B.inputBiografie.errors" class="invalid-feedback">
-            <div *ngIf="f2B.inputBiografie.errors.required">Dit is een verplicht veld! Vul een omschrijving in!</div>
-          </div>
-        </div>
-        <p>HIER NOG EEN LOGO UPLOAD TOEVOEGEN</p>
-
-
-        <button class="btn btn-secondary mr-1" (click)="naarStap(1)">vorige</button>
-        <button type="submit" class="btn btn-primary ml-1">Volgende</button>
-      </form>
-    </div>
-
-    <!-- ------------------------------------------------------ -->
-    <!--  ------------------ STAP 2 MAKER --------------------- -->
-    <!--  ----------------------------------------------------  -->
-    <div *ngIf="typeMaker">
-      <h1>Persoonsgegevens</h1>
-      <form [formGroup]="signUpFormDeel2Maker" (ngSubmit)="ToonMaker()" data-toggle="validator">
-
-        <!-- Voornaam -->
-        <div class="form-group">
-          <label for="inputVoornaam" class="">Voornaam</label>
-          <input type="email" class="form-control" id="inputVoornaam" placeholder="Hier uw voornaam"
-                 formControlName="inputVoornaam"
-                 [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputVoornaam.errors }">
-          <div *ngIf="submittedMaker && f2M.inputVoornaam.errors" class="invalid-feedback">
-            <div *ngIf="f2M.inputVoornaam.errors.required">Dit veld is verplicht! Vul een voornaam in!</div>
-          </div>
-        </div>
-
-        <!-- achternaam -->
-        <div class="form-group">
-          <label for="inputNaam" class="">Naam</label>
-          <input type="email" class="form-control" id="inputNaam" placeholder="Hier uw achternaam"
-                 formControlName="inputNaam" [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputNaam.errors }">
-
-          <div *ngIf="submittedMaker && f2M.inputNaam.errors" class="invalid-feedback">
-            <div *ngIf="f2M.inputNaam.errors.required">Dit veld is verplicht! Vul een naam in!</div>
-          </div>
-        </div>
-
-
-        <!-- LOCATIE INPUT FORM CONTROL -->
-        <div class="form-group">
-          <label for="inputGeboortedatum" class="pt-3">Geboortedatum</label>
-          <input type="text" class="form-control" id="inputGeboortedatum" placeholder="DD/MM/JJJJ"
-                 formControlName="inputGeboortedatum"
-                 [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputGeboortedatum.errors }">
-          <div *ngIf="submittedMaker && f2M.inputGeboortedatum.errors" class="invalid-feedback">
-            <div *ngIf="f2M.inputGeboortedatum.errors.required">Dit is een verplicht veld! Vul een geboortedatum in!
-            </div>
-          </div>
-        </div>
-
-        <!-- BIOGRAFIE INPUT FORM CONTROL -->
-        <div class="form-group">
-          <label for="inputBiografieMaker" class="pt-3">Biografie</label>
-          <textarea type="text" class="form-control" id="inputBiografieMaker"
-                    placeholder="Uitgebreide biografie."
-                    formControlName="inputBiografieMaker"
-                    [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputBiografieMaker.errors }"></textarea>
-          <div *ngIf="submittedMaker && f2M.inputBiografieMaker.errors" class="invalid-feedback">
-            <div *ngIf="f2M.inputBiografieMaker.errors.required">Dit is een verplicht veld! Vul een biografie in!</div>
-          </div>
-        </div>
-
-        <!-- LINKEDIN INPUT FORM CONTROL -->
-        <div class="form-group">
-          <label for="inputLinkenIn" class="pt-3">LinkedIn</label>
-          <input type="text" class="form-control" id="inputLinkenIn" placeholder="https://www.linkedin..."
-                 formControlName="inputLinkenIn"
-                 [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputLinkenIn.errors }">
-        </div>
-
-
-        <!-- ERVARING INPUT FORM CONTROL -->
-        <div class="form-group">
-          <label for="inputErvaring" class="pt-3">Ervaring</label>
-          <textarea type="text" class="form-control" id="inputErvaring"
-                    placeholder="Uitgebreide werkervaring"
-                    formControlName="inputErvaring"
-                    [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputErvaring.errors }"></textarea>
-          <div *ngIf="submittedMaker && f2M.inputErvaring.errors" class="invalid-feedback">
-            <div *ngIf="f2M.inputErvaring.errors.required">Dit is een verplicht veld! Vul jou ervaringen in!</div>
-          </div>
-        </div>
-
-        <p>PLAATS HIER DE UPLOAD FOOR EEN FOTO</p>
-
-
-        <button class="btn btn-secondary mr-1" (click)="naarStap(1)">vorige</button>
-        <button type="submit" class="btn btn-primary ml-1">Volgende</button>
-      </form>
-    </div>
-  </div>
-
-
-  <!-- ------------------------------------------------------- -->
-  <!--  ---------------------- STAP 3 ------------------------ -->
-  <!--  -----------------------------------------------------  -->
-
-  <div *ngIf="stap3">
-    <div class="justify-content-center">
-      <ol class="cd-breadcrumb triangle justify-content-center">
-        <li class="pointer"><a (click)="naarStap(1)" class="steps">registreer</a></li>
-        <li class="pointer"><a (click)="naarStap(2)" class="steps">persoonlijke informatie</a></li>
-        <li class="current"><em class="steps">overzicht</em></li>
-      </ol>
-    </div>
-
-
-    <!-- ------------------------------------------------------ -->
-    <!--  ------------------ STAP 3 BEDRIJF ------------------- -->
-    <!--  ----------------------------------------------------  -->
-    <div *ngIf="typeBedrijf">
-      <h1>Overzicht</h1>
-
-      <div class="card">
-        <img src="HIER DE URL VAN DE FOTO" class="card-img-top" alt="HIER DE URL VAN DE FOTO">
-        <div class="card-body">
-          <h5 class="card-title">{{nieuwBedrijf.bedrijfsnaam}}</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <h5 class="card-title">Biografie</h5>
-            <p class="card-text">{{nieuwBedrijf.biografie}}</p>
-          </li>
-          <li class="list-group-item">
-            <h5 class="card-title">Locatie</h5>
-            <p class="card-text">{{nieuwBedrijf.locatie}}</p>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-
-    <!-- ------------------------------------------------------ -->
-    <!--  ------------------ STAP 3 MAKER --------------------- -->
-    <!--  ----------------------------------------------------  -->
-    <div *ngIf="typeMaker">
-      <h1>Overzicht</h1>
-
-
-      <div class="card">
-        <img src="HIER DE URL VAN DE FOTO" class="card-img-top" alt="HIER DE URL VAN DE FOTO">
-        <div class="card-body">
-          <h5 class="card-title">{{nieuweMaker.voornaam}}, {{nieuweMaker.achternaam}}</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <h5 class="card-title">Geboortedatum</h5>
-            <p class="card-text">{{nieuweMaker.geboortedatum}}</p>
-          </li>
-          <li class="list-group-item">
-            <h5 class="card-title">Biografie</h5>
-            <p class="card-text">{{nieuweMaker.biografie}}</p>
-          </li>
-          <li class="list-group-item">
-            <h5 class="card-title">Ervaring</h5>
-            <p class="card-text">{{nieuweMaker.ervaring}}</p>
-          </li>
-
-        </ul>
-        <div class="card-body">
-          <h5 class="card-title">LinkedIn</h5>
-          <a href=""></a>
-        </div>
-      </div>
-
-    </div>
-
-
   </div>
 </div>
