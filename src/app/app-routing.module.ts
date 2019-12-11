@@ -16,6 +16,13 @@ import {ProfielComponent} from './maker/profiel/profiel.component';
 import {TagsComponent as TagsMaker} from './maker/tags/tags.component';
 import {ReviewComponent as ReviewMaker} from './maker/review/review.component';
 import {OpdrachtenComponent} from './maker/opdrachten/opdrachten.component';
+import { AdminbedrijvenbeherenComponent } from './admin/adminbedrijvenbeheren/adminbedrijvenbeheren.component';
+import { AdminmakersbeherenComponent } from './admin/adminmakersbeheren/adminmakersbeheren.component';
+import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/adminopdrachtenbeheren.component';
+import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminreviewsbeheren.component';
+import { AdminskillsbeherenComponent } from './admin/adminskillsbeheren/adminskillsbeheren.component';
+import { AdmintagsbeherenComponent } from './admin/admintagsbeheren/admintagsbeheren.component';
+import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypesbeheren.component';
 
 
 const routes: Routes = [
@@ -36,6 +43,13 @@ const routes: Routes = [
   {path: 'bedrijf/reviews', component: ReviewBedrijf},
 
   {path: 'admin/overzicht', component: AdminComponent},
+  {path: 'admin/bedrijven', component: AdminbedrijvenbeherenComponent},
+  {path: 'admin/makers', component: AdminmakersbeherenComponent},
+  {path: 'admin/opdrachten', component: AdminopdrachtenbeherenComponent},
+  {path: 'admin/reviews', component: AdminreviewsbeherenComponent},
+  {path: 'admin/skills', component: AdminskillsbeherenComponent},
+  {path: 'admin/tags', component: AdmintagsbeherenComponent},
+  {path: 'admin/types', component: AdmintypesbeherenComponent}
 
 ];
 
