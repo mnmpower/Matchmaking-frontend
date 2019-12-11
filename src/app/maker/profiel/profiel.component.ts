@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../models/user.model';
 import {Maker} from '../../models/maker.model';
-import {UserService} from '../../services/user.service';
 import {MakerService} from '../../services/maker.service';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+import {SkillService} from '../../services/skill.service';
+import {Skill} from '../../models/skill.model';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-profiel',
@@ -12,20 +14,44 @@ import { Router } from '@angular/router';
 })
 export class ProfielComponent implements OnInit {
 
-  nieuweMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null);
+  makerID = 0;
+  maker: Maker = new Maker(null, null, null, null, null, null, null, null, null);
+  skills: Skill[] = [];
 
-  constructor(private _makerService: MakerService, private _userService: UserService, private router: Router)
-  {
-    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    this._userService.getPermissions().subscribe(result =>{
-      if(result.indexOf("VIEW_PROFIEL") == -1) {
+  constructor(
+    private _makerService: MakerService,
+    private _Activatedroute: ActivatedRoute,
+    private _skillService: SkillService,
+    private router: Router,
+    private _userService: UserService
+  ) {
+
+    this._userService.getPermissions().subscribe(result => {
+      if (result.indexOf('VIEW_PROFIEL') == -1) {
         this.router.navigate(['/forbidden']);
       }
+    });
+
+
+    this.makerID = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
+    this._makerService.getMaker(this.makerID).subscribe(r => {
+      this.maker.makerID = r.makerID;
+      this.maker.userID = r.userID;
+      this.maker.ervaring = r.ervaring;
+      this.maker.linkedIn = r.linkedIn;
+      this.maker.biografie = r.biografie;
+      this.maker.geboortedatum = r.geboortedatum;
+      this.maker.voornaam = r.voornaam;
+      this.maker.achternaam = r.achternaam;
+      this.maker.fotoMaker = r.fotoMaker;
+
+      this._skillService.getSkillsByMakerID(this.makerID).subscribe(re => {
+        this.skills = re;
+      });
     });
   }
 
   ngOnInit() {
 
   }
-
 }

@@ -16,7 +16,7 @@
     note_add
   </i></a>
 
-  <a class="navbar-brand" routerLink="/maker/profiel" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" routerLink="/maker/profiel/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     person_outline
   </i></a>

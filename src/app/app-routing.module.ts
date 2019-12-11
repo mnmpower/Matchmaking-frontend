@@ -35,7 +35,7 @@ const routes: Routes = [
   // authenticatien toevoegen bij alle onderstaande!!!
   {path: 'maker/dashboard', component: DashboardMaker},
   {path: 'maker/opdrachten', component: OpdrachtenComponent},
-  {path: 'maker/profiel', component: ProfielComponent},
+  {path: 'maker/profiel/:id', component: ProfielComponent},
   {path: 'maker/tags', component: TagsMaker},
   {path: 'maker/reviews', component: ReviewMaker},
 
@@ -53,7 +53,7 @@ const routes: Routes = [
   {path: 'admin/tags', component: AdmintagsbeherenComponent},
   {path: 'admin/types', component: AdmintypesbeherenComponent},
 
-  //al de rest doorsturen naar home
+  // al de rest doorsturen naar home
   {path: '**', redirectTo: ''}
 ];
 

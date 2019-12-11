@@ -17,6 +17,12 @@ export class SkillService {
     });
   }
 
+  getSkillsByMakerID(id: number): Observable<Skill[]> {
+    return this.http.get<Skill[]>('https://localhost:44316/api/skill/bymaker/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
   addSkill(skill: Skill) {
     return this.http.post<Skill>('https://localhost:44316/api/skill', skill, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
