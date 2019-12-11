@@ -1,1 +1,40 @@
-<p>admintypesbeheren works!</p>
+<h1>Types beheren</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Soort</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let type of types">
+            <th scope="row">{{type.typeID}}</th>
+            <td>{{type.soort}}</td>
+            <td>
+                <button type="button" class="btn btn-warning knop" (click)="updateType(type)"><i
+                        class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-danger knop" (click)="deleteType(type.typeID)"><i
+                        class="fas fa-trash-alt"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="button button--nuka" (click)="toevoegenPopup()">Type toevoegen</button>
+
+<div class="popupBox" *ngIf="popup">
+    <div class="popup">
+        <div (click)="closePopup()" id="close"><i class="fas fa-times fa-2x exitIcon"></i></div>
+        <h1>Type toevoegen</h1>
+        <form #typeForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="soort">Soort</label>
+                <input type="text" class="form-control" id="soort" [(ngModel)]="type.soort" name="typeform1"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary submitKnop">Toevoegen</button>
+        </form>
+    </div>
+</div>
