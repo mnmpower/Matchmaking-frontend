@@ -7,6 +7,7 @@ import {UserService} from '../services/user.service';
 import {MakerService} from '../services/maker.service';
 import {Bedrijf} from '../models/bedrijf.model';
 import {Maker} from '../models/maker.model';
+import {BedrijfService} from '../services/bedrijf.service';
 
 @Component({
   selector: 'app-registreer',
@@ -39,8 +40,11 @@ export class RegistreerComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private _userService: UserService,
-    private _makerService: MakerService
+    private _makerService: MakerService,
+    private _bedrijfService: BedrijfService
   ) {
+    // this.naarStap(3);
+    // this.typeMaker = true;
   }
 
   ngOnInit() {
@@ -108,11 +112,13 @@ export class RegistreerComponent implements OnInit {
     if (this.signUpForm.invalid) {
       return;
     }
+    if (!(this.typeMaker || this.typeBedrijf)) {
+      return;
+    }
     this.nieuweUser.userID = 0;
     this.nieuweUser.email = this.signUpForm.get(['inputEmailSignUp']).value;
     this.nieuweUser.paswoord = this.signUpForm.get(['inputPasswordSignUp']).value;
 
-    console.log(this.nieuweUser);
 
     this.naarStap(2);
 
@@ -159,7 +165,6 @@ export class RegistreerComponent implements OnInit {
     this.nieuweMaker.linkedIn = this.signUpFormDeel2Maker.get(['inputLinkenIn']).value;
     this.nieuweMaker.ervaring = this.signUpFormDeel2Maker.get(['inputErvaring']).value;
 
-    console.log(this.nieuweMaker);
 
     this.naarStap(3);
   }
@@ -176,9 +181,41 @@ export class RegistreerComponent implements OnInit {
     this.nieuwBedrijf.locatie = this.signUpFormDeel2Bedrijf.get(['inputLocatie']).value;
     this.nieuwBedrijf.biografie = this.signUpFormDeel2Bedrijf.get(['inputBiografie']).value;
 
-    console.log(this.nieuwBedrijf);
-
     this.naarStap(3);
   }
+
+  maakMaker() {
+    this.nieuweUser.functie = 'Maker';
+
+    console.log(this.nieuweUser);
+    this._userService.addUser(this.nieuweUser).subscribe(r => {
+      console.log(r);
+      this.nieuweMaker.userID = r.userID;
+      console.log(this.nieuweMaker);
+      this._makerService.addMaker(this.nieuweMaker).subscribe(re => {
+        console.log(re);
+        this.router.navigate(['login'], {replaceUrl: true});
+      });
+
+    });
+  }
+
+  maakBedrijf() {
+    this.nieuweUser.functie = 'Bedrijf';
+
+    console.log(this.nieuweUser);
+    this._userService.addUser(this.nieuweUser).subscribe(r => {
+      console.log(r);
+      this.nieuwBedrijf.userID = r.userID;
+      console.log(this.nieuwBedrijf);
+      this._bedrijfService.addBedrijf(this.nieuwBedrijf).subscribe(re => {
+        console.log(re);
+        this.router.navigate(['login'], {replaceUrl: true});
+      });
+
+    });
+  }
+
+
 }
 
