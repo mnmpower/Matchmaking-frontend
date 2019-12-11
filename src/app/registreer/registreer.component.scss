@@ -115,7 +115,7 @@ color: #777;
 }
 }
 
-/* Breadcrumbs 
+/* Breadcrumbs
 -------------------------------------------------- */
 
 .cd-breadcrumb, .cd-multi-steps {
@@ -213,7 +213,7 @@ color: #777;
       font-size: 1.6rem;
     }
   }
-  
+
   /* --------------------------------
   Triangle breadcrumb
   -------------------------------- */
@@ -306,7 +306,7 @@ color: #777;
       border-top-width: 25px;
       border-bottom-width: 25px;
     }
-  
+
     @-moz-document url-prefix() {
       .cd-breadcrumb.triangle li::after,
       .cd-breadcrumb.triangle li > *::after {
@@ -343,7 +343,7 @@ color: #777;
       padding: 0;
       text-align: center;
     }
-  
+
     .cd-multi-steps li {
       position: relative;
       float: none;
@@ -368,13 +368,13 @@ color: #777;
       position: relative;
       color: #2c3f4c;
     }
-  
+
     .cd-multi-steps.custom-separator li::after {
       /* reset style */
       height: 4px;
       background: #edeff0;
     }
-  
+
     .cd-multi-steps.text-center li::after {
       width: 100%;
       top: 50%;
@@ -402,7 +402,7 @@ color: #777;
       /* change the custom icon for the visited item - check icon */
       background-position: 0 -60px;
     }
-  
+
     .cd-multi-steps.text-top li, .cd-multi-steps.text-bottom li {
       width: 80px;
       text-align: center;
@@ -442,7 +442,7 @@ color: #777;
     .no-touch .cd-multi-steps.text-top a:hover::before, .no-touch .cd-multi-steps.text-bottom a:hover::before {
       box-shadow: 0 0 0 3px rgba(150, 192, 61, 0.3);
     }
-  
+
     .cd-multi-steps.text-top li::after {
       /* this is the line connecting 2 adjacent items */
       bottom: 4px;
@@ -454,7 +454,7 @@ color: #777;
       /* this is the spot indicator */
       bottom: 0;
     }
-  
+
     .cd-multi-steps.text-bottom li::after {
       /* this is the line connecting 2 adjacent items */
       top: 3px;
@@ -473,11 +473,11 @@ color: #777;
   .cd-multi-steps.count li {
     counter-increment: steps;
   }
-  
+
   .cd-multi-steps.count li > *::before {
     content: counter(steps) " - ";
   }
-  
+
   @media only screen and (min-width: 768px) {
     .cd-multi-steps.text-top.count li > *::before,
     .cd-multi-steps.text-bottom.count li > *::before {
@@ -489,30 +489,51 @@ color: #777;
       font-size: 1.4rem;
       color: #ffffff;
     }
-  
+
     .cd-multi-steps.text-top.count li:not(.current) em::before,
     .cd-multi-steps.text-bottom.count li:not(.current) em::before {
       /* steps not visited yet - counter color */
       color: #2c3f4c;
     }
-  
+
     .cd-multi-steps.text-top.count li::after {
       bottom: 11px;
     }
-  
+
     .cd-multi-steps.text-top.count li > * {
       padding-bottom: 34px;
     }
-  
+
     .cd-multi-steps.text-bottom.count li::after {
       top: 11px;
     }
-  
+
     .cd-multi-steps.text-bottom.count li > * {
       padding-top: 34px;
     }
-  }  
+  }
 
 .custom-progress {
     margin-bottom: 5vh;
+}
+
+
+.center-cropped {
+  width: 400px;
+  height: 400px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Set the image to fill its parent and make transparent */
+.center-cropped img {
+  min-height: 100%;
+  min-width: 100%;
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+  /* modern browsers */
+  opacity: 0;
 }
