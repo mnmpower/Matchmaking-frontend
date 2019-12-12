@@ -19,11 +19,11 @@ export class AdminbedrijvenbeherenComponent implements OnInit {
   constructor(private _bedrijfService: BedrijfService, private _userService: UserService, private router: Router)
   {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    // this._userService.getPermissions().subscribe(result =>{
-    //   if(result.indexOf("CRUD_BEDRIJVEN") == -1) {
-    //     this.router.navigate(['/forbidden']);
-    //   }
-    // });
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_BEDRIJVEN") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
 
     this.getBedrijven();
   }

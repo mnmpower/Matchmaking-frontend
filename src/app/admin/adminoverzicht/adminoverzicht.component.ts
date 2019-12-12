@@ -11,11 +11,11 @@ export class AdminComponent implements OnInit {
 
   constructor(private _userService: UserService, private router: Router) {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    // this._userService.getPermissions().subscribe(result =>{
-    //   if(result.indexOf("VIEW_ADMIN-DASHBOARD") == -1) {
-    //     this.router.navigate(['/forbidden']);
-    //   }
-    // });
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("VIEW_ADMIN-DASHBOARD") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
   }
 
   ngOnInit() {

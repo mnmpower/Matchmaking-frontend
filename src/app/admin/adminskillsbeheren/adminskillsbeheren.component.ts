@@ -22,11 +22,11 @@ export class AdminskillsbeherenComponent implements OnInit {
   constructor(private _skillService: SkillService, private _userService: UserService, private router: Router, private _makerService: MakerService)
   {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    // this._userService.getPermissions().subscribe(result =>{
-    //   if(result.indexOf("CRUD_SKILLS") == -1) {
-    //     this.router.navigate(['/forbidden']);
-    //   }
-    // });
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_SKILLS") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
 
     this.getSkills();
   }

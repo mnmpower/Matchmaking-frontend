@@ -28,11 +28,11 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
     , private _bedrijfService: BedrijfService, private _statusService: StatusService)
   {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    // this._userService.getPermissions().subscribe(result =>{
-    //   if(result.indexOf("CRUD_OPDRACHTEN") == -1) {
-    //     this.router.navigate(['/forbidden']);
-    //   }
-    // });
+    this._userService.getPermissions().subscribe(result =>{
+      if(result.indexOf("CRUD_OPDRACHTEN") == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
 
     this.getOpdrachten();
   }
