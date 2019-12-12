@@ -29,6 +29,7 @@ import { AdmintagsbeherenComponent } from './admin/admintagsbeheren/admintagsbeh
 import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypesbeheren.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import {SkillService} from './services/skill.service';
+import {NeedAuthGuard} from './security/need-auth-guard';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import {SkillService} from './services/skill.service';
     useClass: SecurityInterceptor,
     multi: true,
   },
+    NeedAuthGuard,
     UserService,
     SkillService,
     NavbarComponent
