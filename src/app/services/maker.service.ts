@@ -53,4 +53,11 @@ export class MakerService {
     });
   }
 
+  //haal maker op voor id
+  getMakerbyUserID(id: number): Observable<Maker> {
+    return this.http.get<Maker>('https://localhost:44316/api/maker/byUserID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
 }
