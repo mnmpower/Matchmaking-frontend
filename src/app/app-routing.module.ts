@@ -8,14 +8,15 @@ import {MaakopdrachtComponent} from './bedrijf/maakopdracht/maakopdracht.compone
 import {DashboardComponent as DashboardBedrijf} from './bedrijf/dashboard/dashboard.component';
 import {TagsComponent as TagsBedrijf} from './bedrijf/tags/tags.component';
 import {ReviewComponent as ReviewBedrijf} from './bedrijf/review/review.component';
+import {ProfielComponent as ProfielBedrijf} from './bedrijf/profiel/profiel.component';
 
 import {AdminComponent} from './admin/adminoverzicht/adminoverzicht.component';
 
 import {DashboardComponent as DashboardMaker} from './maker/dashboard/dashboard.component';
-import {ProfielComponent} from './maker/profiel/profiel.component';
 import {SkillsComponent as TagsMaker} from './maker/skills/skills.component';
 import {ReviewComponent as ReviewMaker} from './maker/review/review.component';
 import {OpdrachtenComponent} from './maker/opdrachten/opdrachten.component';
+import {ProfielComponent as ProfielMaker} from './maker/profiel/profiel.component';
 import { AdminbedrijvenbeherenComponent } from './admin/adminbedrijvenbeheren/adminbedrijvenbeheren.component';
 import { AdminmakersbeherenComponent } from './admin/adminmakersbeheren/adminmakersbeheren.component';
 import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/adminopdrachtenbeheren.component';
@@ -33,14 +34,15 @@ const routes: Routes = [
   // authenticatien toevoegen bij alle onderstaande!!!
   {path: 'maker/dashboard/:id', component: DashboardMaker, canActivate: [NeedAuthGuard] },
   {path: 'maker/opdrachten/:id', component: OpdrachtenComponent, canActivate: [NeedAuthGuard]},
-  {path: 'maker/profiel/:id', component: ProfielComponent, canActivate: [NeedAuthGuard]},
+  {path: 'maker/profiel/:id', component: ProfielMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/skills/:id', component: TagsMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/reviews/:id', component: ReviewMaker, canActivate: [NeedAuthGuard]},
 
-  {path: 'bedrijf/dashboard', component: DashboardBedrijf},
-  {path: 'bedrijf/maakopdracht', component: MaakopdrachtComponent},
-  {path: 'bedrijf/tags', component: TagsBedrijf},
-  {path: 'bedrijf/reviews', component: ReviewBedrijf},
+  {path: 'bedrijf/dashboard/:id', component: DashboardBedrijf, canActivate: [NeedAuthGuard]},
+  {path: 'bedrijf/maakopdracht/:id', component: MaakopdrachtComponent, canActivate: [NeedAuthGuard]},
+  {path: 'bedrijf/tags/:id', component: TagsBedrijf, canActivate: [NeedAuthGuard]},
+  {path: 'bedrijf/reviews/:id', component: ReviewBedrijf, canActivate: [NeedAuthGuard]},
+  {path: 'bedrijf/profiel/:id', component: ProfielBedrijf, canActivate: [NeedAuthGuard]},
 
   {path: 'admin/overzicht', component: AdminComponent},
   {path: 'admin/bedrijven', component: AdminbedrijvenbeherenComponent},
