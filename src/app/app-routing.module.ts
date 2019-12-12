@@ -13,7 +13,7 @@ import {AdminComponent} from './admin/adminoverzicht/adminoverzicht.component';
 
 import {DashboardComponent as DashboardMaker} from './maker/dashboard/dashboard.component';
 import {ProfielComponent} from './maker/profiel/profiel.component';
-import {TagsComponent as TagsMaker} from './maker/tags/tags.component';
+import {SkillsComponent as TagsMaker} from './maker/skills/skills.component';
 import {ReviewComponent as ReviewMaker} from './maker/review/review.component';
 import {OpdrachtenComponent} from './maker/opdrachten/opdrachten.component';
 import { AdminbedrijvenbeherenComponent } from './admin/adminbedrijvenbeheren/adminbedrijvenbeheren.component';
@@ -33,11 +33,11 @@ const routes: Routes = [
   {path: 'forbidden', component: ForbiddenComponent},
 
   // authenticatien toevoegen bij alle onderstaande!!!
-  {path: 'maker/dashboard', component: DashboardMaker},
-  {path: 'maker/opdrachten', component: OpdrachtenComponent},
+  {path: 'maker/dashboard/:id', component: DashboardMaker},
+  {path: 'maker/opdrachten/:id', component: OpdrachtenComponent},
   {path: 'maker/profiel/:id', component: ProfielComponent},
-  {path: 'maker/tags', component: TagsMaker},
-  {path: 'maker/reviews', component: ReviewMaker},
+  {path: 'maker/skills/:id', component: TagsMaker},
+  {path: 'maker/reviews/:id', component: ReviewMaker},
 
   {path: 'bedrijf/dashboard', component: DashboardBedrijf},
   {path: 'bedrijf/maakopdracht', component: MaakopdrachtComponent},
