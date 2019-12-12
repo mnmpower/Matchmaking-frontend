@@ -9,7 +9,8 @@ export class Opdracht {
     public competitie: boolean,
     public bedrijfID: number,
     public aantalPersonen: number,
-    public statusID: number
+    public statusID: number,
+    public afstand: number
   ) {
   }
 }

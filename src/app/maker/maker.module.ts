@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfielComponent } from './profiel/profiel.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ReviewComponent } from './review/review.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -26,7 +27,8 @@ import { ReviewComponent } from './review/review.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RouterModule
   ],
   exports: [
     OpdrachtenComponent
