@@ -29,7 +29,7 @@ export class NeedAuthGuard implements CanActivate {
 
     const redirectUrl = route['_routerState']['url'];
 
-    console.log('waiting...');
+    console.log('validating...');
     await this.delay(500);
 
 

@@ -27,12 +27,12 @@
                         <td>{{maker.fotoMaker}}</td>
                         <td>
                             <button type="button" class="btn btn-warning knop" (click)="updateMaker(maker)"><i
-                                class="material-icons"> create
-                            </i></button>
-                        <button type="button" class="btn btn-danger knop"
-                            (click)="deleteMaker(maker.makerID)"><i class="material-icons">
-                                delete
-                            </i></button>
+                                    class="material-icons"> create
+                                </i></button>
+                            <button type="button" class="btn btn-danger knop" (click)="deleteMaker(maker.makerID)"><i
+                                    class="material-icons">
+                                    delete_forever
+                                </i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -47,23 +47,33 @@
 <div class="popupBox" *ngIf="popup">
     <div class="popup">
         <div (click)="closePopup()" id="close"><i class="material-icons">
-            clear
-        </i></div>
+                clear
+            </i></div>
         <h1>Maker toevoegen</h1>
         <form #makerForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
+                <label for="email" *ngIf="maker.makerID == 0">Email</label>
+                <input type="email" *ngIf="maker.makerID == 0" class="form-control" id="email" placeholder="Email" [(ngModel)]="nieuweUser.email" name="makerform7"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="paswoord" *ngIf="maker.makerID == 0">Paswoord</label>
+                <input type="password" *ngIf="maker.makerID == 0" class="form-control"  placeholder="Paswoord" id="paswoord" [(ngModel)]="nieuweUser.paswoord"
+                    name="makerform8" required>
+            </div>
+            <div class="form-group">
                 <label for="voornaam">Voornaam</label>
-                <input type="text" class="form-control" id="voornaam" [(ngModel)]="maker.voornaam" name="makerform1"
+                <input type="text" class="form-control" id="voornaam"  placeholder="Voornaam" [(ngModel)]="maker.voornaam" name="makerform1"
                     required>
             </div>
             <div class="form-group">
                 <label for="achternaam">Achternaam</label>
-                <input type="text" class="form-control" id="achternaam" [(ngModel)]="maker.achternaam" name="makerform2"
+                <input type="text" class="form-control" id="achternaam"  placeholder="Achternaam" [(ngModel)]="maker.achternaam" name="makerform2"
                     required>
             </div>
             <div class="form-group">
                 <label for="geboortedatum">Geboortedatum</label>
-                <input type="text" class="form-control" id="geboortedatum" [(ngModel)]="maker.geboortedatum"
+                <input type="date" class="form-control" id="geboortedatum"  placeholder="Geboortedatum" [(ngModel)]="maker.geboortedatum"
                     name="makerform3" required>
             </div>
             <div class="form-group">
@@ -77,10 +87,15 @@
                     required>
             </div>
             <div class="form-group">
+                    <label for="ervaring">Ervaring</label>
+                    <input type="text" class="form-control" id="ervaring"  placeholder="Ervaring" [(ngModel)]="maker.ervaring" name="makerform9"
+                        required>
+                </div>
+            <!--<div class="form-group">
                 <label for="fotoMaker">Foto link</label>
                 <input type="text" class="form-control" id="fotoMaker" [(ngModel)]="maker.fotoMaker" name="makerform6"
                     required>
-            </div>
+            </div>-->
             <button type="submit" class="btn btn-primary submitKnop">Toevoegen</button>
         </form>
     </div>

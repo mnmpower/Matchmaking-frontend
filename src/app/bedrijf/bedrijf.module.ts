@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import { TagsComponent } from './tags/tags.component';
 import { ReviewComponent } from './review/review.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfielComponent } from './profiel/profiel.component';
 
 
 
@@ -14,7 +15,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MaakopdrachtComponent,
     TagsComponent,
     ReviewComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfielComponent
   ],
   imports: [
     SharedModule,

@@ -5,9 +5,6 @@ import {AdminopdrachtenbeherenComponent} from './adminopdrachtenbeheren/adminopd
 import {AdminbedrijvenbeherenComponent} from './adminbedrijvenbeheren/adminbedrijvenbeheren.component';
 import {AdminmakersbeherenComponent} from './adminmakersbeheren/adminmakersbeheren.component';
 import {AdminreviewsbeherenComponent} from './adminreviewsbeheren/adminreviewsbeheren.component';
-import {AdminskillsbeherenComponent} from './adminskillsbeheren/adminskillsbeheren.component';
-import {AdmintagsbeherenComponent} from './admintagsbeheren/admintagsbeheren.component';
-import {AdmintypesbeherenComponent} from './admintypesbeheren/admintypesbeheren.component';
 
 
 @NgModule({
@@ -16,10 +13,7 @@ import {AdmintypesbeherenComponent} from './admintypesbeheren/admintypesbeheren.
     AdminopdrachtenbeherenComponent,
     AdminbedrijvenbeherenComponent,
     AdminmakersbeherenComponent,
-    AdminreviewsbeherenComponent,
-    AdminskillsbeherenComponent,
-    AdmintagsbeherenComponent,
-    AdmintypesbeherenComponent
+    AdminreviewsbeherenComponent
   ],
   imports: [
     CommonModule

@@ -1,0 +1,118 @@
+<div class="container stickyfooter">
+  <div class="row">
+    <div *ngIf="!editMode" class="col-sm-12 col-md-9">
+      <div class="mb-3">
+        <span class="login-heading  h3">Profiel</span>
+        <span class="float-right">
+          <i (click)="EditBedrijf()" class="material-icons md-32 pointer">edit</i>
+          <i (click)="DeleteBedrijf()" class="material-icons md-32 pointer">delete_forever</i>
+        </span>
+      </div>
+      <!-- COL PROFIEL-->
+
+      <div class="card">
+        <div class="mt-4 text-center">
+          <img src="../assets/images/noProfile.jpg" class="card-img-top center-cropped " alt="Profielfoto">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{bedrijf.bedrijfsnaam}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h5 class="card-title">Biografie</h5>
+            <p class="card-text">{{bedrijf.biografie}}</p>
+          </li>
+          <li class="list-group-item">
+            <h5 class="card-title">Ervaring</h5>
+            <p class="card-text">{{bedrijf.locatie}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!--    EDIT MODE START HIER-->
+    <div *ngIf="editMode" class="col-sm-12 col-md-9">
+      <form [formGroup]="editBedrijfForm" (ngSubmit)="onSubmit() ">
+        <div class="mb-3">
+          <span class="login-heading  h3">Profiel</span>
+          <span class="float-right">
+            <button class="btn btn-secondary mr-1" (click)="Annuleer()">Annuleren</button>
+            <button type="submit" class="btn btn-primary">Opslaan</button>
+        </span>
+        </div>
+        <!-- COL PROFIEL-->
+
+        <div class="card">
+          <div class="mt-4 text-center">
+            <img src="../assets/images/noProfile.jpg" class="card-img-top center-cropped " alt="Profielfoto">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Bewerkt uw profiel</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <!-- Voornaam -->
+              <div class="form-group">
+                <label >Voornaam</label>
+                <input type="text" placeholder="Hier uw voornaam" class="form-control"
+                       formControlName="inputBedrijfsnaam"
+                       [ngClass]="{ 'is-invalid': submitted && f2M.inputBedrijfsnaam.errors }">
+
+                <div *ngIf="submitted && f2M.inputBedrijfsnaam.errors" class="invalid-feedback">
+                  <div *ngIf="f2M.inputBedrijfsnaam.errors.required">Dit veld is verplicht! Vul een bedrijfsnaam in!</div>
+                </div>
+              </div>
+            </li>
+
+
+            <li class="list-group-item">
+              <!-- achternaam -->
+              <div class="form-group">
+                <label >Naam</label>
+                <input type="text" class="form-control" placeholder="Hier uw achternaam"
+                       formControlName="inputLocatie"
+                       [ngClass]="{ 'is-invalid': submitted && f2M.inputLocatie.errors }">
+
+                <div *ngIf="submitted && f2M.inputLocatie.errors" class="invalid-feedback">
+                  <div *ngIf="f2M.inputLocatie.errors.required">Dit veld is verplicht! Vul een locatie in!</div>
+                </div>
+              </div>
+            </li>
+
+
+            <li class="list-group-item">
+              <!-- LOCATIE INPUT FORM CONTROL -->
+              <div class="form-group">
+                <label >Geboortedatum</label>
+                <input type="text" class="form-control" placeholder="DD/MM/JJJJ"
+                       formControlName="inputBiografieBedrijf"
+                       [ngClass]="{ 'is-invalid': submitted && f2M.inputBiografieBedrijf.errors }">
+                <div *ngIf="submitted && f2M.inputBiografieBedrijf.errors" class="invalid-feedback">
+                  <div *ngIf="f2M.inputBiografieBedrijf.errors.required">Dit is een verplicht veld! Vul een
+                    biografie in!
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+          </ul>
+        </div>
+      </form>
+    </div>
+
+    <!--      COL TAGS -->
+    <div class="col-sm-12 col-md-3">
+      <h3 class="login-heading mt-4 mb-2">Tags</h3>
+      <div *ngFor="let tag of tags">
+        <div class="list-group text-center col-sm-12 col-md-12">
+          <div class="list-group-item list-group-item-action list list-group-item-primary">
+            {{tag.naam}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -17,12 +17,6 @@ export class TagService {
     });
   }
 
-  getTagsByBedrijfID(id: number): Observable<Tag[]> {
-    return this.http.get<Tag[]>('https://localhost:44316/api/tag/bybedrijf/' + id, {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    });
-  }
-
   addTag(tag: Tag) {
     return this.http.post<Tag>('https://localhost:44316/api/tag', tag, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
@@ -37,6 +31,12 @@ export class TagService {
 
   deleteTag(tagID: number) {
     return this.http.delete<Tag>('https://localhost:44316/api/tag/' + tagID, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  getTagsByBedrijfID(id: number): Observable<Tag[]> {
+    return this.http.get<Tag[]>('https://localhost:44316/api/tag/byBedrijfID/' + id, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
