@@ -61,6 +61,14 @@ export class NavbarComponent implements OnInit {
                         this.adminId = null;
                         this.bedrijfId = r.valueOf();
                         break;
+                    default:
+                        this.isMaker = false;
+                        this.isAdmin = false;
+                        this.isBedrijf = false;
+                        this.makerId = null;
+                        this.adminId = null;
+                        this.bedrijfId = null;
+                        break;
                 }
             });
         });
@@ -75,6 +83,7 @@ export class NavbarComponent implements OnInit {
         this.isAdmin = false;
         this.isBedrijf = false;
         this._authenticationService.isLoggedin.next(false);
+
         sessionStorage.clear();
         localStorage.clear();
         this.router.navigate(['login'], {replaceUrl: true});

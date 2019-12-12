@@ -183,7 +183,7 @@
                     <!-- Voornaam -->
                     <div class="form-group">
                       <label for="inputVoornaam" class="">Voornaam</label>
-                      <input type="email" class="form-control" id="inputVoornaam" placeholder="Hier uw voornaam"
+                      <input type="text" class="form-control" id="inputVoornaam" placeholder="Hier uw voornaam"
                              formControlName="inputVoornaam"
                              [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputVoornaam.errors }">
                       <div *ngIf="submittedMaker && f2M.inputVoornaam.errors" class="invalid-feedback">
@@ -194,7 +194,7 @@
                     <!-- achternaam -->
                     <div class="form-group">
                       <label for="inputNaam" class="">Naam</label>
-                      <input type="email" class="form-control" id="inputNaam" placeholder="Hier uw achternaam"
+                      <input type="text" class="form-control" id="inputNaam" placeholder="Hier uw achternaam"
                              formControlName="inputNaam"
                              [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputNaam.errors }">
 

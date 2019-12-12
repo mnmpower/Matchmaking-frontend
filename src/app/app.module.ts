@@ -64,7 +64,8 @@ import {SkillService} from './services/skill.service';
     multi: true,
   },
     UserService,
-    SkillService
+    SkillService,
+    NavbarComponent
   ],
   bootstrap: [AppComponent]
 })

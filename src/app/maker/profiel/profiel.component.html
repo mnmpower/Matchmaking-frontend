@@ -1,7 +1,13 @@
 <div class="container stickyfooter">
   <div class="row">
-    <div class="col-sm-12 col-md-9">
-      <h3 class="login-heading mb-4">Profiel</h3>
+    <div *ngIf="!editMode" class="col-sm-12 col-md-9">
+      <div class="mb-3">
+        <span class="login-heading  h3">Profiel</span>
+        <span class="float-right">
+          <i (click)="EditMaker()" class="material-icons md-32 pointer">edit</i>
+          <i (click)="DeleteMaker()" class="material-icons md-32 pointer">delete_forever</i>
+        </span>
+      </div>
       <!-- COL PROFIEL-->
 
       <div class="card">
@@ -28,18 +34,133 @@
         </ul>
         <div class="card-body">
           <h5 class="card-title">LinkedIn</h5>
-          <p >{{maker.linkedIn}}</p>
+          <p>{{maker.linkedIn}}</p>
         </div>
       </div>
+    </div>
+
+
+    <!--    EDIT MODE START HIER-->
+    <div *ngIf="editMode" class="col-sm-12 col-md-9">
+      <form [formGroup]="editMakerForm" (ngSubmit)="onSubmit() ">
+        <div class="mb-3">
+          <span class="login-heading  h3">Profiel</span>
+          <span class="float-right">
+            <button class="btn btn-secondary mr-1" (click)="Annuleer()">Annuleren</button>
+            <button type="submit" class="btn btn-primary">Opslaan</button>
+        </span>
+        </div>
+        <!-- COL PROFIEL-->
+
+        <div class="card">
+          <div class="mt-4 text-center">
+            <img src="../assets/images/noProfile.jpg" class="card-img-top center-cropped " alt="Profielfoto">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Bewerkt uw profiel</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <!-- Voornaam -->
+              <div class="form-group">
+                <label >Voornaam</label>
+                <input type="text" placeholder="Hier uw voornaam" class="form-control"
+                       formControlName="inputVoornaam"
+                       [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputVoornaam.errors }">
+
+                <div *ngIf="submittedMaker && f2M.inputVoornaam.errors" class="invalid-feedback">
+                  <div *ngIf="f2M.inputVoornaam.errors.required">Dit veld is verplicht! Vul een voornaam in!</div>
+                </div>
+              </div>
+            </li>
+
+
+            <li class="list-group-item">
+              <!-- achternaam -->
+              <div class="form-group">
+                <label >Naam</label>
+                <input type="text" class="form-control" placeholder="Hier uw achternaam"
+                       formControlName="inputNaam"
+                       [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputNaam.errors }">
+
+                <div *ngIf="submittedMaker && f2M.inputNaam.errors" class="invalid-feedback">
+                  <div *ngIf="f2M.inputNaam.errors.required">Dit veld is verplicht! Vul een naam in!</div>
+                </div>
+              </div>
+            </li>
+
+
+            <li class="list-group-item">
+              <!-- LOCATIE INPUT FORM CONTROL -->
+              <div class="form-group">
+                <label >Geboortedatum</label>
+                <input type="text" class="form-control" placeholder="DD/MM/JJJJ"
+                       formControlName="inputGeboortedatum"
+                       [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputGeboortedatum.errors }">
+                <div *ngIf="submittedMaker && f2M.inputGeboortedatum.errors" class="invalid-feedback">
+                  <div *ngIf="f2M.inputGeboortedatum.errors.required">Dit is een verplicht veld! Vul een
+                    geboortedatum in!
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+            <li class="list-group-item">
+              <!-- BIOGRAFIE INPUT FORM CONTROL -->
+              <div class="form-group">
+                <label >Biografie</label>
+                <textarea type="text" class="form-control"
+                          placeholder="Uitgebreide biografie"
+                          formControlName="inputBiografieMaker"
+                          [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputBiografieMaker.errors }"></textarea>
+                <div *ngIf="submittedMaker && f2M.inputBiografieMaker.errors" class="invalid-feedback">
+                  <div *ngIf="f2M.inputBiografieMaker.errors.required">Dit is een verplicht veld! Vul een
+                    biografie in!
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+            <li class="list-group-item">
+              <!-- ERVARING INPUT FORM CONTROL -->
+              <div class="form-group">
+                <label >Ervaring</label>
+                <textarea type="text" class="form-control"
+                          placeholder="Uitgebreide werkervaring" formControlName="inputErvaring"
+                          [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputErvaring.errors }"></textarea>
+                <div *ngIf="submittedMaker && f2M.inputErvaring.errors" class="invalid-feedback">
+                  <div *ngIf="f2M.inputErvaring.errors.required">Dit is een verplicht veld! Vul jouw ervaringen
+                    in!
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+            <li class="list-group-item">
+              <!-- LINKEDIN INPUT FORM CONTROL -->
+              <div class="form-group">
+                <label >LinkedIn</label>
+                <input type="text" class="form-control"  placeholder="https://www.linkedin..."
+                       formControlName="inputLinkenIn"
+                       [ngClass]="{ 'is-invalid': submittedMaker && f2M.inputLinkenIn.errors }">
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </form>
     </div>
 
     <!--      COL TAGS -->
     <div class="col-sm-12 col-md-3">
       <h3 class="login-heading mt-4 mb-2">Skills</h3>
-              <div *ngFor="let skill of skills">
+      <div *ngFor="let skill of skills">
         <div class="list-group text-center col-sm-12 col-md-12">
           <div class="list-group-item list-group-item-action list list-group-item-primary">
-           {{skill.naam}}
+            {{skill.naam}}
           </div>
         </div>
       </div>
