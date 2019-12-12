@@ -42,8 +42,8 @@ export class ProfielComponent implements OnInit {
         this.router.navigate(['/forbidden']);
       }
 
-
       this.makerID = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
+
       this._makerService.getMaker(this.makerID).subscribe(r => {
         this.VullMaker(r);
 
