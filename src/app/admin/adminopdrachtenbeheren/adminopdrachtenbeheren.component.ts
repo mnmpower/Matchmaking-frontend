@@ -21,6 +21,7 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
   statussen: Status[];
   bedrijven: Bedrijf[];
   popup: boolean = false;
+  disableButton: boolean = false;
 
 
   constructor(private _opdrachtService: OpdrachtService, private _userService: UserService, private router: Router
@@ -51,6 +52,14 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
         this.getOpdrachten();
       });
     }
+ }
+
+ checkValue(checkDropdown: number){
+   if (checkDropdown == 0) {
+     this.disableButton = true;
+   } else {
+     this.disableButton = false;
+   }
  }
 
  getBedrijven(){

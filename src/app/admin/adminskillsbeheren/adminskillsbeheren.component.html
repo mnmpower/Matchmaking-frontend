@@ -17,7 +17,7 @@
                     <tr *ngFor="let skill of skills">
                         <th scope="row">{{skill.skillID}}</th>
                         <td>{{skill.naam}}</td>
-                        <td>{{skill.makerID}}</td>
+                        <td>{{skill.maker.voornaam}} {{skill.maker.achternaam}}</td>
                         <td>{{skill.aantalLikes}}</td>
                         <td>
                             <button type="button" class="btn btn-warning knop" (click)="updateSkill(skill)"><i

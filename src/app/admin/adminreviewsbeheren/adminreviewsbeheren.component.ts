@@ -20,6 +20,7 @@ export class AdminreviewsbeherenComponent implements OnInit {
   bedrijven: Bedrijf[];
   makers: Maker[];
   popup: boolean = false;
+  disableButton: boolean = false;
 
 
   constructor(private _reviewService: ReviewService, private _userService: UserService, private router: Router
@@ -57,12 +58,22 @@ export class AdminreviewsbeherenComponent implements OnInit {
         this.getReviews();
       });
     } else {
-      console.log("put", this.review)
+      console.log("put", this.review);
       this._reviewService.updateReview(this.review).subscribe(result =>{
         this.popup = false;
         this.getReviews();
       });
     }
+ }
+
+ checkValue(checkDropdown: number){
+   console.log(checkDropdown);
+   if (checkDropdown == 0) {
+     this.disableButton = true;
+   } else {
+     this.disableButton = false;
+   }
+   console.log(this.disableButton);
  }
 
 
