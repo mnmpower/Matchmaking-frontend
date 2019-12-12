@@ -46,7 +46,7 @@ export class UserService {
     return this.http.get<String[]>('https://localhost:44316/api/user/permissions');
   }
 
-  // haal permissions op
+  // haal makerID/bedrijfID/adminID van current user op
   getIdOfCurrentUser(): Observable<number> {
     return this.http.get<number>('https://localhost:44316/api/user/idcurrentuser');
   }
