@@ -33,22 +33,22 @@
   <!--   -------------- -->
   <!-- ALLES VOOR BEDRIJF -->
   <!--   -------------- -->
-  <a class="navbar-brand" routerLink="/bedrijf/dashboard" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" routerLink="/bedrijf/dashboard/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     dashboard
   </i></a>
 
-  <a class="navbar-brand" routerLink="/bedrijf/maakopdracht" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" routerLink="/bedrijf/maakopdracht/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     note_add
   </i></a>
 
-  <a class="navbar-brand" routerLink="/bedrijf/tags" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" routerLink="/bedrijf/tags/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     local_offer
   </i></a>
 
-  <a class="navbar-brand" routerLink="/bedrijf/reviews" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" routerLink="/bedrijf/reviews/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     rate_review
   </i></a>

@@ -40,10 +40,10 @@ const routes: Routes = [
   {path: 'maker/skills/:id', component: TagsMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/reviews/:id', component: ReviewMaker, canActivate: [NeedAuthGuard]},
 
-  {path: 'bedrijf/dashboard', component: DashboardBedrijf},
-  {path: 'bedrijf/maakopdracht', component: MaakopdrachtComponent},
-  {path: 'bedrijf/tags', component: TagsBedrijf},
-  {path: 'bedrijf/reviews', component: ReviewBedrijf},
+  {path: 'bedrijf/dashboard/:id', component: DashboardBedrijf},
+  {path: 'bedrijf/maakopdracht/:id', component: MaakopdrachtComponent},
+  {path: 'bedrijf/tags/:id', component: TagsBedrijf},
+  {path: 'bedrijf/reviews/:id', component: ReviewBedrijf},
 
   {path: 'admin/overzicht', component: AdminComponent},
   {path: 'admin/bedrijven', component: AdminbedrijvenbeherenComponent},
