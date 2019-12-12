@@ -23,6 +23,7 @@ import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/
 import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminreviewsbeheren.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import {NeedAuthGuard} from './security/need-auth-guard';
+import { OpdrachtComponent } from './maker/opdracht/opdracht.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,8 @@ const routes: Routes = [
   {path: 'maker/profiel/:id', component: ProfielMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/skills/:id', component: TagsMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/reviews/:id', component: ReviewMaker, canActivate: [NeedAuthGuard]},
+
+  {path: 'maker/opdracht/:opdrachtID', component: OpdrachtComponent},
 
   {path: 'bedrijf/dashboard/:id', component: DashboardBedrijf, canActivate: [NeedAuthGuard]},
   {path: 'bedrijf/maakopdracht/:id', component: MaakopdrachtComponent, canActivate: [NeedAuthGuard]},
@@ -55,7 +58,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

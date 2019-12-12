@@ -25,6 +25,13 @@ export class OpdrachtVerzoekService {
     });
   }
 
+  //haal opdrachtverzoek op voor opdracht id
+  getOpdrachtVerzoekOpdracht(opdrachtID: number): Observable<OpdrachtVerzoek> {
+    return this.http.get<OpdrachtVerzoek>('https://localhost:44316/api/opdrachtVerzoek/Opdracht/' + opdrachtID, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
   //voeg een nieuw opdrachtverzoek toe
   addOpdrachtVerzoek(opdrachtVerzoek: OpdrachtVerzoek) {
     return this.http.post<OpdrachtVerzoek>('https://localhost:44316/api/opdrachtVerzoek', opdrachtVerzoek, {

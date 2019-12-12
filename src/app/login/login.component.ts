@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     this._authenticatieService.authenticate(this.loginForm.value).subscribe(result => {
       localStorage.setItem('token', result.token);
       localStorage.setItem('functie', result.functie);
+      localStorage.setItem('userID', result.userID.toString());
 
       this._authenticatieService.isLoggedin.next(result.token ? true : false);
 

@@ -10,6 +10,7 @@ import { ProfielComponent } from './profiel/profiel.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ReviewComponent } from './review/review.component';
 import { RouterModule } from '@angular/router';
+import { OpdrachtComponent } from './opdracht/opdracht.component';
 
 
 
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     DashboardComponent,
     ProfielComponent,
     SkillsComponent,
-    ReviewComponent
+    ReviewComponent,
+    OpdrachtComponent
   ],
   imports: [
     CommonModule,

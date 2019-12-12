@@ -1,0 +1,73 @@
+<div class="container stickyfooter">
+    <div class="mb-3">
+        <span class="login-heading  h3">Opdracht</span>
+    </div>
+    <!-- COL PROFIEL-->
+
+    <div class="row">
+        <div class="col-sm-12 col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{opdracht?.titel}}</h2>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h5 class="card-title">Omschrijving</h5>
+                        <p class="card-text">{{opdracht?.omschrijving}}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="card-title">Locatie</h5>
+                        <p class="card-text">{{opdracht?.locatie}}</p>
+                        <iframe width="100%" height="250" frameBorder="0" scrolling="no"
+                            [src]="sanitizer.bypassSecurityTrustResourceUrl(mapsUrl)"></iframe>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--      COL TAGS -->
+        <div class="col-sm-12 col-md-3">
+
+
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Deelnemen</h5>
+                    <ng-container *ngIf="opdrachtVerzoek?.bevestiging">
+                        <p class="card-text">Je deelname werd geaccepteerd!</p>
+                        <button class="btn btn-primary" (click)="toggleVerzoek()"><i class="material-icons">done_all</i> Deelgenomen</button>
+                    </ng-container>
+                    <ng-container *ngIf="opdrachtVerzoek && !opdrachtVerzoek?.bevestiging">
+                        <p class="card-text">Je verzoek moet nog geaccepteerd worden door het bedrijf.</p>
+                        <button class="btn btn-primary" (click)="toggleVerzoek()"><i class="material-icons">done</i> In afwachting</button>
+                    </ng-container>
+                    <ng-container *ngIf="!opdrachtVerzoek">
+                        <p class="card-text">Ga de uitdaging aan!</p>
+                        <button class="btn btn-primary" (click)="toggleVerzoek()">Neem deel</button>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    Over het bedrijf
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h5 class="card-title">Naam</h5>
+                        <p class="card-text">{{opdracht?.bedrijf.bedrijfsnaam}}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="card-title">Biografie</h5>
+                        <p class="card-text">{{opdracht?.bedrijf.biografie}}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="card-title">Locatie</h5>
+                        <p class="card-text">{{opdracht?.bedrijf.locatie}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
