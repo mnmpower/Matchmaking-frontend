@@ -6,54 +6,54 @@
 <!--   -------------- -->
 <!-- ALLES VOOR MAKER -->
 <!--   -------------- -->
-  <a class="navbar-brand" routerLink="/maker/dashboard/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" matTooltip="Dashboard" routerLink="/maker/dashboard/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     dashboard
   </i></a>
 
-  <a class="navbar-brand" routerLink="/maker/opdrachten/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" matTooltip="Opdrachten" routerLink="/maker/opdrachten/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     note_add
   </i></a>
 
-  <a class="navbar-brand" routerLink="/maker/profiel/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" matTooltip="Profiel" routerLink="/maker/profiel/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     person_outline
   </i></a>
 
-  <a class="navbar-brand" routerLink="/maker/skills/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" matTooltip="Skills" routerLink="/maker/skills/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     local_offer
   </i></a>
 
-  <a class="navbar-brand" routerLink="/maker/reviews/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" matTooltip="Reviews" routerLink="/maker/reviews/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     rate_review
   </i></a>
   <!--   -------------- -->
   <!-- ALLES VOOR BEDRIJF -->
   <!--   -------------- -->
-  <a class="navbar-brand" routerLink="/bedrijf/dashboard/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" matTooltip="Dashboard" routerLink="/bedrijf/dashboard/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     dashboard
   </i></a>
 
-  <a class="navbar-brand" routerLink="/bedrijf/profiel/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" matTooltip="Profiel" routerLink="/bedrijf/profiel/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     person_outline
   </i></a>
 
-  <a class="navbar-brand" routerLink="/bedrijf/maakopdracht/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" matTooltip="Opdracht aanmaken" routerLink="/bedrijf/maakopdracht/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     note_add
   </i></a>
 
-  <a class="navbar-brand" routerLink="/bedrijf/tags/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" matTooltip="Tags" routerLink="/bedrijf/tags/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     local_offer
   </i></a>
 
-  <a class="navbar-brand" routerLink="/bedrijf/reviews/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+  <a class="navbar-brand" matTooltip="Reviews" routerLink="/bedrijf/reviews/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     rate_review
   </i></a>
@@ -62,7 +62,7 @@
   <!--   -------------- -->
   <!-- ALLES VOOR ADMIN -->
   <!--   -------------- -->
-  <a class="navbar-brand" routerLink="/admin/overzicht" routerLinkActive="active" *ngIf="isLoggedIn && isAdmin"
+  <a class="navbar-brand" matTooltip="Dashboard" routerLink="/admin/overzicht" routerLinkActive="active" *ngIf="isLoggedIn && isAdmin"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     dashboard
   </i></a>

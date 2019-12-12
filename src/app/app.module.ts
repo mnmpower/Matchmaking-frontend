@@ -27,6 +27,8 @@ import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import {SkillService} from './services/skill.service';
 import {NeedAuthGuard} from './security/need-auth-guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import {NeedAuthGuard} from './security/need-auth-guard';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    MatTooltipModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

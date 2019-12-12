@@ -9,7 +9,7 @@
                 <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
                 <hr>
             </div>
-            <p *ngIf="!opdrachten?.length">Geen resultaten. Probeer minder zoekcriteria te gebruiken.</p>
+            <p *ngIf="isEmpty">Geen resultaten. Probeer minder zoekcriteria te gebruiken.</p>
             <!--
         <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
             [length]="totalSize" [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
