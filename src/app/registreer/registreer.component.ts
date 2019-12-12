@@ -200,7 +200,6 @@ export class RegistreerComponent implements OnInit {
 
   maakBedrijf() {
     this.nieuweUser.functie = 'Bedrijf';
-
     console.log(this.nieuweUser);
     this._userService.addUser(this.nieuweUser).subscribe(r => {
       console.log(r);

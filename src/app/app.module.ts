@@ -20,13 +20,10 @@ import {UserService} from './services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/adminoverzicht/adminoverzicht.component';
-import { AdminskillsbeherenComponent } from './admin/adminskillsbeheren/adminskillsbeheren.component';
 import { AdminbedrijvenbeherenComponent } from './admin/adminbedrijvenbeheren/adminbedrijvenbeheren.component';
 import { AdminmakersbeherenComponent } from './admin/adminmakersbeheren/adminmakersbeheren.component';
 import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminreviewsbeheren.component';
 import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/adminopdrachtenbeheren.component';
-import { AdmintagsbeherenComponent } from './admin/admintagsbeheren/admintagsbeheren.component';
-import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypesbeheren.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import {SkillService} from './services/skill.service';
 
@@ -39,13 +36,10 @@ import {SkillService} from './services/skill.service';
     LoginComponent,
     RegistreerComponent,
     AdminComponent,
-    AdminskillsbeherenComponent,
     AdminbedrijvenbeherenComponent,
     AdminmakersbeherenComponent,
     AdminreviewsbeherenComponent,
     AdminopdrachtenbeherenComponent,
-    AdmintagsbeherenComponent,
-    AdmintypesbeherenComponent,
     BlockCopyPasteCutDirective,
     ForbiddenComponent
   ],

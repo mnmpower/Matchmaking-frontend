@@ -20,9 +20,6 @@ import { AdminbedrijvenbeherenComponent } from './admin/adminbedrijvenbeheren/ad
 import { AdminmakersbeherenComponent } from './admin/adminmakersbeheren/adminmakersbeheren.component';
 import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/adminopdrachtenbeheren.component';
 import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminreviewsbeheren.component';
-import { AdminskillsbeherenComponent } from './admin/adminskillsbeheren/adminskillsbeheren.component';
-import { AdmintagsbeherenComponent } from './admin/admintagsbeheren/admintagsbeheren.component';
-import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypesbeheren.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
@@ -49,9 +46,6 @@ const routes: Routes = [
   {path: 'admin/makers', component: AdminmakersbeherenComponent},
   {path: 'admin/opdrachten', component: AdminopdrachtenbeherenComponent},
   {path: 'admin/reviews', component: AdminreviewsbeherenComponent},
-  {path: 'admin/skills', component: AdminskillsbeherenComponent},
-  {path: 'admin/tags', component: AdmintagsbeherenComponent},
-  {path: 'admin/types', component: AdmintypesbeherenComponent},
 
   // al de rest doorsturen naar home
   {path: '**', redirectTo: ''}

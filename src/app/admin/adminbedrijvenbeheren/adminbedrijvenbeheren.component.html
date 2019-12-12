@@ -28,7 +28,7 @@
                                 </i></button>
                             <button type="button" class="btn btn-danger knop"
                                 (click)="deleteBedrijf(bedrijf.bedrijfID)"><i class="material-icons">
-                                    delete
+                                        delete_forever
                                 </i></button>
                         </td>
                     </tr>
@@ -48,6 +48,16 @@
             </i></div>
         <h1>Bedrijf toevoegen</h1>
         <form #bedrijfForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="email" *ngIf="bedrijf.bedrijfID == 0">Email</label>
+                <input type="email" *ngIf="bedrijf.bedrijfID == 0" class="form-control" id="email" [(ngModel)]="nieuweUser.email" name="bedrijfform5"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="paswoord" *ngIf="bedrijf.bedrijfID == 0">Paswoord</label>
+                <input type="password" *ngIf="bedrijf.bedrijfID == 0" class="form-control" id="paswoord" [(ngModel)]="nieuweUser.paswoord"
+                    name="bedrijfform6" required>
+            </div>
             <div class="form-group">
                 <label for="bedrijfsnaam">Naam</label>
                 <input type="text" class="form-control" id="bedrijfsnaam" [(ngModel)]="bedrijf.bedrijfsnaam"

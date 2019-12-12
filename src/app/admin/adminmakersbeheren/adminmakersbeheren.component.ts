@@ -3,6 +3,7 @@ import { MakerService } from 'src/app/services/maker.service';
 import { Maker } from 'src/app/models/maker.model';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-adminmakersbeheren',
@@ -14,6 +15,7 @@ export class AdminmakersbeherenComponent implements OnInit {
   maker: Maker;
   makers: Maker[];
   popup: boolean = false;
+  nieuweUser: User = new User(0, null, null, null, null);
 
 
   // FIX USERID NOG BIJ HET AANMAKEN VAN DE MAKER
@@ -32,10 +34,16 @@ export class AdminmakersbeherenComponent implements OnInit {
 
   onSubmit(){
     if (this.maker.makerID === 0){
-      console.log("post")
-      this._makerService.addMaker(this.maker).subscribe(result =>{
-        this.popup = false;
-        this.getMakers();
+      this.nieuweUser.functie = 'Maker';
+      console.log("post");
+      console.log(this.nieuweUser);
+      this._userService.addUser(this.nieuweUser).subscribe(r => {
+        this.maker.userID = r.userID;
+        console.log('maker: ', this.maker);
+        this._makerService.addMaker(this.maker).subscribe(result => {
+          this.popup = false;
+          this.getMakers();
+          });
       });
     } else {
       console.log("put", this.maker)
@@ -58,13 +66,13 @@ export class AdminmakersbeherenComponent implements OnInit {
     this.popup = false;
   }
 
-  deletemaker(id: number){
+  deleteMaker(id: number){
     this._makerService.deleteMaker(id).subscribe(result =>{
       this.getMakers();
     });
    }
 
-   updatemaker(maker: Maker){
+   updateMaker(maker: Maker){
      this.maker = maker;
      console.log(this.maker);
      this.popup = true;
