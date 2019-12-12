@@ -24,6 +24,7 @@ import { AdminskillsbeherenComponent } from './admin/adminskillsbeheren/adminski
 import { AdmintagsbeherenComponent } from './admin/admintagsbeheren/admintagsbeheren.component';
 import { AdmintypesbeherenComponent } from './admin/admintypesbeheren/admintypesbeheren.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import {NeedAuthGuard} from './security/need-auth-guard';
 
 
 const routes: Routes = [
@@ -33,11 +34,11 @@ const routes: Routes = [
   {path: 'forbidden', component: ForbiddenComponent},
 
   // authenticatien toevoegen bij alle onderstaande!!!
-  {path: 'maker/dashboard/:id', component: DashboardMaker},
-  {path: 'maker/opdrachten/:id', component: OpdrachtenComponent},
-  {path: 'maker/profiel/:id', component: ProfielComponent},
-  {path: 'maker/skills/:id', component: TagsMaker},
-  {path: 'maker/reviews/:id', component: ReviewMaker},
+  {path: 'maker/dashboard/:id', component: DashboardMaker, canActivate: [NeedAuthGuard] },
+  {path: 'maker/opdrachten/:id', component: OpdrachtenComponent, canActivate: [NeedAuthGuard]},
+  {path: 'maker/profiel/:id', component: ProfielComponent, canActivate: [NeedAuthGuard]},
+  {path: 'maker/skills/:id', component: TagsMaker, canActivate: [NeedAuthGuard]},
+  {path: 'maker/reviews/:id', component: ReviewMaker, canActivate: [NeedAuthGuard]},
 
   {path: 'bedrijf/dashboard', component: DashboardBedrijf},
   {path: 'bedrijf/maakopdracht', component: MaakopdrachtComponent},
