@@ -38,14 +38,14 @@
     dashboard
   </i></a>
 
-  <a class="navbar-brand" routerLink="/bedrijf/maakopdracht/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
-     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
-    note_add
-  </i></a>
-
   <a class="navbar-brand" routerLink="/bedrijf/profiel/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     person_outline
+  </i></a>
+
+  <a class="navbar-brand" routerLink="/bedrijf/maakopdracht/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    note_add
   </i></a>
 
   <a class="navbar-brand" routerLink="/bedrijf/tags/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"

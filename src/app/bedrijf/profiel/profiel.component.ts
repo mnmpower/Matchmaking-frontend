@@ -84,12 +84,9 @@ export class ProfielComponent implements OnInit {
   }
 
   DeleteBedrijf() {
-    this._userService.deleteUser(this.maker.userID).subscribe(re => {
       this._bedrijfService.deleteBedrijf(this.bedrijfID).subscribe(r => {
         this.navbar.logUit();
       });
-    });
-
   }
 
   Annuleer() {

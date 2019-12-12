@@ -17,6 +17,12 @@ export class TagService {
     });
   }
 
+  getTagsByBedrijfID(id: number): Observable<Tag[]> {
+    return this.http.get<Tag[]>('https://localhost:44316/api/tag/bybedrijf/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
   addTag(tag: Tag) {
     return this.http.post<Tag>('https://localhost:44316/api/tag', tag, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
@@ -34,9 +40,18 @@ export class TagService {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
-  getTagsByBedrijfID(id: number): Observable<Tag[]> {
-    return this.http.get<Tag[]>('https://localhost:44316/api/tag/byBedrijfID/' + id, {
+
+  deleteBedrijfTag(bedrijfID: number, id: number) {
+    return this.http.delete<Tag>('https://localhost:44316/api/tag/bedrijfTag/' + bedrijfID + '/' + id, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
+
+  // check voor bestaande tag
+  getTagIDFromName(tag: string) {
+    return this.http.get<number>('https://localhost:44316/api/tag/tagID/' + tag, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
 }

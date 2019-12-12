@@ -9,8 +9,8 @@
   <!-- LOCATIE INPUT FORM CONTROL -->
   <form [formGroup]="skillForm" (ngSubmit)="AddSkill()">
     <div class="form-group">
-      <label>Wat is jou skill?</label>
-      <input type="text" class="form-control" placeholder="Naukeurig" id="inputSkill"
+      <label>Wat is jouw skill?</label>
+      <input type="text" class="form-control" placeholder="Nauwkeurig" id="inputSkill"
              formControlName="inputSkill" autofocus
              [ngClass]="{ 'is-invalid': submitted && f.inputSkill.errors }">
       <div *ngIf="submitted && f.inputSkill.errors" class="invalid-feedback">
