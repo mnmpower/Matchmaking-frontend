@@ -3,6 +3,10 @@ import { Review } from 'src/app/models/review.model';
 import { ReviewService } from 'src/app/services/review.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { BedrijfService } from 'src/app/services/bedrijf.service';
+import { MakerService } from 'src/app/services/maker.service';
+import { Bedrijf } from 'src/app/models/bedrijf.model';
+import { Maker } from 'src/app/models/maker.model';
 
 @Component({
   selector: 'app-adminreviewsbeheren',
@@ -13,19 +17,35 @@ export class AdminreviewsbeherenComponent implements OnInit {
 
   review: Review;
   reviews: Review[];
+  bedrijven: Bedrijf[];
+  makers: Maker[];
   popup: boolean = false;
 
 
-  constructor(private _reviewService: ReviewService, private _userService: UserService, private router: Router)
+  constructor(private _reviewService: ReviewService, private _userService: UserService, private router: Router
+    , private _bedrijfService: BedrijfService, private _makerService: MakerService)
   {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    this._userService.getPermissions().subscribe(result =>{
-      if(result.indexOf("CRUD_REVIEWS") == -1) {
-        this.router.navigate(['/forbidden']);
-      }
-    });
+    // this._userService.getPermissions().subscribe(result =>{
+    //   if(result.indexOf("CRUD_REVIEWS") == -1) {
+    //     this.router.navigate(['/forbidden']);
+    //   }
+    // });
 
     this.getReviews();
+  }
+
+  getBedrijven(){
+    this._bedrijfService.getBedrijven().subscribe(result => {
+      this.bedrijven = result;
+      
+    });
+  }
+
+  getMakers(){
+    this._makerService.getMakers().subscribe(result => {
+      this.makers = result;
+    });
   }
 
 
@@ -50,6 +70,8 @@ export class AdminreviewsbeherenComponent implements OnInit {
     this._reviewService.getReviews().subscribe(result => {
       this.reviews = result;
       console.log('result: ', result);
+      this.getBedrijven();
+      this.getMakers();
     });
   }
 

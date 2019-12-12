@@ -12,11 +12,10 @@ $main-font: 'Roboto', sans-serif;
 body{
     background-color: #EFEEEF;
 }
-
 h1{
     font-family: $main-font;
     font-weight: bold;
-    color: $dark-clr;
+    color: black;
     text-align: center;
     border-bottom: $accent-clr solid 1px;
     margin-bottom: 20px;
@@ -56,7 +55,7 @@ table {
 
 .button {
     position: fixed !important;
-    bottom: 50px;
+    bottom: 150px;
     left: 50px;
 	min-width: 150px;
 	max-width: 250px;

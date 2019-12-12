@@ -3,6 +3,8 @@ import { Skill } from 'src/app/models/skill.model';
 import { SkillService } from 'src/app/services/skill.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { MakerService } from 'src/app/services/maker.service';
+import { Maker } from 'src/app/models/maker.model';
 
 @Component({
   selector: 'app-adminskillsbeheren',
@@ -13,19 +15,26 @@ export class AdminskillsbeherenComponent implements OnInit {
 
   skill: Skill;
   skills: Skill[];
+  makers: Maker[];
   popup: boolean = false;
 
 
-  constructor(private _skillService: SkillService, private _userService: UserService, private router: Router)
+  constructor(private _skillService: SkillService, private _userService: UserService, private router: Router, private _makerService: MakerService)
   {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    this._userService.getPermissions().subscribe(result =>{
-      if(result.indexOf("CRUD_SKILLS") == -1) {
-        this.router.navigate(['/forbidden']);
-      }
-    });
+    // this._userService.getPermissions().subscribe(result =>{
+    //   if(result.indexOf("CRUD_SKILLS") == -1) {
+    //     this.router.navigate(['/forbidden']);
+    //   }
+    // });
 
     this.getSkills();
+  }
+
+  getMakers(){
+    this._makerService.getMakers().subscribe(result => {
+      this.makers = result;
+    });
   }
 
 
@@ -50,6 +59,7 @@ export class AdminskillsbeherenComponent implements OnInit {
     this._skillService.getSkills().subscribe(result => {
       this.skills = result;
       console.log('result: ', result);
+      this.getMakers();
     });
   }
 

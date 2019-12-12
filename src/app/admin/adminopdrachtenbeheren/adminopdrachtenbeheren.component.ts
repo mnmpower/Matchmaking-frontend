@@ -3,6 +3,11 @@ import { Opdracht } from 'src/app/models/opdracht.model';
 import { OpdrachtService } from 'src/app/services/opdracht.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { BedrijfService } from 'src/app/services/bedrijf.service';
+import { StatusService } from 'src/app/services/status.service';
+import { Status } from 'src/app/models/status.model';
+import { Bedrijf } from 'src/app/models/bedrijf.model';
+import { find } from 'rxjs/operators';
 
 @Component({
   selector: 'app-adminopdrachtenbeheren',
@@ -13,17 +18,20 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
 
   opdracht: Opdracht;
   opdrachten: Opdracht[];
+  statussen: Status[];
+  bedrijven: Bedrijf[];
   popup: boolean = false;
 
 
-  constructor(private _opdrachtService: OpdrachtService, private _userService: UserService, private router: Router)
+  constructor(private _opdrachtService: OpdrachtService, private _userService: UserService, private router: Router
+    , private _bedrijfService: BedrijfService, private _statusService: StatusService)
   {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    this._userService.getPermissions().subscribe(result =>{
-      if(result.indexOf("CRUD_OPDRACHTEN") == -1) {
-        this.router.navigate(['/forbidden']);
-      }
-    });
+    // this._userService.getPermissions().subscribe(result =>{
+    //   if(result.indexOf("CRUD_OPDRACHTEN") == -1) {
+    //     this.router.navigate(['/forbidden']);
+    //   }
+    // });
 
     this.getOpdrachten();
   }
@@ -45,10 +53,26 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
     }
  }
 
+ getBedrijven(){
+  this._bedrijfService.getBedrijven().subscribe(result => {
+      this.bedrijven = result;
+      console.log("bedrijven: ", this.bedrijven);
+  });
+ }
+
+ getStatussen(){
+  this._statusService.getStatussen().subscribe(result => {
+      this.statussen = result;
+      console.log("statussen: ", this.statussen);
+  });
+ }
+
 
  getOpdrachten(){
     this._opdrachtService.getOpdrachten().subscribe(result => {
       this.opdrachten = result;
+      this.getBedrijven();
+      this.getStatussen();
       console.log('result: ', result);
     });
   }

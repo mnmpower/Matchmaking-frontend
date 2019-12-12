@@ -26,10 +26,13 @@
                         <td>{{maker.ervaring}}</td>
                         <td>{{maker.fotomaker}}</td>
                         <td>
-                            <button type="button" class="btn btn-warning knop" (click)="updatemaker(maker)"><i
-                                    class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger knop" (click)="deletemaker(maker.makerID)"><i
-                                    class="fas fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-warning knop" (click)="updateMaker(maker)"><i
+                                class="material-icons"> create
+                            </i></button>
+                        <button type="button" class="btn btn-danger knop"
+                            (click)="deleteMaker(maker.makerID)"><i class="material-icons">
+                                delete
+                            </i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -43,7 +46,9 @@
 
 <div class="popupBox" *ngIf="popup">
     <div class="popup">
-        <div (click)="closePopup()" id="close"><i class="fas fa-times fa-2x exitIcon"></i></div>
+        <div (click)="closePopup()" id="close"><i class="material-icons">
+            clear
+        </i></div>
         <h1>Maker toevoegen</h1>
         <form #makerForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
