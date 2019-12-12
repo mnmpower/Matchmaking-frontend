@@ -31,38 +31,48 @@ export class NavbarComponent implements OnInit {
             if (e) {
                 this.isLoggedIn = true;
                 console.log('e: ', e);
+
+
+                this._userService.getIdOfCurrentUser().subscribe(r => {
+                    switch (localStorage.getItem('functie')) {
+                        case 'Maker':
+                            this.isMaker = true;
+                            this.isAdmin = false;
+                            this.isBedrijf = false;
+                            this.makerId = r.valueOf();
+                            this.adminId = null;
+                            this.bedrijfId = null;
+                            break;
+                        case 'Admin':
+                            this.isMaker = false;
+                            this.isAdmin = true;
+                            this.isBedrijf = false;
+                            this.makerId = null;
+                            this.adminId = r.valueOf();
+                            this.bedrijfId = null;
+                            break;
+                        case 'Bedrijf':
+                            this.isMaker = false;
+                            this.isAdmin = false;
+                            this.isBedrijf = true;
+                            this.makerId = null;
+                            this.adminId = null;
+                            this.bedrijfId = r.valueOf();
+                            break;
+                        default:
+                            this.isMaker = false;
+                            this.isAdmin = false;
+                            this.isBedrijf = false;
+                            this.makerId = null;
+                            this.adminId = null;
+                            this.bedrijfId = null;
+                            break;
+                    }
+                });
             } else {
                 this.isLoggedIn = false;
             }
 
-            this._userService.getIdOfCurrentUser().subscribe(r => {
-                switch (localStorage.getItem('functie')) {
-                    case 'Maker':
-                        this.isMaker = true;
-                        this.isAdmin = false;
-                        this.isBedrijf = false;
-                        this.makerId = r.valueOf();
-                        this.adminId = null;
-                        this.bedrijfId = null;
-                        break;
-                    case 'Admin':
-                        this.isMaker = false;
-                        this.isAdmin = true;
-                        this.isBedrijf = false;
-                        this.makerId = null;
-                        this.adminId = r.valueOf();
-                        this.bedrijfId = null;
-                        break;
-                    case 'Bedrijf':
-                        this.isMaker = false;
-                        this.isAdmin = false;
-                        this.isBedrijf = true;
-                        this.makerId = null;
-                        this.adminId = null;
-                        this.bedrijfId = r.valueOf();
-                        break;
-                }
-            });
         });
     }
 
@@ -75,6 +85,7 @@ export class NavbarComponent implements OnInit {
         this.isAdmin = false;
         this.isBedrijf = false;
         this._authenticationService.isLoggedin.next(false);
+
         sessionStorage.clear();
         localStorage.clear();
         this.router.navigate(['login'], {replaceUrl: true});

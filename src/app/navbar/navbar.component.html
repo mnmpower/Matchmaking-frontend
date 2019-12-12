@@ -6,12 +6,12 @@
 <!--   -------------- -->
 <!-- ALLES VOOR MAKER -->
 <!--   -------------- -->
-  <a class="navbar-brand" routerLink="/maker/dashboard" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" routerLink="/maker/dashboard/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     dashboard
   </i></a>
 
-  <a class="navbar-brand" routerLink="/maker/opdrachten" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" routerLink="/maker/opdrachten/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     note_add
   </i></a>
@@ -21,12 +21,12 @@
     person_outline
   </i></a>
 
-  <a class="navbar-brand" routerLink="/maker/tags" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" routerLink="/maker/skills/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     local_offer
   </i></a>
 
-  <a class="navbar-brand" routerLink="/maker/reviews" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
+  <a class="navbar-brand" routerLink="/maker/reviews/{{makerId}}" routerLinkActive="active" *ngIf="isLoggedIn && isMaker"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     rate_review
   </i></a>

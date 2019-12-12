@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tags',
-  templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.scss']
+  templateUrl: './skills.component.html',
+  styleUrls: ['./skills.component.scss']
 })
-export class TagsComponent implements OnInit {
+export class SkillsComponent implements OnInit {
 
   constructor(private _userService: UserService, private router: Router)
   {

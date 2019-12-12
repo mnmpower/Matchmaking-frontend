@@ -7,7 +7,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfielComponent } from './profiel/profiel.component';
-import { TagsComponent } from './tags/tags.component';
+import { SkillsComponent } from './skills/skills.component';
 import { ReviewComponent } from './review/review.component';
 
 
@@ -19,7 +19,7 @@ import { ReviewComponent } from './review/review.component';
     OpdrachtenLijstComponent,
     DashboardComponent,
     ProfielComponent,
-    TagsComponent,
+    SkillsComponent,
     ReviewComponent
   ],
   imports: [
