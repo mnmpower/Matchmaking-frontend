@@ -34,4 +34,9 @@ export class TagService {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
+  getTagsByBedrijfID(id: number): Observable<Tag[]> {
+    return this.http.get<Tag[]>('https://localhost:44316/api/tag/byBedrijfID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
 }
