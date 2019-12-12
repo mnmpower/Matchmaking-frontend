@@ -38,18 +38,11 @@ const routes: Routes = [
   {path: 'maker/skills/:id', component: TagsMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/reviews/:id', component: ReviewMaker, canActivate: [NeedAuthGuard]},
 
-<<<<<<< HEAD
-  {path: 'bedrijf/dashboard/:id', component: DashboardBedrijf},
-  {path: 'bedrijf/maakopdracht/:id', component: MaakopdrachtComponent},
-  {path: 'bedrijf/tags/:id', component: TagsBedrijf},
-  {path: 'bedrijf/reviews/:id', component: ReviewBedrijf},
-=======
   {path: 'bedrijf/dashboard/:id', component: DashboardBedrijf, canActivate: [NeedAuthGuard]},
   {path: 'bedrijf/maakopdracht/:id', component: MaakopdrachtComponent, canActivate: [NeedAuthGuard]},
   {path: 'bedrijf/tags/:id', component: TagsBedrijf, canActivate: [NeedAuthGuard]},
   {path: 'bedrijf/reviews/:id', component: ReviewBedrijf, canActivate: [NeedAuthGuard]},
   {path: 'bedrijf/profiel/:id', component: ProfielBedrijf, canActivate: [NeedAuthGuard]},
->>>>>>> ac67469fb6fcfbf937b8aabed9f83c396fe9ec07
 
   {path: 'admin/overzicht', component: AdminComponent},
   {path: 'admin/bedrijven', component: AdminbedrijvenbeherenComponent},

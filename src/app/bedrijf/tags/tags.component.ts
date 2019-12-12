@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Tag } from 'src/app/models/tag.model';
 import { TagService } from 'src/app/services/tag.service';
+import { BedrijfTag } from 'src/app/models/bedrijf-tag.model';
 
 @Component({
   selector: 'app-tags',
@@ -19,6 +20,7 @@ export class TagsComponent implements OnInit {
 
   tags: Tag[] = [];
   tag = new Tag(null, null);
+  bedrijfTag = new BedrijfTag(null, null, null);
 
   constructor(
     private _userService: UserService,
@@ -44,6 +46,10 @@ export class TagsComponent implements OnInit {
     });
   }
 
+  get f() {
+    return this.tagForm.controls;
+  }
+
   LaadTags() {
     this._tagService.getTagsByBedrijfID(this.bedrijfID).subscribe(r => {
       this.tags = r;
@@ -51,6 +57,41 @@ export class TagsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  RemoveTag(tag: Tag) {
+    this._tagService.deleteBedrijfTag(this.bedrijfID, tag.tagID).subscribe(r => {
+      this.LaadTags();
+    });
+  }
+
+  AddTag() {
+    this.submitted = true;
+
+    if (this.tagForm.invalid){
+      return;
+    }
+
+    var tagnaam = this.Capitalize(this.tagForm.controls.inputTag.value);
+    this._tagService.getTagIDFromName(tagnaam).subscribe(r => {
+      if(r == 0) {
+        //tag bestaat nog niet
+        this.tag.tagID = 0;
+        this.tag.naam = tagnaam;
+
+        //TODO: insert
+      } else {
+        this.bedrijfTag.bedrijfID = this.bedrijfID;
+        this.bedrijfTag.tagID = r;
+
+        //TODO: insert
+      }
+    });
+  }
+
+  Capitalize = (s) => {
+    if (typeof s !== 'string') return '';
+    return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
   }
 
 }
