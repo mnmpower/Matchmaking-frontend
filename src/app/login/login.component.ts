@@ -38,15 +38,14 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', result.token);
       localStorage.setItem('functie', result.functie);
 
-      this._makerService.getMakerbyUserID(result.userID).subscribe(r => {
-        this.makerID = r.makerID;
-
-
-        this._authenticatieService.isLoggedin.next(result.token ? true : false);
+      this._authenticatieService.isLoggedin.next(result.token ? true : false);
 
         switch (result.functie) {
           case 'Maker':
-            this.router.navigate(['maker/dashboard/' + this.makerID], {replaceUrl: true});
+            this._makerService.getMakerbyUserID(result.userID).subscribe(r => {
+              this.makerID = r.makerID;
+              this.router.navigate(['maker/dashboard/' + this.makerID], {replaceUrl: true});
+            });
             break;
           case 'Admin':
             this.router.navigate(['admin/overzicht'], {replaceUrl: true});
@@ -55,7 +54,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['bedrijf/dashboard'], {replaceUrl: true});
             break;
         }
-      });
+
+      
     });
   }
 
