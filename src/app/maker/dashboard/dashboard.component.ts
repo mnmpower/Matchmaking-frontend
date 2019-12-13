@@ -59,8 +59,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getMogelijkeOpdrachten(){
+    console.log('MakerID:', this.makerID);
     this._opdrachtService.getOpdrachtVoorstellen().subscribe(result => {
       this.mogelijkeOpdrachten = result;
+    
     });
   }
 

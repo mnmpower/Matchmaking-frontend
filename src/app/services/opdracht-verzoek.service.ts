@@ -55,7 +55,7 @@ export class OpdrachtVerzoekService {
 
   //haal opdrachtverzoek op voor maker id
   getOpdrachtVerzoekenByMakerID(id: number): Observable<OpdrachtVerzoek[]> {
-    return this.http.get<OpdrachtVerzoek[]>('https://localhost:44316/api/OpdrachtVerzoek/byMakerID/' + id, {
+    return this.http.get<OpdrachtVerzoek[]>('https://localhost:44316/api/opdrachtVerzoek/byMakerID/' + id, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
