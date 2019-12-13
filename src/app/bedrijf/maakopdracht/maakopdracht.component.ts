@@ -52,6 +52,7 @@ export class MaakopdrachtComponent implements OnInit {
     console.log('gemaakte opdracht form: ', this.CreateOpdrachtForm.value);
     this._opdrachtService.addOpdracht(this.CreateOpdrachtForm.value).subscribe(result => {
        console.log('gemaakte opdracht: ', result);
+       this.router.navigate(['/bedrijf/dashboard/', this.bedrijfID]);
     });
 
   }
