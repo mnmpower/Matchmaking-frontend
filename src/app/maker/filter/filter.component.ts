@@ -28,6 +28,8 @@ export class FilterComponent implements OnInit {
 
     this._locationService.getPosition().then(pos => {
       this.position = pos;
+    }, err => {
+      this.position = { lat: null, lng: null };
     });
 
     this.filterForm = this._fb.group({
@@ -48,8 +50,11 @@ export class FilterComponent implements OnInit {
         let filter = new OpdrachtenFilter();
         filter = Object.assign(filter, val);
 
-        filter.longitude = this.position.lng;
-        filter.latitude = this.position.lat;
+        if (this.position.lng != null) {
+          filter.longitude = this.position.lng;
+          filter.latitude = this.position.lat;
+          filter.filterDistance = true;
+        }
 
         filter.bedrijven = [];
 
@@ -58,6 +63,7 @@ export class FilterComponent implements OnInit {
             filter.bedrijven.push(b.bedrijfID);
         });
 
+        console.log(filter);
         this.filterOutput.emit(filter);
       });
 
