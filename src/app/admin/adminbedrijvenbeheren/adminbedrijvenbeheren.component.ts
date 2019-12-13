@@ -88,7 +88,7 @@ export class AdminbedrijvenbeherenComponent implements OnInit {
   toevoegenPopup(){
     this.title = "Toevoegen";
     this.popup = true;
-    this.bedrijf = new Bedrijf(0, '', '', '', '', 0);  }
+    this.bedrijf = new Bedrijf(0, '', '', '', '', 0, null, null);  }
 
   ngOnInit() {
   }

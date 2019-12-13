@@ -17,12 +17,12 @@ import {Maker} from '../../models/maker.model';
 export class ProfielComponent implements OnInit {
 
   bedrijfID = 0;
-  bedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null);
+  bedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null, null, null);
   tags: Tag[] = [];
 
   editBedrijfForm: FormGroup;
   submitted = false;
-  editBedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null);
+  editBedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null, null, null);
 
   editMode = false;
 
@@ -45,7 +45,7 @@ export class ProfielComponent implements OnInit {
     this.bedrijfID = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
 
     this._bedrijfService.getBedrijf(this.bedrijfID).subscribe(r => {
-      this.VullBedrijf(r);
+      this.VulBedrijf(r);
 
       this._tagService.getTagsByBedrijfID(this.bedrijfID).subscribe(re => {
         this.tags = re;
@@ -62,7 +62,7 @@ export class ProfielComponent implements OnInit {
     });
   }
 
-  private VullBedrijf(b: Bedrijf) {
+  private VulBedrijf(b: Bedrijf) {
     this.bedrijf.userID = b.userID;
     this.bedrijf.bedrijfID = b.bedrijfID;
     this.bedrijf.locatie = b.locatie;
@@ -114,7 +114,7 @@ export class ProfielComponent implements OnInit {
       console.log(re);
 
       this._bedrijfService.getBedrijf(this.bedrijfID).subscribe(r => {
-        this.VullBedrijf(r);
+        this.VulBedrijf(r);
 
         this.editMode = false;
       });

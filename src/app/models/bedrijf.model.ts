@@ -1,3 +1,6 @@
+import { Opdracht } from './opdracht.model';
+import { Review } from './review.model';
+
 export class Bedrijf {
   constructor(
     public bedrijfID: number,
@@ -5,7 +8,9 @@ export class Bedrijf {
     public locatie: string,
     public biografie: string,
     public fotoBedrijf: string,
-    public userID: number
+    public userID: number,
+    public opdrachten: Opdracht[],
+    public reviews: Review[]
   ) {
   }
 }

@@ -11,6 +11,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { ReviewComponent } from './review/review.component';
 import { RouterModule } from '@angular/router';
 import { OpdrachtComponent } from './opdracht/opdracht.component';
+import { BedrijfProfielComponent } from './bedrijf-profiel/bedrijf-profiel.component';
 
 
 
@@ -23,7 +24,8 @@ import { OpdrachtComponent } from './opdracht/opdracht.component';
     ProfielComponent,
     SkillsComponent,
     ReviewComponent,
-    OpdrachtComponent
+    OpdrachtComponent,
+    BedrijfProfielComponent
   ],
   imports: [
     CommonModule,

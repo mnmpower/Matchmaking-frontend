@@ -23,7 +23,7 @@
             <p class="card-text">{{bedrijf.biografie}}</p>
           </li>
           <li class="list-group-item">
-            <h5 class="card-title">Ervaring</h5>
+            <h5 class="card-title">Locatie</h5>
             <p class="card-text">{{bedrijf.locatie}}</p>
           </li>
         </ul>
@@ -52,10 +52,10 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <!-- Voornaam -->
+              <!-- Bedrijfsnaam -->
               <div class="form-group">
-                <label >Voornaam</label>
-                <input type="text" placeholder="Hier uw voornaam" class="form-control"
+                <label >Bedrijfsnaam</label>
+                <input type="text" placeholder="Hier uw bedrijfsnaam" class="form-control"
                        formControlName="inputBedrijfsnaam"
                        [ngClass]="{ 'is-invalid': submitted && f2M.inputBedrijfsnaam.errors }">
 
@@ -67,10 +67,10 @@
 
 
             <li class="list-group-item">
-              <!-- achternaam -->
+              <!-- Locatie -->
               <div class="form-group">
-                <label >Naam</label>
-                <input type="text" class="form-control" placeholder="Hier uw achternaam"
+                <label >Locatie</label>
+                <input type="text" class="form-control" placeholder="Hier uw locatie"
                        formControlName="inputLocatie"
                        [ngClass]="{ 'is-invalid': submitted && f2M.inputLocatie.errors }">
 
@@ -84,7 +84,7 @@
             <li class="list-group-item">
               <!-- LOCATIE INPUT FORM CONTROL -->
               <div class="form-group">
-                <label >Geboortedatum</label>
+                <label >Biografie</label>
                 <input type="text" class="form-control" placeholder="DD/MM/JJJJ"
                        formControlName="inputBiografieBedrijf"
                        [ngClass]="{ 'is-invalid': submitted && f2M.inputBiografieBedrijf.errors }">
@@ -104,7 +104,7 @@
 
     <!--      COL TAGS -->
     <div class="col-sm-12 col-md-3">
-      <h3 class="login-heading mt-4 mb-2">Tags</h3>
+      <h3 class="login-heading mb-2">Tags</h3>
       <div *ngFor="let tag of tags">
         <div class="list-group text-center col-sm-12 col-md-12">
           <div class="list-group-item list-group-item-action list list-group-item-primary">

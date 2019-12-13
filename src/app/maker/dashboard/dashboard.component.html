@@ -1,44 +1,42 @@
 <div class="container stickyfooter">
   <div class="container">
+
     <h3 class="mt-3 mb-3">Aanvaarde opdrachten</h3>
     <div class="row">
-
-        <div class="col-md-12">
-            <div class="card mb-2" *ngIf="aanvaardeOpdrachten.length > 0">
-              <div class="card-body">
-                <div *ngFor="let opdracht of aanvaardeOpdrachten">
-                <h4>{{opdracht.titel}}</h4>
-                <p>{{opdracht.omschrijving}}</p>
-                <p>{{opdracht.locatie}}</p>
-                <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
-                <hr>
-              </div>
+      <div class="col-md-12">
+        <div class="card mb-2" *ngIf="aanvaardeOpdrachten.length > 0">
+          <div class="card-body">
+            <div *ngFor="let opdracht of aanvaardeOpdrachten">
+              <h4>{{opdracht.titel}}</h4>
+              <p>{{opdracht.omschrijving}}</p>
+              <p>{{opdracht.locatie}}</p>
+              <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
+              <hr>
+            </div>
           </div>
-
         </div>
         <p *ngIf="aanvaardeOpdrachten.length == 0">U bent nog niet aanvaard voor een opdracht.</p>
       </div>
     </div>
 
-
     <h3 class="mt-3 mb-3">Ingeschreven opdrachten</h3>
     <div class="row">
       <div class="col-md-12">
-          <div class="card mb-2" *ngIf="opgegevenOpdrachten.length > 0">
-            <div class="card-body">
-              <div *ngFor="let opdracht of opgegevenOpdrachten">
-                <h4>{{opdracht.titel}}</h4>
-                <p>{{opdracht.omschrijving}}</p>
-                <p>{{opdracht.locatie}}</p>
-                <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
-                <hr>
-              </div>
+        <div class="card mb-2" *ngIf="opgegevenOpdrachten.length > 0">
+          <div class="card-body">
+            <div *ngFor="let opdracht of opgegevenOpdrachten">
+              <h4>{{opdracht.titel}}</h4>
+              <p>{{opdracht.omschrijving}}</p>
+              <p>{{opdracht.locatie}}</p>
+              <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
+              <hr>
             </div>
           </div>
-          <p *ngIf="opgegevenOpdrachten.length == 0">
-            U bent momenteel niet opgegeven voor een opdracht.<br>
-            <a [routerLink]="['/maker/opdrachten/', makerID]">Klik hier om een nieuwe opdracht te zoeken.</a>
-          </p>
+        </div>
+        <p *ngIf="opgegevenOpdrachten.length == 0">
+          U bent momenteel niet opgegeven voor een opdracht.<br>
+          <a [routerLink]="['/maker/opdrachten/', makerID]">Klik hier om een nieuwe opdracht te zoeken.</a>
+        </p>
       </div>
     </div>
 
@@ -55,7 +53,6 @@
               <hr>
             </div>
           </div>
-
         </div>
         <p *ngIf="mogelijkeOpdrachten.length == 0">U bent momenteel niet opgegeven voor een opdracht.</p>
       </div>

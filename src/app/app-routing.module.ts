@@ -24,6 +24,7 @@ import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminr
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import {NeedAuthGuard} from './security/need-auth-guard';
 import { OpdrachtComponent } from './maker/opdracht/opdracht.component';
+import { BedrijfProfielComponent } from './maker/bedrijf-profiel/bedrijf-profiel.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'maker/profiel/:id', component: ProfielMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/skills/:id', component: TagsMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/reviews/:id', component: ReviewMaker, canActivate: [NeedAuthGuard]},
+  {path: 'maker/bedrijf/:bedrijfID', component: BedrijfProfielComponent},
 
   {path: 'maker/opdracht/:opdrachtID', component: OpdrachtComponent},
 
