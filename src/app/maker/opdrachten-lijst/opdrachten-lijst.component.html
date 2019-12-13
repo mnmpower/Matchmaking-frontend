@@ -5,7 +5,7 @@
             <div *ngFor="let opdracht of opdrachten">
                 <h4>{{opdracht.titel}}</h4>
                 <p>{{opdracht.omschrijving}}</p>
-                <p>{{opdracht.locatie}} ({{ opdracht.afstand }} km)</p>
+                <p>{{opdracht.locatie}} (&lt; {{ opdracht.afstand }} km)</p>
                 <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
                 <hr>
             </div>

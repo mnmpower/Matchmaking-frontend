@@ -4,6 +4,7 @@ export class OpdrachtenFilter {
         public limit: number = 0,
         public zoekterm: string = '',
         public maxAfstand: number = 0,
+        public filterDistance: boolean = false,
         public longitude: number = 0,
         public latitude: number = 0,
         public minPersonen: number = 0,
