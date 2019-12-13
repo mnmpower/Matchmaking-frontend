@@ -17,6 +17,18 @@ export class ReviewService {
     });
   }
 
+  getReviewsOfMaker(makerID: number): Observable<Review[]> {
+    return this.http.get<Review[]>('https://localhost:44316/api/review/maker/' + makerID, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  getReviewsOfBedrijf(bedrijfID: number): Observable<Review[]> {
+    return this.http.get<Review[]>('https://localhost:44316/api/review/bedrijf/' + bedrijfID, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
   addReview(review: Review) {
     return this.http.post<Review>('https://localhost:44316/api/review', review, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))

@@ -104,7 +104,7 @@ export class AdminreviewsbeherenComponent implements OnInit {
 
   toevoegenPopup(){
     this.popup = true;
-    this.review = new Review(0, '', 0, 0, 0);
+    this.review = new Review(0, '', 0, 0, 0, null, null, null, null, null, null);
   }
 
 

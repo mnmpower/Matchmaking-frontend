@@ -1,1 +1,28 @@
-<p>bedrijf-review works!</p>
+<div class="container stickyfooter">
+    <h3 class="mt-3 mb-3">Reviews over uw bedrijf</h3>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="card mb-2" *ngFor="let review of reviews">
+            <div class="card-body">
+                <div class="row">
+                <div class="col-md-2 text-center">
+                    <img src="../assets/images/noProfile.jpg" class="img img-fluid" />
+                </div>
+                <div class="col-md-10">
+                    TODO LINK TO USER PAGE
+                    <p>
+                        <a class="float-left" [routerLink]="['/']">{{ review.maker.voornaam + " " + review.maker.achternaam }}</a>&nbsp;schreef op {{ review.datum | date : "d/MM/y" }}:
+                        <span class="float-right">{{ review.aantalLikes }} personen vinden dit leuk</span>
+                    </p>
+                    <div class="clearfix"></div>
+                    <p>{{ review.text }}</p>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="text-center">
+            <p *ngIf="isEmpty">Er hebben nog geen makers een review over jouw bedrijf geschreven.</p>
+            </div>
+        </div>
+    </div>
+</div>

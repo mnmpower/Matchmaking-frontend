@@ -7,6 +7,7 @@ import { TagsComponent } from './tags/tags.component';
 import { ReviewComponent } from './review/review.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfielComponent } from './profiel/profiel.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -21,7 +22,8 @@ import { ProfielComponent } from './profiel/profiel.component';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     MaakopdrachtComponent
