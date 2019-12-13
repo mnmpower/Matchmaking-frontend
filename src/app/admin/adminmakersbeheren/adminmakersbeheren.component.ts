@@ -63,6 +63,11 @@ export class AdminmakersbeherenComponent implements OnInit {
     });
   }
 
+  overzichtMaker(id: number){
+    this.router.navigate(['maker/profiel/' + id]);
+    
+  }
+
   closePopup(){
     this.popup = false;
   }
