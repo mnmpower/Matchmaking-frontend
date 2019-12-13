@@ -38,7 +38,7 @@ export class ProfielComponent implements OnInit {
   ) {
 
     this._userService.getPermissions().subscribe(result => {
-      if (result.indexOf('VIEW_PROFIEL') == -1) {
+      if (result.indexOf('VIEW_MAKER-PROFIEL') == -1) {
         this.router.navigate(['/forbidden']);
       }
 
