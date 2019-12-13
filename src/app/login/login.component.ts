@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
         case 'Maker':
           this._makerService.getMakerbyUserID(result.userID).subscribe(r => {
             this.makerID = r.makerID;
+            console.log("makerID in authenticate functie", r);
             this.router.navigate(['maker/dashboard/' + this.makerID], {replaceUrl: true});
           });
           break;
@@ -69,6 +70,8 @@ export class LoginComponent implements OnInit {
           });
           break;
       }
+
+    
 
 
     });

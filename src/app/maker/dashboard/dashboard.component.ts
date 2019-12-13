@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
         this.router.navigate(['/forbidden']);
       }
 
-      this.getMogelijkeOpdrachten();
+      this.getOpdrachtVoorstellen();
     });
 
 
@@ -58,9 +58,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getMogelijkeOpdrachten(){
+  getOpdrachtVoorstellen(){
     console.log('MakerID:', this.makerID);
     this._opdrachtService.getOpdrachtVoorstellen().subscribe(result => {
+      console.log('mogelijke opdrachten: ',result);
       this.mogelijkeOpdrachten = result;
     });
   }
