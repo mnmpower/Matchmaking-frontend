@@ -9,9 +9,8 @@
                             <img src="../assets/images/noProfile.jpg" class="img img-fluid" />
                         </div>
                         <div class="col-md-10">
-                            TODO LINK TO BEDRIJF PAGE
                             <p>
-                                <a class="float-left" [routerLink]="['/']">{{ review.bedrijf.bedrijfsnaam }}</a>&nbsp;schreef op {{ review.datum | date : "d/MM/y" }}:
+                                <a class="float-left" [routerLink]="['/maker/bedrijf/', review.bedrijf.bedrijfID]">{{ review.bedrijf.bedrijfsnaam }}</a>&nbsp;schreef op {{ review.datum | date : "d/MM/y" }}:
                                 <span class="float-right">{{ review.aantalLikes }} personen vinden dit leuk</span>
                             </p>
                             <div class="clearfix"></div>
