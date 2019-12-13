@@ -18,12 +18,12 @@ import {NavbarComponent} from '../../navbar/navbar.component';
 export class ProfielComponent implements OnInit {
 
   makerID = 0;
-  maker: Maker = new Maker(null, null, null, null, null, null, null, null, null);
+  maker: Maker = new Maker(null, null, null, null, null, null, null, null, null, null);
   skills: Skill[] = [];
 
   editMakerForm: FormGroup;
   submittedMaker = false;
-  editMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null);
+  editMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null, null);
 
   editMode = false;
 

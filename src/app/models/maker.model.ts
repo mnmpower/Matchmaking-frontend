@@ -1,3 +1,5 @@
+import { Review } from './review.model';
+
 export class Maker {
   constructor(
     public makerID: number,
@@ -8,7 +10,8 @@ export class Maker {
     public linkedIn: string,
     public ervaring: string,
     public fotoMaker: string,
-    public userID: number
+    public userID: number,
+    public reviews: Review[]
   ) {
   }
 }

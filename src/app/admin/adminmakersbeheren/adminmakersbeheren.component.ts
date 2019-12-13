@@ -88,7 +88,7 @@ export class AdminmakersbeherenComponent implements OnInit {
   toevoegenPopup(){
     this.title = "Toevoegen";
     this.popup = true;
-    this.maker = new Maker(0, '', '', '', '', '', '', '', 0);
+    this.maker = new Maker(0, '', '', '', '', '', '', '', 0, null);
     this.nieuweUser = new User(0, '', '', '', '');
   }
 

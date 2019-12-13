@@ -34,7 +34,7 @@ export class RegistreerComponent implements OnInit {
 
   nieuweUser: User = new User(null, null, null, null, null);
   nieuwBedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null, null, null);
-  nieuweMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null);
+  nieuweMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null, null);
 
   constructor(
     private fb: FormBuilder,

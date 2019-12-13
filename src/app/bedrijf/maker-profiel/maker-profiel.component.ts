@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Bedrijf } from 'src/app/models/bedrijf.model';
-import { Tag } from 'src/app/models/tag.model';
-import { BedrijfService } from 'src/app/services/bedrijf.service';
+import { Maker } from 'src/app/models/maker.model';
+import { Skill } from 'src/app/models/skill.model';
+import { MakerService } from 'src/app/services/maker.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TagService } from 'src/app/services/tag.service';
+import { SkillService } from 'src/app/services/skill.service';
 import { UserService } from 'src/app/services/user.service';
 import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
-  selector: 'app-bedrijf-profiel',
-  templateUrl: './bedrijf-profiel.component.html',
-  styleUrls: ['./bedrijf-profiel.component.scss']
+  selector: 'app-maker-profiel',
+  templateUrl: './maker-profiel.component.html',
+  styleUrls: ['./maker-profiel.component.scss']
 })
-export class BedrijfProfielComponent implements OnInit {
+export class MakerProfielComponent implements OnInit {
 
-  bedrijfID = 0;
-  bedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null, null, null);
-  tags: Tag[] = [];
+  makerID = 0;
+  maker: Maker = new Maker(null, null, null, null, null, null, null, null, null, null);
+  skills: Skill[] = [];
 
   constructor(
-    private _bedrijfService: BedrijfService,
+    private _makerService: MakerService,
     private _Activatedroute: ActivatedRoute,
-    private _tagService: TagService,
+    private _skillService: SkillService,
     private _userService: UserService,
     private _reviewService: ReviewService,
     private router: Router
@@ -33,16 +33,19 @@ export class BedrijfProfielComponent implements OnInit {
       }
     });
 
-    this.bedrijfID = parseInt(this._Activatedroute.snapshot.paramMap.get('bedrijfID'));
+    this.makerID = parseInt(this._Activatedroute.snapshot.paramMap.get('makerID'));
 
-    this.laadBedrijf();
+    this.laadMaker();
   }
 
-  laadBedrijf() {
-    this._bedrijfService.getBedrijf(this.bedrijfID).subscribe(r => {
-      this.bedrijf = r;
+  ngOnInit() {
+  }
+
+  laadMaker() {
+    this._makerService.getMaker(this.makerID).subscribe(r => {
+      this.maker = r;
       
-      this.bedrijf.reviews.forEach(element => {
+      this.maker.reviews.forEach(element => {
         this._reviewService.getReviewLike(element.reviewID).subscribe(rl => {
             console.log("ReviewLike: ", rl);
             if(rl != null) {
@@ -53,22 +56,19 @@ export class BedrijfProfielComponent implements OnInit {
         });
       });
 
-      console.log(this.bedrijf)
+      console.log(this.maker)
 
-      this._tagService.getTagsByBedrijfID(this.bedrijfID).subscribe(re => {
-        this.tags = re;
-        console.log(this.tags);
+      this._skillService.getSkillsByMakerID(this.makerID).subscribe(re => {
+        this.skills = re;
+        console.log(this.skills);
       });
     });
-  }
-
-  ngOnInit() {
   }
 
   like(reviewID: number) {
     this._reviewService.addReviewLike(reviewID).subscribe(rl => {
       console.log("Review geliket");
-      this.laadBedrijf();
+      this.laadMaker();
     });
   }
 

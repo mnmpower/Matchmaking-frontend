@@ -13,7 +13,8 @@ export class Review {
     public makerLikers: Maker[],
     public bedrijfLikers: Bedrijf[],
     public maker: Maker,
-    public bedrijf: Bedrijf
+    public bedrijf: Bedrijf,
+    public magLiken: boolean
   ) {
   }
 }

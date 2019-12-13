@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Review} from '../models/review.model';
+import { ReviewLike } from '../models/review-like.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,18 @@ export class ReviewService {
 
   deleteReview(reviewID: number) {
     return this.http.delete<Review>('https://localhost:44316/api/review/' + reviewID, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  getReviewLike(reviewID: number): Observable<ReviewLike> {
+    return this.http.get<ReviewLike>('https://localhost:44316/api/review/like/' + reviewID, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  addReviewLike(reviewID: number): Observable<ReviewLike> {
+    return this.http.post<ReviewLike>('https://localhost:44316/api/review/like/' + reviewID, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
