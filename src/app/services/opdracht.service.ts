@@ -58,4 +58,11 @@ export class OpdrachtService {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
+
+    //haal aantal voorgestelde opdrachten op
+    getOpdrachtVoorstellen(): Observable<Opdracht[]> {
+      return this.http.get<Opdracht[]>("https://localhost:44316/api/opdracht/voorgesteldeOpdrachten", {
+        headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
+      });
+    }
 }

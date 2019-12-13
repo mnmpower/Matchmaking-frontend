@@ -38,14 +38,14 @@
     dashboard
   </i></a>
 
-  <a class="navbar-brand" matTooltip="Profiel" routerLink="/bedrijf/profiel/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
-     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
-    person_outline
-  </i></a>
-
   <a class="navbar-brand" matTooltip="Opdracht aanmaken" routerLink="/bedrijf/maakopdracht/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     note_add
+  </i></a>
+
+  <a class="navbar-brand" matTooltip="Profiel" routerLink="/bedrijf/profiel/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
+     [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
+    person_outline
   </i></a>
 
   <a class="navbar-brand" matTooltip="Tags" routerLink="/bedrijf/tags/{{bedrijfId}}" routerLinkActive="active" *ngIf="isLoggedIn && isBedrijf"
@@ -62,7 +62,7 @@
   <!--   -------------- -->
   <!-- ALLES VOOR ADMIN -->
   <!--   -------------- -->
-  <a class="navbar-brand" matTooltip="Dashboard" routerLink="/admin/overzicht" routerLinkActive="active" *ngIf="isLoggedIn && isAdmin"
+  <a class="navbar-brand" matTooltip="Dashboard" routerLink="/admin/overzicht/{{adminId}}" routerLinkActive="active" *ngIf="isLoggedIn && isAdmin"
      [routerLinkActiveOptions]="{ exact: true }"><i class="material-icons md-34 md-light">
     dashboard
   </i></a>

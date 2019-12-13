@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Admin} from '../models/admin.model';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Maker} from '../models/maker.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,12 @@ export class AdminService {
   //verwijder admin
   deleteAdmin(id: number) {
     return this.http.delete<Admin>('https://localhost:44316/api/admin/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  getAdminByUserID(id: number): Observable<Admin> {
+    return this.http.get<Admin>('https://localhost:44316/api/admin/byUserID/' + id, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }

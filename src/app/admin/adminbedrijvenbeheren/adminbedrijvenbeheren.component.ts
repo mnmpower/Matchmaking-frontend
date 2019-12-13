@@ -74,6 +74,10 @@ export class AdminbedrijvenbeherenComponent implements OnInit {
     });
    }
 
+   overzichtBedrijf(id: number){
+      this.router.navigate(['bedrijf/profiel/' + id]);
+   }
+
    updateBedrijf(bedrijf: Bedrijf){
      this.title = "Wijzigen";
      this.bedrijf = bedrijf;
