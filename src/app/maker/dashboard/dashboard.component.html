@@ -1,3 +1,32 @@
 <div class="container stickyfooter">
-  <p>MAKERdashboard works!</p>
+  <div class="container">
+    <div class="row">
+
+
+      <div class="col-sm-12 col-lg-6 mb-4 mt-4">
+        <h1 class="">Uw aanvaarde opdrachten</h1>
+        <div *ngFor="let opdracht of aanvaardeOpdrachten">
+          <h2><b>{{opdracht.titel}}</b></h2>
+          <p>{{opdracht.omschrijving}}</p>
+          <p>{{opdracht.locatie}}</p>
+          <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
+          <hr>
+        </div>
+        <p *ngIf="aanvaardeOpdrachten.length == 0">U bent nog niet aanvaard voor een opdracht.</p>
+
+      </div>
+
+      <div class="col-sm-12 col-lg-6  mb-4 mt-4">
+        <h1 class="">Uw opdrachtverzoeken</h1>
+        <div *ngFor="let opdracht of opgegevenOpdrachten">
+          <h2><b>{{opdracht.titel}}</b></h2>
+          <p>{{opdracht.omschrijving}}</p>
+          <p>{{opdracht.locatie}}</p>
+          <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
+          <hr>
+        </div>
+        <p *ngIf="opgegevenOpdrachten.length == 0">U bent momenteel niet opgegeven voor een opdracht.</p>
+      </div>
+    </div>
+  </div>
 </div>
