@@ -47,10 +47,10 @@ export class ProfielComponent implements OnInit {
     this._bedrijfService.getBedrijf(this.bedrijfID).subscribe(r => {
       this.VullBedrijf(r);
 
-      // this._tagService.getTagsByBedrijfID(this.bedrijfID).subscribe(re => {
-      //   this.tags = re;
-      //   console.log(this.tags);
-      // });
+      this._tagService.getTagsByBedrijfID(this.bedrijfID).subscribe(re => {
+        this.tags = re;
+        console.log(this.tags);
+      });
 
 
       this.editBedrijf = this.bedrijf;
