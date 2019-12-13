@@ -49,9 +49,9 @@ const routes: Routes = [
 
   {path: 'admin/overzicht', component: AdminComponent},
   {path: 'admin/bedrijven', component: AdminbedrijvenbeherenComponent},
-  {path: 'admin/makers', component: AdminmakersbeherenComponent},
-  {path: 'admin/opdrachten', component: AdminopdrachtenbeherenComponent},
-  {path: 'admin/reviews', component: AdminreviewsbeherenComponent},
+  {path: 'admin/makers/', component: AdminmakersbeherenComponent},
+  {path: 'admin/opdrachten/', component: AdminopdrachtenbeherenComponent},
+  {path: 'admin/reviews/', component: AdminreviewsbeherenComponent},
 
   // al de rest doorsturen naar home
   {path: '**', redirectTo: ''}
