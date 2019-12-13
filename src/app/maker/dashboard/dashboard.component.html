@@ -7,7 +7,7 @@
             <div class="card mb-2" *ngIf="aanvaardeOpdrachten.length > 0">
               <div class="card-body">
                 <div *ngFor="let opdracht of aanvaardeOpdrachten">
-                <h2><b>{{opdracht.titel}}</b></h2>
+                <h4>{{opdracht.titel}}</h4>
                 <p>{{opdracht.omschrijving}}</p>
                 <p>{{opdracht.locatie}}</p>
                 <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
@@ -27,7 +27,7 @@
           <div class="card mb-2" *ngIf="opgegevenOpdrachten.length > 0">
             <div class="card-body">
               <div *ngFor="let opdracht of opgegevenOpdrachten">
-                <h2><b>{{opdracht.titel}}</b></h2>
+                <h4>{{opdracht.titel}}</h4>
                 <p>{{opdracht.omschrijving}}</p>
                 <p>{{opdracht.locatie}}</p>
                 <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
@@ -48,7 +48,7 @@
         <div class="card mb-2" *ngIf="mogelijkeOpdrachten.length > 0">
           <div class="card-body">
             <div *ngFor="let opdracht of mogelijkeOpdrachten">
-              <h2><b>{{opdracht.titel}}</b></h2>
+              <h4>{{opdracht.titel}}</h4>
               <p>{{opdracht.omschrijving}}</p>
               <p>{{opdracht.locatie}}</p>
               <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>

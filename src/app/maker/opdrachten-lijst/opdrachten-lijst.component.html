@@ -3,7 +3,7 @@
     <div class="row mt-4">
         <div class="col-md-12">
             <div *ngFor="let opdracht of opdrachten">
-                <h1>{{opdracht.titel}}</h1>
+                <h4>{{opdracht.titel}}</h4>
                 <p>{{opdracht.omschrijving}}</p>
                 <p>{{opdracht.locatie}} ({{ opdracht.afstand }} km)</p>
                 <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
