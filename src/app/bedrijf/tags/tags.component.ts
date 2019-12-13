@@ -79,12 +79,28 @@ export class TagsComponent implements OnInit {
         this.tag.tagID = 0;
         this.tag.naam = tagnaam;
 
-        //TODO: insert
+        //tag toevoegen
+        this._tagService.addTag(this.tag).subscribe(t => {
+          console.log("New tag inserted");
+          
+          //bedrijfTag toevoegen
+          this.bedrijfTag.bedrijfTagID = 0;
+          this.bedrijfTag.tagID = t.tagID;
+          this.bedrijfTag.bedrijfID = this.bedrijfID;
+          this._tagService.addBedrijfTag(this.bedrijfTag).subscribe(b => {
+            console.log("New bedrijfTag inserted");
+            this.LaadTags();
+          });
+        });
       } else {
-        this.bedrijfTag.bedrijfID = this.bedrijfID;
+        //bedrijfTag toevoegen
+        this.bedrijfTag.bedrijfTagID = 0;
         this.bedrijfTag.tagID = r;
-
-        //TODO: insert
+        this.bedrijfTag.bedrijfID = this.bedrijfID;
+        this._tagService.addBedrijfTag(this.bedrijfTag).subscribe(b => {
+          console.log("New bedrijfTag inserted");
+          this.LaadTags();
+        });
       }
     });
   }

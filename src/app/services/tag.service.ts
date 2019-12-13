@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Tag} from '../models/tag.model';
+import { BedrijfTag } from '../models/bedrijf-tag.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,12 @@ export class TagService {
   // check voor bestaande tag
   getTagIDFromName(tag: string) {
     return this.http.get<number>('https://localhost:44316/api/tag/tagID/' + tag, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  addBedrijfTag(bedrijfTag: BedrijfTag) {
+    return this.http.post<Tag>('https://localhost:44316/api/tag/bedrijfTag', bedrijfTag, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
