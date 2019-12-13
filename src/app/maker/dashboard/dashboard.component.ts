@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   alleOpdrachten: Opdracht[] = [];
   aanvaardeOpdrachten: Opdracht[] = [];
   opgegevenOpdrachten: Opdracht[] = [];
+  mogelijkeOpdrachten: Opdracht[] = [];
 
   constructor(
     private _userService: UserService,
@@ -31,6 +32,8 @@ export class DashboardComponent implements OnInit {
       if (result.indexOf('VIEW_MAKER-DASHBOARD') == -1) {
         this.router.navigate(['/forbidden']);
       }
+
+      this.getMogelijkeOpdrachten();
     });
 
 
@@ -54,6 +57,14 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
+  getMogelijkeOpdrachten(){
+    this._opdrachtService.getOpdrachtVoorstellen().subscribe(result => {
+      this.mogelijkeOpdrachten = result;
+    });
+  }
+
+
 
   ngOnInit() {
   }
