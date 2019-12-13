@@ -19,16 +19,12 @@ import {SecurityInterceptor} from './security/security.interceptor';
 import {UserService} from './services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './admin/adminoverzicht/adminoverzicht.component';
-import { AdminbedrijvenbeherenComponent } from './admin/adminbedrijvenbeheren/adminbedrijvenbeheren.component';
-import { AdminmakersbeherenComponent } from './admin/adminmakersbeheren/adminmakersbeheren.component';
-import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminreviewsbeheren.component';
-import { AdminopdrachtenbeherenComponent } from './admin/adminopdrachtenbeheren/adminopdrachtenbeheren.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import {SkillService} from './services/skill.service';
 import {NeedAuthGuard} from './security/need-auth-guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -38,11 +34,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     WelkomComponent,
     LoginComponent,
     RegistreerComponent,
-    AdminComponent,
-    AdminbedrijvenbeherenComponent,
-    AdminmakersbeherenComponent,
-    AdminreviewsbeherenComponent,
-    AdminopdrachtenbeherenComponent,
     BlockCopyPasteCutDirective,
     ForbiddenComponent
   ],
@@ -55,7 +46,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     HttpClientModule,
     FormsModule,
     MatTooltipModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AdminModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

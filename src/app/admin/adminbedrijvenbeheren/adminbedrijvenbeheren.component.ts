@@ -75,7 +75,7 @@ export class AdminbedrijvenbeherenComponent implements OnInit {
    }
 
    overzichtBedrijf(id: number){
-      this.router.navigate(['bedrijf/profiel/' + id]);
+      this.router.navigate(['admin/bedrijf/' + id]);
    }
 
    updateBedrijf(bedrijf: Bedrijf){

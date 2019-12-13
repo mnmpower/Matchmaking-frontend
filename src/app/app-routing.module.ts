@@ -24,8 +24,11 @@ import { AdminreviewsbeherenComponent } from './admin/adminreviewsbeheren/adminr
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import {NeedAuthGuard} from './security/need-auth-guard';
 import { OpdrachtComponent } from './maker/opdracht/opdracht.component';
+
 import { BedrijfProfielComponent } from './maker/bedrijf-profiel/bedrijf-profiel.component';
 import { MakerProfielComponent } from './bedrijf/maker-profiel/maker-profiel.component';
+import { BedrijfProfielComponent as AdminBedrijfProfielComponent } from './admin/bedrijf-profiel/bedrijf-profiel.component';
+import { MakerProfielComponent as AdminMakerProfielComponent } from './admin/maker-profiel/maker-profiel.component';
 
 
 const routes: Routes = [
@@ -56,6 +59,8 @@ const routes: Routes = [
   {path: 'admin/makers', component: AdminmakersbeherenComponent},
   {path: 'admin/opdrachten', component: AdminopdrachtenbeherenComponent},
   {path: 'admin/reviews', component: AdminreviewsbeherenComponent},
+  {path: 'admin/bedrijf/:bedrijfID', component: AdminBedrijfProfielComponent},
+  {path: 'admin/maker/:makerID', component: AdminMakerProfielComponent},
 
   // al de rest doorsturen naar home
   {path: '**', redirectTo: ''}

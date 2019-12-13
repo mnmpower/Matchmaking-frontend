@@ -64,7 +64,7 @@ export class AdminmakersbeherenComponent implements OnInit {
   }
 
   overzichtMaker(id: number){
-    this.router.navigate(['maker/profiel/' + id]);
+    this.router.navigate(['admin/maker/' + id]);
     
   }
 
