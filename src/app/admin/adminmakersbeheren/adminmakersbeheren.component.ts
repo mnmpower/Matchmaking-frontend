@@ -15,7 +15,8 @@ export class AdminmakersbeherenComponent implements OnInit {
   maker: Maker;
   makers: Maker[];
   popup: boolean = false;
-  nieuweUser: User = new User(0, null, null, null, null);
+  nieuweUser: User;
+  title: string = '';
 
 
   // FIX USERID NOG BIJ HET AANMAKEN VAN DE MAKER
@@ -73,14 +74,17 @@ export class AdminmakersbeherenComponent implements OnInit {
    }
 
    updateMaker(maker: Maker){
+    this.title = "Wijzigen";
      this.maker = maker;
      console.log(this.maker);
      this.popup = true;
    }
 
   toevoegenPopup(){
+    this.title = "Toevoegen";
     this.popup = true;
     this.maker = new Maker(0, '', '', '', '', '', '', '', 0);
+    this.nieuweUser = new User(0, '', '', '', '');
   }
 
   ngOnInit() {

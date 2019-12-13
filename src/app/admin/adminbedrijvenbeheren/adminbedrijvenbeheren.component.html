@@ -46,7 +46,7 @@
         <div (click)="closePopup()" id="close"><i class="material-icons">
                 clear
             </i></div>
-        <h1>Bedrijf toevoegen</h1>
+        <h1>Bedrijf {{title}}</h1>
         <form #bedrijfForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="email" *ngIf="bedrijf.bedrijfID == 0">Email</label>
@@ -78,7 +78,7 @@
                 <input type="text" class="form-control" id="fotoBedrijf" [(ngModel)]="bedrijf.fotoBedrijf"
                     name="bedrijfform4" required>
             </div>
-            <button type="submit" class="btn btn-primary submitKnop">Toevoegen</button>
+            <button type="submit" class="btn btn-primary submitKnop">{{title}}</button>
         </form>
     </div>
 </div>

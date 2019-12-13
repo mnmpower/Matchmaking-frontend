@@ -16,6 +16,7 @@ export class AdminbedrijvenbeherenComponent implements OnInit {
   popup: boolean = false;
   bedrijf: Bedrijf;
   nieuweUser: User;
+  title: string = '';
 
   // USERID NOG KOPPELEN AAN EEN NIEUW BEDRIJF
   constructor(private _bedrijfService: BedrijfService, private _userService: UserService, private router: Router)
@@ -74,12 +75,14 @@ export class AdminbedrijvenbeherenComponent implements OnInit {
    }
 
    updateBedrijf(bedrijf: Bedrijf){
+     this.title = "Wijzigen";
      this.bedrijf = bedrijf;
      console.log(this.bedrijf);
      this.popup = true;
    }
 
   toevoegenPopup(){
+    this.title = "Toevoegen";
     this.popup = true;
     this.bedrijf = new Bedrijf(0, '', '', '', '', 0);  }
 
