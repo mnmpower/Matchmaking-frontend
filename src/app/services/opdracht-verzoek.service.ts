@@ -52,4 +52,11 @@ export class OpdrachtVerzoekService {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
+
+  //haal opdrachtverzoek op voor maker id
+  getOpdrachtVerzoekenByMakerID(id: number): Observable<OpdrachtVerzoek[]> {
+    return this.http.get<OpdrachtVerzoek[]>('https://localhost:44316/api/OpdrachtVerzoek/byMakerID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
 }

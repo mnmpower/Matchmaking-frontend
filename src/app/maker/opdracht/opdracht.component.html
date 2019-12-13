@@ -35,7 +35,7 @@
                     <h5 class="card-title">Deelnemen</h5>
                     <ng-container *ngIf="opdrachtVerzoek?.bevestiging">
                         <p class="card-text">Je deelname werd geaccepteerd!</p>
-                        <button class="btn btn-primary" (click)="toggleVerzoek()"><i class="material-icons">done_all</i> Deelgenomen</button>
+                        <button class="btn btn-primary"><i class="material-icons">done_all</i> Deelgenomen</button>
                     </ng-container>
                     <ng-container *ngIf="opdrachtVerzoek && !opdrachtVerzoek?.bevestiging">
                         <p class="card-text">Je verzoek moet nog geaccepteerd worden door het bedrijf.</p>
