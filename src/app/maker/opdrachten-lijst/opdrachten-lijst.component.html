@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container">
     <div class="overlay" *ngIf="isLoading"></div>
-    <div class="container">
-        <div class="span8">
+    <div class="row mt-4">
+        <div class="col-md-12">
             <div *ngFor="let opdracht of opdrachten">
                 <h1>{{opdracht.titel}}</h1>
                 <p>{{opdracht.omschrijving}}</p>
@@ -11,9 +11,9 @@
             </div>
             <p *ngIf="isEmpty">Geen resultaten. Probeer minder zoekcriteria te gebruiken.</p>
             <!--
-        <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
-            [length]="totalSize" [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
-        </mat-paginator>-->
+            <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
+                [length]="totalSize" [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
+            </mat-paginator>-->
         </div>
     </div>
 </div>
