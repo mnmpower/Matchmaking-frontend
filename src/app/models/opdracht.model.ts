@@ -1,4 +1,5 @@
 import { Bedrijf } from './bedrijf.model';
+import { Status } from './status.model';
 
 export class Opdracht {
   constructor(
@@ -10,7 +11,8 @@ export class Opdracht {
     public bedrijfID: number,
     public aantalPersonen: number,
     public statusID: number,
-    public afstand: number
+    public afstand: number,
+    public status: Status,
   ) {
   }
 }

@@ -34,32 +34,32 @@
                 <div class="card-body">
                     <h5 class="card-title">Deelnemen</h5>
                     <!-- Opdracht gesloten & niet geaccepteerd -->
-                    <ng-container *ngIf="opdracht?.status.naam == 'Closed' && !opdrachtVerzoek?.bevestiging">
+                    <ng-container *ngIf="opdracht?.status?.naam == 'Closed' && !opdrachtVerzoek?.bevestiging">
                         <p class="card-text">Deze opdracht is gesloten!</p>
                     </ng-container>
                     <!-- Opdracht gesloten & niet geaccepteerd -->
-                    <ng-container *ngIf="opdracht?.status.naam == 'Closed' && opdrachtVerzoek?.bevestiging">
-                        <p class="card-text">Je deelname werd geaccepteerd!</p>
-                        <button class="btn btn-primary"><i class="material-icons">done_all</i> Deelgenomen</button>
-                    </ng-container>
-                    <!-- Opdracht open/selecting & niet geaccepteerd -->
-                    <ng-container *ngIf="(opdracht?.status.naam == 'Open' || opdracht?.status.naam == 'Selecting') && opdrachtVerzoek && !opdrachtVerzoek?.bevestiging">
-                        <p class="card-text">Je verzoek moet nog geaccepteerd worden door het bedrijf.</p>
-                        <button class="btn btn-primary" (click)="toggleVerzoek()"><i class="material-icons">done</i> In afwachting</button>
-                    </ng-container>
-                    <!-- Opdracht selecting & niet opgegeven -->
-                    <ng-container *ngIf="opdracht?.status.naam == 'Selecting' && !opdrachtVerzoek">
-                        <p class="card-text">De selectie wordt gemaakt, je kan je niet meer opgeven.</p>
-                    </ng-container>
-                    <!-- Opdracht open & nog niet opgegeven -->
-                    <ng-container *ngIf="opdracht?.status.naam == 'Open' && !opdrachtVerzoek">
-                        <p class="card-text">Ga de uitdaging aan!</p>
-                        <button class="btn btn-primary" (click)="toggleVerzoek()">Neem deel</button>
-                    </ng-container>
-                    <!-- Opdracht draft -->
-                    <ng-container *ngIf="opdracht?.status.naam == 'Draft'">
-                        <p class="card-text">Deze opdracht is nog in ontwikkeling, kom later terug!</p>
-                    </ng-container>
+                    <ng-container *ngIf="opdracht?.status?.naam == 'Closed' && opdrachtVerzoek?.bevestiging">
+                            <p class="card-text">Je deelname werd geaccepteerd!</p>
+                            <button class="btn btn-primary"><i class="material-icons">done_all</i> Deelgenomen</button>
+                        </ng-container>
+                        <!-- Opdracht open/selecting & niet geaccepteerd -->
+                        <ng-container *ngIf="(opdracht?.status?.naam == 'Open' || opdracht?.status?.naam == 'Selecting') && opdrachtVerzoek && !opdrachtVerzoek?.bevestiging">
+                            <p class="card-text">Je verzoek moet nog geaccepteerd worden door het bedrijf.</p>
+                            <button class="btn btn-primary" (click)="toggleVerzoek()"><i class="material-icons">done</i> In afwachting</button>
+                        </ng-container>
+                        <!-- Opdracht selecting & niet opgegeven -->
+                        <ng-container *ngIf="opdracht?.status?.naam == 'Selecting' && !opdrachtVerzoek">
+                            <p class="card-text">De selectie wordt gemaakt, je kan je niet meer opgeven.</p>
+                        </ng-container>
+                        <!-- Opdracht open & nog niet opgegeven -->
+                        <ng-container *ngIf="opdracht?.status?.naam == 'Open' && !opdrachtVerzoek">
+                            <p class="card-text">Ga de uitdaging aan!</p>
+                            <button class="btn btn-primary" (click)="toggleVerzoek()">Neem deel</button>
+                        </ng-container>
+                        <!-- Opdracht draft -->
+                        <ng-container *ngIf="opdracht?.status?.naam == 'Draft'">
+                            <p class="card-text">Deze opdracht is nog in ontwikkeling, kom later terug!</p>
+                        </ng-container>
                 </div>
             </div>
 
