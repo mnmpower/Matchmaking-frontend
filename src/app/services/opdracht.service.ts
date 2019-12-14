@@ -54,15 +54,43 @@ export class OpdrachtService {
 
   //haal aantal opdrachten op
   getAantalOpdrachten(): Observable<number> {
-    return this.http.get<number>("https://localhost:44316/api/opdracht/count", {
-      headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
+    return this.http.get<number>('https://localhost:44316/api/opdracht/count', {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
 
-    //haal aantal voorgestelde opdrachten op
-    getOpdrachtVoorstellen(): Observable<Opdracht[]> {
-      return this.http.get<Opdracht[]>("https://localhost:44316/api/opdracht/voorgesteldeOpdrachten", {
-        headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
-      });
-    }
+  //haal aantal voorgestelde opdrachten op
+  getOpdrachtVoorstellen(): Observable<Opdracht[]> {
+    return this.http.get<Opdracht[]>('https://localhost:44316/api/opdracht/voorgesteldeOpdrachten', {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  //haal aantal voorgestelde opdrachten op
+  getOpenOpdrachtenByBedrijfID(id: number): Observable<Opdracht[]> {
+    return this.http.get<Opdracht[]>('https://localhost:44316/api/opdracht/getOpenOpdrachtenByBedrijfID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  //haal aantal voorgestelde opdrachten op
+  getBewerkbareOpdrachtenByBedrijfID(id: number): Observable<Opdracht[]> {
+    return this.http.get<Opdracht[]>('https://localhost:44316/api/opdracht/getBewerkbareOpdrachtenByBedrijfID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  //haal aantal voorgestelde opdrachten op
+  getSelecteerOpdrachtenByBedrijfID(id: number): Observable<Opdracht[]> {
+    return this.http.get<Opdracht[]>('https://localhost:44316/api/opdracht/getSelecteerOpdrachtenByBedrijfID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  //haal aantal voorgestelde opdrachten op
+  getGeslotenOpdrachtenByBedrijfID(id: number): Observable<Opdracht[]> {
+    return this.http.get<Opdracht[]>('https://localhost:44316/api/opdracht/getGeslotenOpdrachtenByBedrijfID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
 }
