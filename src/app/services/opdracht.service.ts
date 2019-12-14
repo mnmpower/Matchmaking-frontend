@@ -93,4 +93,20 @@ export class OpdrachtService {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
+
+  
+  //haal aantal opdrachten Bedrijf op
+  getOpdrachtenByBedrijfID(id: number): Observable<Opdracht[]> {
+    return this.http.get<Opdracht[]>('https://localhost:44316/api/opdracht/opdrachtenByBedrijfID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+    //haal aantal  opdrachten Maker op
+    getOpdrachtenByMakerID(id: number): Observable<Opdracht[]> {
+      return this.http.get<Opdracht[]>('https://localhost:44316/api/opdracht/opdrachtenByMakerID/' + id, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+      });
+    }
+
 }

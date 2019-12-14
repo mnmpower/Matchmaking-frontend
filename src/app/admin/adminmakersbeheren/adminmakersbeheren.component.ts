@@ -4,6 +4,8 @@ import { Maker } from 'src/app/models/maker.model';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
+import { OpdrachtService } from 'src/app/services/opdracht.service';
+import { Opdracht } from 'src/app/models/opdracht.model';
 
 @Component({
   selector: 'app-adminmakersbeheren',
@@ -14,13 +16,15 @@ export class AdminmakersbeherenComponent implements OnInit {
 
   maker: Maker;
   makers: Maker[];
+  opdrachten: Opdracht[];
   popup: boolean = false;
+  popup2: boolean = false;
   nieuweUser: User;
   title: string = '';
 
 
   // FIX USERID NOG BIJ HET AANMAKEN VAN DE MAKER
-  constructor(private _makerService: MakerService, private _userService: UserService, private router: Router)
+  constructor(private _makerService: MakerService, private _userService: UserService, private router: Router, private _opdrachtenService: OpdrachtService)
   {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
     this._userService.getPermissions().subscribe(result =>{
@@ -65,17 +69,26 @@ export class AdminmakersbeherenComponent implements OnInit {
 
   overzichtMaker(id: number){
     this.router.navigate(['admin/maker/' + id]);
-    
   }
 
   closePopup(){
     this.popup = false;
+    this.popup2 = false;
+  }
+
+  deleteMakerPopup(maker: Maker){
+    this.maker = maker;
+    this._opdrachtenService.getOpdrachtenByMakerID(maker.makerID).subscribe(result =>{
+    this.opdrachten = result;
+    });
+    this.popup2 = true;
   }
 
   deleteMaker(id: number){
     this._makerService.deleteMaker(id).subscribe(result =>{
       this.getMakers();
     });
+    this.popup2 = false;
    }
 
    updateMaker(maker: Maker){

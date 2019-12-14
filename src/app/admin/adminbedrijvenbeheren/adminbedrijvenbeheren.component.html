@@ -24,15 +24,15 @@
                         <td>{{bedrijf.fotoBedrijf}}</td>
                         <td>
                             <button type="button" class="btn btn-info knop"
-                            (click)="overzichtBedrijf(bedrijf.bedrijfID)"><i class="material-icons">
-                                person_outline
-                            </i></button>
+                                (click)="overzichtBedrijf(bedrijf.bedrijfID)"><i class="material-icons">
+                                    person_outline
+                                </i></button>
                             <button type="button" class="btn btn-warning knop" (click)="updateBedrijf(bedrijf)"><i
                                     class="material-icons"> create
                                 </i></button>
-                            <button type="button" class="btn btn-danger knop"
-                                (click)="deleteBedrijf(bedrijf.bedrijfID)"><i class="material-icons">
-                                        delete_forever
+                            <button type="button" class="btn btn-danger knop" (click)="deleteBedrijfPopup(bedrijf)"><i
+                                    class="material-icons">
+                                    delete_forever
                                 </i></button>
                         </td>
                     </tr>
@@ -54,35 +54,62 @@
         <form #bedrijfForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="email" *ngIf="bedrijf.bedrijfID == 0">Email</label>
-                <input type="email" *ngIf="bedrijf.bedrijfID == 0" class="form-control" id="email" placeholder="Email" [(ngModel)]="nieuweUser.email" name="bedrijfform5"
-                    required>
+                <input type="email" *ngIf="bedrijf.bedrijfID == 0" class="form-control" id="email" placeholder="Email"
+                    [(ngModel)]="nieuweUser.email" name="bedrijfform5" required>
             </div>
             <div class="form-group">
                 <label for="paswoord" *ngIf="bedrijf.bedrijfID == 0">Paswoord</label>
-                <input type="password" *ngIf="bedrijf.bedrijfID == 0" class="form-control" id="paswoord" placeholder="Paswoord" [(ngModel)]="nieuweUser.paswoord"
-                    name="bedrijfform6" required>
+                <input type="password" *ngIf="bedrijf.bedrijfID == 0" class="form-control" id="paswoord"
+                    placeholder="Paswoord" [(ngModel)]="nieuweUser.paswoord" name="bedrijfform6" required>
             </div>
             <div class="form-group">
                 <label for="bedrijfsnaam">Naam</label>
-                <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Naam bedrijf" [(ngModel)]="bedrijf.bedrijfsnaam"
-                    name="bedrijfform1" required>
+                <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Naam bedrijf"
+                    [(ngModel)]="bedrijf.bedrijfsnaam" name="bedrijfform1" required>
             </div>
             <div class="form-group">
                 <label for="locatie">Locatie</label>
-                <input type="text" class="form-control" id="locatie" placeholder="Locatie" [(ngModel)]="bedrijf.locatie" name="bedrijfform2"
-                    required>
+                <input type="text" class="form-control" id="locatie" placeholder="Locatie" [(ngModel)]="bedrijf.locatie"
+                    name="bedrijfform2" required>
             </div>
             <div class="form-group">
                 <label for="biografie">Biografie</label>
-                <input type="text" class="form-control" id="biografie" placeholder="Biografie" [(ngModel)]="bedrijf.biografie"
-                    name="bedrijfform3" required>
+                <input type="text" class="form-control" id="biografie" placeholder="Biografie"
+                    [(ngModel)]="bedrijf.biografie" name="bedrijfform3" required>
             </div>
             <div class="form-group">
                 <label for="fotoBedrijf">fotoBedrijf</label>
-                <input type="text" class="form-control" id="fotoBedrijf" placeholder="Link" [(ngModel)]="bedrijf.fotoBedrijf"
-                    name="bedrijfform4" required>
+                <input type="text" class="form-control" id="fotoBedrijf" placeholder="Link"
+                    [(ngModel)]="bedrijf.fotoBedrijf" name="bedrijfform4" required>
             </div>
             <button type="submit" class="btn btn-primary submitKnop">{{title}}</button>
+        </form>
+    </div>
+</div>
+
+<div class="popupBox" *ngIf="popup2">
+    <div class="popup2">
+        <div (click)="closePopup()" id="close"><i class="material-icons">
+                clear
+            </i></div>
+        <h1>Bent u zeker dat u {{bedrijf.bedrijfsnaam}} wil verwijderen?</h1>
+        <form #bedrijfForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <p>
+                    <label>Locatie: {{bedrijf.locatie}}</label>
+                </p>
+                <p>
+                    <label>Biografie: {{bedrijf.biografie}}</label>
+                </p>
+                <label>Opdrachten:</label>
+                <ul>
+                    <li *ngFor="let opdracht of opdrachten">
+                            {{opdracht.titel}}
+                    </li>
+                </ul>
+            </div>
+            <button (click)="deleteBedrijf(bedrijf.bedrijfID)" class="btn btn-primary submitKnop">Verwijderen</button>   
+            <button (click)="closePopup()" class="btn btn-primary submitKnop">Annuleren</button>
         </form>
     </div>
 </div>

@@ -33,7 +33,7 @@
                             <button type="button" class="btn btn-warning knop" (click)="updateMaker(maker)"><i
                                     class="material-icons"> create
                                 </i></button>
-                            <button type="button" class="btn btn-danger knop" (click)="deleteMaker(maker.makerID)"><i
+                            <button type="button" class="btn btn-danger knop" (click)="deleteMakerPopup(maker)"><i
                                     class="material-icons">
                                     delete_forever
                                 </i></button>
@@ -101,6 +101,33 @@
                     required>
             </div>-->
             <button type="submit" class="btn btn-primary submitKnop">{{title}}</button>
+        </form>
+    </div>
+</div>
+
+<div class="popupBox" *ngIf="popup2">
+    <div class="popup2">
+        <div (click)="closePopup()" id="close"><i class="material-icons">
+                clear
+            </i></div>
+        <h1>Bent u zeker dat u {{maker.voornaam}} {{maker.achternaam}} wil verwijderen?</h1>
+        <form #bedrijfForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <p>
+                    <label>Geboortedatum: {{maker.geboortedatum}}</label>
+                </p>
+                <p>
+                    <label>Biografie: {{maker.biografie}}</label>
+                </p>
+                <label>Opdrachten:</label>
+                <ul>
+                    <li *ngFor="let opdracht of opdrachten">
+                            {{opdracht.titel}}
+                    </li>
+                </ul>
+            </div>
+            <button (click)="deleteMaker(maker.makerID)" class="btn btn-primary submitKnop">Verwijderen</button>   
+            <button (click)="closePopup()" class="btn btn-primary submitKnop">Annuleren</button>
         </form>
     </div>
 </div>

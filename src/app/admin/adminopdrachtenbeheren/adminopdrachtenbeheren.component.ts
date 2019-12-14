@@ -21,6 +21,7 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
   statussen: Status[];
   bedrijven: Bedrijf[];
   popup: boolean = false;
+  popup2: boolean = false;
   disableButton: boolean = false;
 
 
@@ -88,12 +89,18 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
 
   closePopup(){
     this.popup = false;
+    this.popup2 = false;
   }
 
+  deleteOpdrachtPopup(opdracht: Opdracht){
+    this.opdracht = opdracht;
+    this.popup2 = true;
+  }
   deleteOpdracht(id: number){
     this._opdrachtService.deleteOpdracht(id).subscribe(result =>{
       this.getOpdrachten();
     });
+    this.popup2 = false;
    }
 
    updateOpdracht(opdracht: Opdracht){

@@ -4,6 +4,8 @@ import { Bedrijf } from 'src/app/models/bedrijf.model';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
+import { OpdrachtService } from 'src/app/services/opdracht.service';
+import { Opdracht } from 'src/app/models/opdracht.model';
 
 @Component({
   selector: 'app-adminbedrijvenbeheren',
@@ -13,13 +15,15 @@ import { User } from 'src/app/models/user.model';
 export class AdminbedrijvenbeherenComponent implements OnInit {
 
   bedrijven: Bedrijf[];
+  opdrachten: Opdracht[];
   popup: boolean = false;
+  popup2: boolean = false;
   bedrijf: Bedrijf;
   nieuweUser: User;
   title: string = '';
 
   // USERID NOG KOPPELEN AAN EEN NIEUW BEDRIJF
-  constructor(private _bedrijfService: BedrijfService, private _userService: UserService, private router: Router)
+  constructor(private _bedrijfService: BedrijfService, private _userService: UserService, private router: Router, private _opdrachtenService: OpdrachtService)
   {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
     this._userService.getPermissions().subscribe(result =>{
@@ -66,10 +70,20 @@ export class AdminbedrijvenbeherenComponent implements OnInit {
 
   closePopup(){
     this.popup = false;
+    this.popup2 = false;
+  }
+
+  deleteBedrijfPopup(bedrijf: Bedrijf){
+    this.bedrijf = bedrijf;
+    this._opdrachtenService.getOpdrachtenByBedrijfID(bedrijf.bedrijfID).subscribe(result =>{
+      this.opdrachten = result;
+      });
+    this.popup2 = true;
   }
 
   deleteBedrijf(id: number){
     this._bedrijfService.deleteBedrijf(id).subscribe(result =>{
+      this.popup2 = false;
       this.getBedrijven();
     });
    }

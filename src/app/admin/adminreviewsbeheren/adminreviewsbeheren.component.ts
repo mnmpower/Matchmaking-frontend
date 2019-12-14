@@ -20,6 +20,7 @@ export class AdminreviewsbeherenComponent implements OnInit {
   bedrijven: Bedrijf[];
   makers: Maker[];
   popup: boolean = false;
+  popup2: boolean = false;
   disableButton: boolean = false;
 
 
@@ -88,6 +89,12 @@ export class AdminreviewsbeherenComponent implements OnInit {
 
   closePopup(){
     this.popup = false;
+    this.popup2 = false;
+  }
+
+  deleteReviewPopup(review: Review){
+    this.review = review;
+    this.popup2 = true;
   }
 
   deleteReview(id: number){
