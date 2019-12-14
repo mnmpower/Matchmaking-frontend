@@ -32,6 +32,7 @@ export class EditOpdrachtComponent implements OnInit {
   opdrachtVerzoek: OpdrachtVerzoek;
 
   Opdracht = new Opdracht(null, null, null, null, null, null, null, null, null, null);
+  mapsUrl: string;
 
   constructor(
     private _opdrachtService: OpdrachtService,
