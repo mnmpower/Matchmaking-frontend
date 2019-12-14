@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {OpdrachtService} from 'src/app/services/opdracht.service';
 import {BedrijfService} from 'src/app/services/bedrijf.service';
 import {UserService} from 'src/app/services/user.service';
+import {Opdracht} from '../../models/opdracht.model';
 
 @Component({
   selector: 'app-maakopdracht',
@@ -49,6 +50,7 @@ export class MaakopdrachtComponent implements OnInit {
     this.submitted = true;
     this.CreateOpdrachtForm.addControl('bedrijfID', new FormControl(this.bedrijfID));
     this.CreateOpdrachtForm.addControl('competitie', new FormControl(this.competitie));
+    this.CreateOpdrachtForm.addControl('statusID', new FormControl(1));
     console.log('gemaakte opdracht form: ', this.CreateOpdrachtForm.value);
     this._opdrachtService.addOpdracht(this.CreateOpdrachtForm.value).subscribe(result => {
 
