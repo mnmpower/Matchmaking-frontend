@@ -41,7 +41,7 @@ export class OpdrachtVerzoekService {
 
   //wijzig opdrachtverzoek
   updateOpdrachtVerzoek(opdrachtVerzoek: OpdrachtVerzoek) {
-    return this.http.put<OpdrachtVerzoek>('https://localhost:44316/api/opdrachtVerzoek/' + opdrachtVerzoek.opdrachtID, opdrachtVerzoek, {
+    return this.http.put<OpdrachtVerzoek>('https://localhost:44316/api/opdrachtVerzoek/' + opdrachtVerzoek.opdrachtVerzoekID, opdrachtVerzoek, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }
@@ -56,6 +56,28 @@ export class OpdrachtVerzoekService {
   //haal opdrachtverzoek op voor maker id
   getOpdrachtVerzoekenByMakerID(id: number): Observable<OpdrachtVerzoek[]> {
     return this.http.get<OpdrachtVerzoek[]>('https://localhost:44316/api/opdrachtVerzoek/byMakerID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  //haal opdrachtverzoek op voor opdracht id
+  getOpdrachtVerzoekenByOpdrachtIDAcepted(id: number): Observable<OpdrachtVerzoek[]> {
+    return this.http.get<OpdrachtVerzoek[]>('https://localhost:44316/api/opdrachtVerzoek/byOpdachtIDA/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  //haal opdrachtverzoek op voor opdracht id
+  getOpdrachtVerzoekenByOpdrachtIDNotAccepted(id: number): Observable<OpdrachtVerzoek[]> {
+    return this.http.get<OpdrachtVerzoek[]>('https://localhost:44316/api/opdrachtVerzoek/byOpdachtID/' + id, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  //haal opdrachtverzoek op voor maker id en opdrachtID
+  getOpdrachtVerzoekenByMakerIDAndByOpdrachtID(makerid: number, opdrachtid: number): Observable<OpdrachtVerzoek> {
+    return this.http.get<OpdrachtVerzoek>('https://localhost:44316/api/OpdrachtVerzoek/byOpdachtIDAndMakerID/'
+      + makerid  + '?opdrachtid=' + opdrachtid, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
   }

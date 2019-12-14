@@ -54,7 +54,7 @@ const routes: Routes = [
   {path: 'bedrijf/reviews/:id', component: ReviewBedrijf, canActivate: [NeedAuthGuard]},
   {path: 'bedrijf/profiel/:id', component: ProfielBedrijf, canActivate: [NeedAuthGuard]},
   {path: 'bedrijf/maker/:makerID', component: MakerProfielComponent},
-  {path: 'bedrijf/opdracht/:opdrachtid/selecteerlijst/:id', component: SelecteerLijstComponent, canActivate: [NeedAuthGuard]},
+  {path: 'bedrijf/opdracht/selecteerlijst/:opdrachtid/:id', component: SelecteerLijstComponent, canActivate: [NeedAuthGuard]},
 
   {path: 'admin/overzicht/:id', component: AdminComponent, canActivate: [NeedAuthGuard]},
   {path: 'admin/bedrijven', component: AdminbedrijvenbeherenComponent},

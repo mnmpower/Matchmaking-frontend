@@ -121,7 +121,7 @@ export class DashboardComponent implements OnInit {
   }
 
   SelecteerMakers(opdrachtID: number) {
-    this.router.navigate(['/bedrijf/opdracht/' + opdrachtID + '/selecteerlijst/' + this.bedrijfID]);
+    this.router.navigate(['/bedrijf/opdracht/selecteerlijst/', opdrachtID, this.bedrijfID]);
 
   }
 }

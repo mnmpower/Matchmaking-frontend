@@ -25,6 +25,7 @@ import {NeedAuthGuard} from './security/need-auth-guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { AdminModule } from './admin/admin.module';
+import {SelecteerLijstComponent} from './bedrijf/selecteer-lijst/selecteer-lijst.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AdminModule } from './admin/admin.module';
     LoginComponent,
     RegistreerComponent,
     BlockCopyPasteCutDirective,
-    ForbiddenComponent
+    ForbiddenComponent,
+    SelecteerLijstComponent
   ],
   imports: [
     BrowserModule,
