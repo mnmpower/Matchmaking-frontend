@@ -15,7 +15,6 @@ export class MaakopdrachtComponent implements OnInit {
 
   CreateOpdrachtForm: FormGroup;
   submitted = false;
-  inUse: boolean = false;
   userID: number;
   bedrijfID: number;
   competitie: boolean = false;

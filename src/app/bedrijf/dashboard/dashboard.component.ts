@@ -124,4 +124,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/bedrijf/opdracht/selecteerlijst/', opdrachtID, this.bedrijfID]);
 
   }
+
+  BewerkOpdracht(opdrachtID: number) {
+    this.router.navigate(['/bedrijf/editopdracht/', opdrachtID, this.bedrijfID]);
+  }
 }

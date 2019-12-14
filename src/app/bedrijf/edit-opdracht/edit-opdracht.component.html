@@ -1,0 +1,162 @@
+<div class="container stickyfooter">
+  <div *ngIf="!editmode">
+    <div class="mb-3">
+      <span class="login-heading  h3">Opdracht</span>
+      <span class="float-right">
+          <i (click)="EditBedrijf()" class="material-icons md-32 pointer">edit</i>
+          <i (click)="DeleteOpdracht()" class="material-icons md-32 pointer">delete_forever</i>
+        </span>
+    </div>
+    <!-- COL PROFIEL-->
+
+    <div class="row">
+      <div class="col-sm-12 col-md-9">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">{{Opdracht?.titel}}</h2>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h5 class="card-title">Omschrijving</h5>
+              <p class="card-text">{{Opdracht?.omschrijving}}</p>
+            </li>
+            <li class="list-group-item">
+              <h5 class="card-title">Locatie</h5>
+              <p class="card-text">{{Opdracht?.locatie}}</p>
+              <iframe width="100%" height="250" frameBorder="0" scrolling="no"
+                      [src]="sanitizer.bypassSecurityTrustResourceUrl(mapsUrl)"></iframe>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--      COL TAGS -->
+      <div class="col-sm-12 col-md-3">
+
+
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Deelnemen</h5>
+            <!-- Opdracht gesloten & niet geaccepteerd -->
+            <ng-container *ngIf="Opdracht?.status?.naam == 'Closed' && !opdrachtVerzoek?.bevestiging">
+              <p class="card-text">Deze opdracht is gesloten!</p>
+            </ng-container>
+            <!-- Opdracht gesloten & niet geaccepteerd -->
+            <ng-container *ngIf="Opdracht?.status?.naam == 'Closed' && opdrachtVerzoek?.bevestiging">
+              <p class="card-text">Je deelname werd geaccepteerd!</p>
+              <button class="btn btn-primary"><i class="material-icons">done_all</i> Deelgenomen</button>
+            </ng-container>
+            <!-- Opdracht open/selecting & niet geaccepteerd -->
+            <ng-container *ngIf="(Opdracht?.status?.naam == 'Open' || Opdracht?.status?.naam == 'Selecting') && opdrachtVerzoek && !opdrachtVerzoek?.bevestiging">
+              <p class="card-text">Je verzoek moet nog geaccepteerd worden door het bedrijf.</p>
+              <button class="btn btn-primary" (click)="toggleVerzoek()"><i class="material-icons">done</i> In afwachting</button>
+            </ng-container>
+            <!-- Opdracht selecting & niet opgegeven -->
+            <ng-container *ngIf="Opdracht?.status?.naam == 'Selecting' && !opdrachtVerzoek">
+              <p class="card-text">De selectie wordt gemaakt, je kan je niet meer opgeven.</p>
+            </ng-container>
+            <!-- Opdracht open & nog niet opgegeven -->
+            <ng-container *ngIf="Opdracht?.status?.naam == 'Open' && !opdrachtVerzoek">
+              <p class="card-text">Ga de uitdaging aan!</p>
+              <button class="btn btn-primary" (click)="toggleVerzoek()">Neem deel</button>
+            </ng-container>
+            <!-- Opdracht draft -->
+            <ng-container *ngIf="Opdracht?.status?.naam == 'Draft'">
+              <p class="card-text">Deze opdracht is nog in ontwikkeling, kom later terug!</p>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header">
+            Over het bedrijf
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h5 class="card-title">Naam</h5>
+              <a [routerLink]="['/maker/bedrijf/', Opdracht?.bedrijf.bedrijfID]">
+                <p class="card-text">{{Opdracht?.bedrijf.bedrijfsnaam}}</p>
+              </a>
+            </li>
+            <li class="list-group-item">
+              <h5 class="card-title">Biografie</h5>
+              <p class="card-text">{{Opdracht?.bedrijf.biografie}}</p>
+            </li>
+            <li class="list-group-item">
+              <h5 class="card-title">Locatie</h5>
+              <p class="card-text">{{Opdracht?.bedrijf.locatie}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div *ngIf="editmode"><h3 class="mt-3 mb-3">Bewerk uw opdracht</h3>
+    <form [formGroup]="EditOpdrachtForm" (ngSubmit)="onSubmit()" data-toggle="validator">
+
+      <!-- TITLE INPUT FORM CONTROL -->
+      <div class="form-group">
+        <label for="titel" class="pt-3">Titel</label>
+        <input type="text" class="form-control" id="titel" placeholder="Voer een titel in."
+               formControlName="titel" [ngClass]="{ 'is-invalid': submitted && f.titel.errors }">
+        <div *ngIf="submitted && f.titel.errors" class="invalid-feedback">
+          <div *ngIf="f.titel.errors.required">Dit is een verplicht veld! Vul een titel in!</div>
+        </div>
+      </div>
+
+
+      <!-- OMSCHRIJVING INPUT FORM CONTROL -->
+      <div class="form-group">
+        <label for="omschrijving" class="pt-3">Omschrijving</label>
+        <textarea type="text" class="form-control" id="omschrijving"
+                  placeholder="Uitgebreide omschrijving van de opdracht"
+                  formControlName="omschrijving"
+                  [ngClass]="{ 'is-invalid': submitted && f.omschrijving.errors }"></textarea>
+        <div *ngIf="submitted && f.omschrijving.errors" class="invalid-feedback">
+          <div *ngIf="f.omschrijving.errors.required">Dit is een verplicht veld! Vul een omschrijving in!</div>
+        </div>
+      </div>
+
+
+      <!-- LOCATIE INPUT FORM CONTROL -->
+      <div class="form-group">
+        <label for="locatie" class="pt-3">Locatie</label>
+        <input type="text" class="form-control" id="locatie"
+               placeholder="Plaats waar de opdracht gemaakt mag/moet worden"
+               formControlName="locatie" [ngClass]="{ 'is-invalid': submitted && f.locatie.errors }">
+        <div *ngIf="submitted && f.locatie.errors" class="invalid-feedback">
+          <div *ngIf="f.locatie.errors.required">Dit is een verplicht veld! Vul een locatie in!</div>
+        </div>
+      </div>
+
+
+      <!-- AANTAL PERSONENEN FORM CONTROL -->
+      <div class="form-group">
+        <label for="aantalPersonen" class="pt-3">Aantal personen</label>
+        <input type="number" class="form-control" id="aantalPersonen" placeholder="Vul een positief getal in"
+               formControlName="aantalPersonen" [ngClass]="{ 'is-invalid': submitted && f.aantalPersonen.errors }">
+        <div *ngIf="submitted && f.aantalPersonen.errors" class="invalid-feedback">
+          <div *ngIf="f.aantalPersonen.errors.required">Dit is een verplicht veld! Vul een aantal personen in!</div>
+          <div *ngIf="f.aantalPersonen.errors.min">Er moet minstens 1 persoon kunnen deelenemen!</div>
+          <div *ngIf="f.aantalPersonen.errors.max">Is meer als 100 personen niet een beetje veel?</div>
+        </div>
+      </div>
+      <div class="custom-control custom-checkbox mb-3" *ngIf="een">
+        <input type="checkbox" class="custom-control-input" id="customCheck1" name="customCheck1"
+               (change)="setCompetitie()">
+        <label class="custom-control-label" for="customCheck1">Competitie</label>
+      </div>
+      <div class="custom-control custom-checkbox mb-3"*ngIf="twee">
+        <input type="checkbox" class="custom-control-input" id="customCheck1" name="customCheck1"
+               (change)="setCompetitie()" checked>
+        <label class="custom-control-label" for="customCheck1">Competitie</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Update opdracht opdracht</button>
+    </form>
+  </div>
+</div>
