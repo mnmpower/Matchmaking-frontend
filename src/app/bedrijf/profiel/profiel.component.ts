@@ -19,7 +19,7 @@ export class ProfielComponent implements OnInit {
   bedrijfID = 0;
   bedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null, null, null);
   tags: Tag[] = [];
-
+  popup: boolean = false;
   editBedrijfForm: FormGroup;
   submitted = false;
   editBedrijf: Bedrijf = new Bedrijf(null, null, null, null, null, null, null, null);
@@ -87,6 +87,15 @@ export class ProfielComponent implements OnInit {
       this._bedrijfService.deleteBedrijf(this.bedrijfID).subscribe(r => {
         this.navbar.logUit();
       });
+      this.popup = false;
+  }
+
+  closePopup(){
+    this.popup = false;
+  }
+
+  DeleteBedrijfPopup(){
+      this.popup = true;
   }
 
   Annuleer() {

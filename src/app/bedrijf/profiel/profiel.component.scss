@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+$dark-clr: #96c03d;
+$accent-clr: #96c03d;
+$light-accent-clr: #97D0CA;
+$background-clr: #EFEEEF;
+
+$main-font: 'Roboto', sans-serif;
+
 .center-cropped {
   width: 400px;
   height: 400px;
@@ -17,3 +25,68 @@
   /* modern browsers */
   opacity: 0;
 }
+
+
+.btn{
+  margin-left: 10px;
+}
+
+.popupBox {  
+  display: block;
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  padding: 50px 0px;
+  width: 100%;
+  height: 100vh;
+  background-color: transparentize($dark-clr, 0.5);
+  color: inherit;
+  z-index: 50;
+}
+
+.popup{
+  background-color: $background-clr;
+  margin: auto;
+  color: $dark-clr;
+  width: 60%;
+  border: 2px solid $dark-clr;
+  border-radius: 10px;
+  box-shadow: 4px 4px 15px $dark-clr;
+  padding: 20px;
+
+  #close {
+      float: right;
+      margin: 15px 25px;  
+      color: $dark-clr;
+
+      :hover {
+          color: $accent-clr;
+      }
+  }
+
+  h1 {
+      padding-top: 10px;  
+  }
+
+  label {
+      font-weight: bold;
+      font-size: 20px;
+  }
+
+  input {
+      border-radius: 5px;
+  }
+
+  .submitKnop {
+      border-radius: 5px;
+      background: $accent-clr;
+      border: none;
+      font-size: 18px;
+      margin-top: 15px;
+
+      &:hover{
+          background: $dark-clr;
+      }
+  }
+}
+

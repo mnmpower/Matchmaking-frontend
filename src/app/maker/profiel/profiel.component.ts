@@ -20,7 +20,7 @@ export class ProfielComponent implements OnInit {
   makerID = 0;
   maker: Maker = new Maker(null, null, null, null, null, null, null, null, null, null);
   skills: Skill[] = [];
-
+  popup: boolean = false;
   editMakerForm: FormGroup;
   submittedMaker = false;
   editMaker: Maker = new Maker(null, null, null, null, null, null, null, null, null, null);
@@ -91,13 +91,23 @@ export class ProfielComponent implements OnInit {
     this.editMode = true;
   }
 
+  closePopup(){
+    this.popup = false;
+  }
+
   DeleteMaker(){
+    this.popup = false;
     this._userService.deleteUser(this.maker.userID).subscribe(re =>{
       this._makerService.deleteMaker(this.makerID).subscribe(r => {
         this.navbar.logUit();
       });
     });
 
+  }
+
+  DeleteMakerPopup(){
+
+      this.popup = true;
   }
 
   Annuleer() {

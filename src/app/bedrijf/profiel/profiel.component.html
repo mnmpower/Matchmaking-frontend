@@ -5,7 +5,7 @@
         <span class="login-heading  h3">Profiel</span>
         <span class="float-right">
           <i (click)="EditBedrijf()" class="material-icons md-32 pointer">edit</i>
-          <i (click)="DeleteBedrijf()" class="material-icons md-32 pointer">delete_forever</i>
+          <i (click)="DeleteBedrijfPopup()" class="material-icons md-32 pointer">delete_forever</i>
         </span>
       </div>
       <!-- COL PROFIEL-->
@@ -114,5 +114,17 @@
       </div>
     </div>
 
+  </div>
+</div>
+<div class="popupBox" *ngIf="popup">
+  <div class="popup">
+      <div (click)="closePopup()" id="close"><i class="material-icons">
+              clear
+          </i></div>
+      <h1>Bent u zeker dat u uw profiel wil verwijderen?</h1>
+      <form [formGroup]="ngForm">
+          <button (click)="DeleteBedrijf()" class="btn btn-primary submitKnop">Verwijderen</button>   
+          <button (click)="closePopup()" class="btn btn-primary submitKnop">Annuleren</button>
+      </form>
   </div>
 </div>

@@ -96,6 +96,7 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
     this.opdracht = opdracht;
     this.popup2 = true;
   }
+  
   deleteOpdracht(id: number){
     this._opdrachtService.deleteOpdracht(id).subscribe(result =>{
       this.getOpdrachten();
