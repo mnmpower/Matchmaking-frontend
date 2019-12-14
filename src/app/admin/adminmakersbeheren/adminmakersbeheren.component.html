@@ -77,7 +77,9 @@
             </div>
             <div class="form-group">
                 <label for="geboortedatum">Geboortedatum</label>
-                <input type="date" class="form-control" id="geboortedatum" placeholder="Geboortedatum"
+                <input type="date" *ngIf="maker.makerID == 0" class="form-control" id="geboortedatum" placeholder="Geboortedatum"
+                    [(ngModel)]="maker.geboortedatum" name="makerform3" required>
+                <input type="text" *ngIf="maker.makerID != 0" class="form-control" id="geboortedatum" placeholder="Geboortedatum"
                     [(ngModel)]="maker.geboortedatum" name="makerform3" required>
             </div>
             <div class="form-group">
@@ -86,20 +88,20 @@
                     [(ngModel)]="maker.biografie" name="makerform4" required>
             </div>
             <div class="form-group">
-                <label for="linkedIn">LinkedIn link</label>
-                <input type="text" class="form-control" id="linkedIn" placeholder="Link" [(ngModel)]="maker.linkedIn"
-                    name="makerform5" required>
+                <label for="linkedIn" *ngIf="maker.makerID != 0">LinkedIn</label>
+                <input type="text" *ngIf="maker.makerID != 0" class="form-control" id="linkedIn" placeholder="Link"
+                    [(ngModel)]="maker.linkedIn" name="makerform5" required>
             </div>
             <div class="form-group">
                 <label for="ervaring">Ervaring</label>
                 <input type="text" class="form-control" id="ervaring" placeholder="Ervaring"
                     [(ngModel)]="maker.ervaring" name="makerform9" required>
             </div>
-            <!--<div class="form-group">
-                <label for="fotoMaker">Foto link</label>
-                <input type="text" class="form-control" id="fotoMaker" [(ngModel)]="maker.fotoMaker" name="makerform6"
-                    required>
-            </div>-->
+            <div class="form-group">
+                <label for="fotoMaker">Foto</label>
+                <input type="text" class="form-control" id="fotoMaker" placeholder="Link" [(ngModel)]="maker.fotoMaker"
+                    name="makerform6" required>
+            </div>
             <button type="submit" class="btn btn-primary submitKnop">{{title}}</button>
         </form>
     </div>
@@ -122,11 +124,11 @@
                 <label>Opdrachten:</label>
                 <ul>
                     <li *ngFor="let opdracht of opdrachten">
-                            {{opdracht.titel}}
+                        {{opdracht.titel}}
                     </li>
                 </ul>
             </div>
-            <button (click)="deleteMaker(maker.makerID)" class="btn btn-primary submitKnop">Verwijderen</button>   
+            <button (click)="deleteMaker(maker.makerID)" class="btn btn-primary submitKnop">Verwijderen</button>
             <button (click)="closePopup()" class="btn btn-primary submitKnop">Annuleren</button>
         </form>
     </div>
