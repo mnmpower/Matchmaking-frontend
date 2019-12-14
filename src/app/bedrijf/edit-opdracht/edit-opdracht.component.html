@@ -4,7 +4,7 @@
       <span class="login-heading  h3">Opdracht</span>
       <span class="float-right">
           <i (click)="EditBedrijf()" class="material-icons md-32 pointer">edit</i>
-          <i (click)="DeleteOpdracht()" class="material-icons md-32 pointer">delete_forever</i>
+          <i (click)="DeleteOpdrachtPopup()" class="material-icons md-32 pointer">delete_forever</i>
         </span>
     </div>
     <!-- COL PROFIEL-->
@@ -158,5 +158,15 @@
       </div>
       <button type="submit" class="btn btn-primary">Update opdracht opdracht</button>
     </form>
+  </div>
+</div>
+<div class="popupBox" *ngIf="popup">
+  <div class="popup">
+      <div (click)="closePopup()" id="close"><i class="material-icons">
+              clear
+          </i></div>
+      <h1>Bent u zeker dat u deze opdracht wil verwijderen?</h1>
+          <button (click)="DeleteOpdracht()" class="btn btn-primary submitKnop">Verwijderen</button>   
+          <button (click)="closePopup()" class="btn btn-primary submitKnop">Annuleren</button>
   </div>
 </div>

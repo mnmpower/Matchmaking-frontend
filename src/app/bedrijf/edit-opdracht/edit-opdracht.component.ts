@@ -19,7 +19,7 @@ export class EditOpdrachtComponent implements OnInit {
 
   bedrijfID = 0;
   opdrachtID = 0;
-
+  popup: boolean = false;
   EditOpdrachtForm: FormGroup;
   competitie: boolean = false;
   submitted = false;
@@ -158,9 +158,19 @@ export class EditOpdrachtComponent implements OnInit {
     this.editmode = true;
   }
 
+  closePopup(){
+    this.popup = false;
+  }
+
+
+  DeleteOpdrachtPopup(){
+    this.popup = true;
+  }
+
   DeleteOpdracht() {
     this._opdrachtService.deleteOpdracht(this.opdrachtID).subscribe(r => {
       this.router.navigate(['/bedrijf/dashboard/', this.bedrijfID]);
     });
+    this.popup = false;
   }
 }
