@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfielComponent } from './profiel/profiel.component';
 import { RouterModule } from '@angular/router';
 import { MakerProfielComponent } from './maker-profiel/maker-profiel.component';
+import { EditOpdrachtComponent } from './edit-opdracht/edit-opdracht.component';
 
 
 
@@ -19,7 +20,8 @@ import { MakerProfielComponent } from './maker-profiel/maker-profiel.component';
     ReviewComponent,
     DashboardComponent,
     ProfielComponent,
-    MakerProfielComponent
+    MakerProfielComponent,
+    EditOpdrachtComponent
   ],
   imports: [
     SharedModule,

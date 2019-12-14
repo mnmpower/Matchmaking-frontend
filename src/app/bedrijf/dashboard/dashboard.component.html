@@ -30,7 +30,9 @@
               <h4>{{opdracht.titel}}</h4>
               <p>{{opdracht.omschrijving}}</p>
               <p>{{opdracht.locatie}}</p>
-              <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
+              <button class="btn btn-primary buttonAccepDecline m-2"
+                      (click)="BewerkOpdracht(opdracht.opdrachtID)">Bewerk opdracht
+            </button>
               <button class="btn btn-primary buttonAccepDecline m-2"
                       (click)="PubliceerOpdracht(opdracht.opdrachtID)">Publiceer opdracht
             </button>
