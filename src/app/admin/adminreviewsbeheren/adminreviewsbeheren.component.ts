@@ -40,7 +40,7 @@ export class AdminreviewsbeherenComponent implements OnInit {
   getBedrijven(){
     this._bedrijfService.getBedrijven().subscribe(result => {
       this.bedrijven = result;
-      
+
     });
   }
 
@@ -99,6 +99,7 @@ export class AdminreviewsbeherenComponent implements OnInit {
 
   deleteReview(id: number){
     this._reviewService.deleteReview(id).subscribe(result =>{
+      this.popup2 = false;
       this.getReviews();
     });
    }

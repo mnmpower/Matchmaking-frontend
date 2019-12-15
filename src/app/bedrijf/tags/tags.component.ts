@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Tag } from 'src/app/models/tag.model';
-import { TagService } from 'src/app/services/tag.service';
-import { BedrijfTag } from 'src/app/models/bedrijf-tag.model';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from 'src/app/services/user.service';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {Tag} from 'src/app/models/tag.model';
+import {TagService} from 'src/app/services/tag.service';
+import {BedrijfTag} from 'src/app/models/bedrijf-tag.model';
 
 @Component({
   selector: 'app-tags',
@@ -28,11 +28,10 @@ export class TagsComponent implements OnInit {
     private _Activatedroute: ActivatedRoute,
     private _tagService: TagService,
     private fb: FormBuilder
-  )
-  {
+  ) {
     // Controleer of gebruiker permissie heeft om deze pagina te bekijken
-    this._userService.getPermissions().subscribe(result =>{
-      if(result.indexOf("VIEW_BEDRIJF-TAGS") == -1) {
+    this._userService.getPermissions().subscribe(result => {
+      if (result.indexOf('VIEW_BEDRIJF-TAGS') == -1) {
         this.router.navigate(['/forbidden']);
       }
     });
@@ -68,27 +67,30 @@ export class TagsComponent implements OnInit {
   AddTag() {
     this.submitted = true;
 
-    if (this.tagForm.invalid){
+    if (this.tagForm.invalid) {
       return;
     }
 
     var tagnaam = this.Capitalize(this.tagForm.controls.inputTag.value);
     this._tagService.getTagIDFromName(tagnaam).subscribe(r => {
-      if(r == 0) {
+      if (r == 0) {
         //tag bestaat nog niet
         this.tag.tagID = 0;
         this.tag.naam = tagnaam;
 
         //tag toevoegen
         this._tagService.addTag(this.tag).subscribe(t => {
-          console.log("New tag inserted");
-          
+          console.log('New tag inserted');
+
           //bedrijfTag toevoegen
           this.bedrijfTag.bedrijfTagID = 0;
           this.bedrijfTag.tagID = t.tagID;
           this.bedrijfTag.bedrijfID = this.bedrijfID;
           this._tagService.addBedrijfTag(this.bedrijfTag).subscribe(b => {
-            console.log("New bedrijfTag inserted");
+            console.log('New bedrijfTag inserted');
+            this.tagForm = this.fb.group({
+              inputTag: ['', Validators.required]
+            });
             this.LaadTags();
           });
         });
@@ -98,7 +100,12 @@ export class TagsComponent implements OnInit {
         this.bedrijfTag.tagID = r;
         this.bedrijfTag.bedrijfID = this.bedrijfID;
         this._tagService.addBedrijfTag(this.bedrijfTag).subscribe(b => {
-          console.log("New bedrijfTag inserted");
+          console.log('New bedrijfTag inserted');
+          this.submitted = false;
+          this.tagForm = this.fb.group({
+            inputTag: ['', Validators.required]
+          });
+
           this.LaadTags();
         });
       }
@@ -106,7 +113,9 @@ export class TagsComponent implements OnInit {
   }
 
   Capitalize = (s) => {
-    if (typeof s !== 'string') return '';
+    if (typeof s !== 'string') {
+      return '';
+    }
     return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
   }
 
