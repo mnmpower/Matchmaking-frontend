@@ -12,6 +12,7 @@ import { ReviewComponent } from './review/review.component';
 import { RouterModule } from '@angular/router';
 import { OpdrachtComponent } from './opdracht/opdracht.component';
 import { BedrijfProfielComponent } from './bedrijf-profiel/bedrijf-profiel.component';
+import { ReviewSchrijvenComponent } from './review-schrijven/review-schrijven.component';
 
 
 
@@ -25,7 +26,8 @@ import { BedrijfProfielComponent } from './bedrijf-profiel/bedrijf-profiel.compo
     SkillsComponent,
     ReviewComponent,
     OpdrachtComponent,
-    BedrijfProfielComponent
+    BedrijfProfielComponent,
+    ReviewSchrijvenComponent
   ],
   imports: [
     CommonModule,

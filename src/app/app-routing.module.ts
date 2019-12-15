@@ -33,6 +33,7 @@ import { SelecteerLijstComponent} from './bedrijf/selecteer-lijst/selecteer-lijs
 import {EditOpdrachtComponent} from './bedrijf/edit-opdracht/edit-opdracht.component';
 import { OpdrachtComponent as BedrijfOpdrachtComponent } from './bedrijf/opdracht/opdracht.component';
 import { ReviewSchrijvenComponent } from './bedrijf/review-schrijven/review-schrijven.component';
+import { ReviewSchrijvenComponent as MakerReviewSchrijvenComponent } from './maker/review-schrijven/review-schrijven.component';
 
 
 const routes: Routes = [
@@ -48,7 +49,7 @@ const routes: Routes = [
   {path: 'maker/skills/:id', component: TagsMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/reviews/:id', component: ReviewMaker, canActivate: [NeedAuthGuard]},
   {path: 'maker/bedrijf/:bedrijfID', component: BedrijfProfielComponent},
-
+  {path: 'maker/review-schrijven/:bedrijfID', component: MakerReviewSchrijvenComponent},
   {path: 'maker/opdracht/:opdrachtID', component: OpdrachtComponent},
 
   {path: 'bedrijf/dashboard/:id', component: DashboardBedrijf, canActivate: [NeedAuthGuard]},

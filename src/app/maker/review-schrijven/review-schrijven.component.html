@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h5>Schrijf een review over {{ maker?.voornaam + " " + maker?.achternaam }}</h5>
+                            <h5>Schrijf een review over {{ bedrijf?.bedrijfsnaam }}</h5>
                             <div class="clearfix"></div>
                             <form [formGroup]="ReviewForm" (ngSubmit)="onSubmit()">
                                 <textarea type="text" class="form-control" id="text"
