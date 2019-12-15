@@ -19,7 +19,7 @@ ng serve --open
 
 Om alle delen van de applicatie te kunnen bekijken kan u inloggen met volgende accounts:
 Type  | Email  | Wachtwoord
-------------- | ------------- | -------------
+-------------  | -------------  | -------------
 Gebruiker  | maarten@michiels.be  | test
 Gebruiker  | bart@ooms.be  | test
 Gebruiker  | midas@wouters.be  | test
