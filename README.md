@@ -21,10 +21,10 @@ Om alle delen van de applicatie te kunnen bekijken kan u inloggen met volgende a
 
 | Type | Email | Wachtwoord |
 | --- | --- | --- |
-| Gebruiker | maarten@michiels.be | test |
-| Gebruiker | bart@ooms.be | test |
-| Gebruiker | midas@wouters.be | test |
-| Gebruiker | jinte@michiels.be | test |
+| Maker | maarten@michiels.be | test |
+| Maker | bart@ooms.be | test |
+| Maker | midas@wouters.be | test |
+| Maker | jinte@michiels.be | test |
 | Bedrijf | amazon@amazon.amazon | test |
 | Bedrijf | google@google.google | test |
 | Bedrijf | vanroey@vanroey.vanroey | test |
