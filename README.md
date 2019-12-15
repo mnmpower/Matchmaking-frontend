@@ -9,7 +9,7 @@ ZLANCE is een webapplicatie die het voor bedrijven mogelijk maakt om de juiste f
 3. Open het gedownloade project in Visual Studio Code
 4. Selecteer bovenaan in de keuzemenu 'Terminal > New Terminal'
 5. Voer volgende commando's uit in de terminal:
-```
+```node
 npm install
 ng serve --open
 ```
