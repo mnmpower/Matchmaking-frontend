@@ -15,7 +15,7 @@ ng serve --open
 ```
 6. Wacht tot de uw webbrowser de applicatie laat zien, de accounts vind u hieronder.
 
-## Team
+## Accounts
 
 Om alle delen van de applicatie te kunnen bekijken kan u inloggen met volgende accounts:
 
