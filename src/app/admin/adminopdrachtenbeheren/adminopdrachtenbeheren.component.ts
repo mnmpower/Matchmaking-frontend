@@ -112,7 +112,7 @@ export class AdminopdrachtenbeherenComponent implements OnInit {
 
   toevoegenPopup(){
     this.popup = true;
-    this.opdracht = new Opdracht(0, '', '', '', null, 0, 0, 0, null, null);
+    this.opdracht = new Opdracht(0, '', '', '', null, 0, 0, 0, null, null, null);
   }
 
 

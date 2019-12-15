@@ -31,7 +31,7 @@ export class EditOpdrachtComponent implements OnInit {
   opdracht: Opdracht;
   opdrachtVerzoek: OpdrachtVerzoek;
 
-  Opdracht = new Opdracht(null, null, null, null, null, null, null, null, null, null);
+  Opdracht = new Opdracht(null, null, null, null, null, null, null, null, null, null, null);
   mapsUrl: string;
 
   constructor(
@@ -50,7 +50,7 @@ export class EditOpdrachtComponent implements OnInit {
     this.bedrijfID = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
     this.opdrachtID = parseInt(this._Activatedroute.snapshot.paramMap.get('opdrachtid'));
 
-// Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
     this._userService.getPermissions().subscribe(result => {
       if (result.indexOf('EDIT_OPDRACHT') == -1) {
         this.router.navigate(['/forbidden']);

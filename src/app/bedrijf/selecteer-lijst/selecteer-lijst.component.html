@@ -2,10 +2,10 @@
   <div class="mb-3">
     <span class="login-heading h3">Opdracht</span>
     <span *ngIf="competitie" class="login-heading h3">: competitie</span>
-    <span class="login-heading h3"> {{aantal}}/{{opdracht.aantalPersonen}}</span>
+    <span class="login-heading h3"> ({{aantal}} van {{opdracht.aantalPersonen}} makers geselecteerd)</span>
     <div *ngIf="competitie" class="login-heading">Dit wilt zeggen dat je meerdere mensen kan aannemen!</div>
     <button class="btn btn-primary buttonAccepDecline m-2" *ngIf="maxAantalBerijkt"
-            (click)="SluitOpdracht()">SluitOpdracht
+            (click)="SluitOpdracht()">Sluit opdracht
     </button>
     <button class="btn btn-primary buttonAccepDecline m-2" *ngIf="!maxAantalBerijkt"
             (click)="OpenOpdracht()">Zet opdracht terug open
@@ -15,7 +15,7 @@
   <!-- COL PROFIEL-->
 
   <div class="row">
-    <div class="col-sm-12 col-md-9">
+    <div class="col-md-12">
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">{{opdracht?.titel}}</h2>
@@ -35,125 +35,64 @@
       </div>
     </div>
 
-    <!--      COL TAGS -->
-    <div class="col-sm-12 col-md-3">
-
-
-      <div class="card">
+    <div class="col-md-12">
+      <h3 class="mt-3 mb-3">Geselecteerde Makers</h3>
+      <div class="card mb-2" *ngFor="let maker of geaccepteerdeMakers">
         <div class="card-body">
-          <h5 class="card-title">Deelnemen</h5>
-          <!-- Opdracht gesloten & niet geaccepteerd -->
-          <ng-container *ngIf="opdracht?.status?.naam == 'Closed' && !opdrachtVerzoek?.bevestiging">
-            <p class="card-text">Deze opdracht is gesloten!</p>
-          </ng-container>
-          <!-- Opdracht gesloten & niet geaccepteerd -->
-          <ng-container *ngIf="opdracht?.status?.naam == 'Closed' && opdrachtVerzoek?.bevestiging">
-            <p class="card-text">Je deelname werd geaccepteerd!</p>
-            <button class="btn btn-primary"><i class="material-icons">done_all</i> Deelgenomen</button>
-          </ng-container>
-          <!-- Opdracht open/selecting & niet geaccepteerd -->
-          <ng-container
-            *ngIf="(opdracht?.status?.naam == 'Open' || opdracht?.status?.naam == 'Selecting') && opdrachtVerzoek && !opdrachtVerzoek?.bevestiging">
-            <p class="card-text">Je verzoek moet nog geaccepteerd worden door het bedrijf.</p>
-            <button class="btn btn-primary" (click)="toggleVerzoek()"><i class="material-icons">done</i> In afwachting
-            </button>
-          </ng-container>
-          <!-- Opdracht selecting & niet opgegeven -->
-          <ng-container *ngIf="opdracht?.status?.naam == 'Selecting' && !opdrachtVerzoek">
-            <p class="card-text">De selectie wordt gemaakt, je kan je niet meer opgeven.</p>
-          </ng-container>
-          <!-- Opdracht open & nog niet opgegeven -->
-          <ng-container *ngIf="opdracht?.status?.naam == 'Open' && !opdrachtVerzoek">
-            <p class="card-text">Ga de uitdaging aan!</p>
-            <button class="btn btn-primary" (click)="toggleVerzoek()">Neem deel</button>
-          </ng-container>
-          <!-- Opdracht draft -->
-          <ng-container *ngIf="opdracht?.status?.naam == 'Draft'">
-            <p class="card-text">Deze opdracht is nog in ontwikkeling, kom later terug!</p>
-          </ng-container>
+          <div class="row">
+            <div class="col-md-2 text-left">
+              <img src="../assets/images/noProfile.jpg" class="img img-fluid"/>
+            </div>
+            <div class="col-md-10">
+              <p>
+                <a
+                   [routerLink]="['/bedrijf/maker/', maker.makerID]">{{ maker.voornaam + " " + maker.achternaam }}</a>
+              </p>
+              <p >
+                {{maker.linkedIn}}
+              </p>
+              <p >
+                {{maker.geboortedatum}}
+              </p>
+              <button class="btn btn-primary buttonAccepDecline m-2"
+                      (click)="DeleteOpdrachtVerzoek(maker.makerID)">Delete maker
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+      <p *ngIf="geaccepteerdeMakers.length == 0">U hebt nog geen maker geselecteerd voor deze opdracht</p>
+    </div>
 
-      <div class="card mt-3">
-        <div class="card-header">
-          Over het bedrijf
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <h5 class="card-title">Naam</h5>
-            <a [routerLink]="['/maker/bedrijf/', opdracht?.bedrijf.bedrijfID]">
-              <p class="card-text">{{opdracht?.bedrijf.bedrijfsnaam}}</p>
-            </a>
-          </li>
-          <li class="list-group-item">
-            <h5 class="card-title">Biografie</h5>
-            <p class="card-text">{{opdracht?.bedrijf.biografie}}</p>
-          </li>
-          <li class="list-group-item">
-            <h5 class="card-title">Locatie</h5>
-            <p class="card-text">{{opdracht?.bedrijf.locatie}}</p>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-  <div>
-    <h3>Geselecteerde Makers</h3>
-    <div class="card mb-2" *ngFor="let maker of geaccepteerdeMakers">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-2 text-left">
-            <img src="../assets/images/noProfile.jpg" class="img img-fluid"/>
-          </div>
-          <div class="col-md-10">
-            <p>
-              <a
-                 [routerLink]="['/bedrijf/maker/', maker.makerID]">{{ maker.voornaam + " " + maker.achternaam }}</a>
-            </p>
-            <p >
-              {{maker.linkedIn}}
-            </p>
-            <p >
-              {{maker.geboortedatum}}
-            </p>
-            <button class="btn btn-primary buttonAccepDecline m-2"
-                    (click)="DeleteOpdrachtVerzoek(maker.makerID)">Delete maker
-            </button>
+    <div class="col-md-12">
+      <h3 class="mt-3 mb-3">Makers die zich hebben opgegeven</h3>
+      <div class="card mb-2" *ngFor="let maker of makers">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2 text-left">
+              <img src="../assets/images/noProfile.jpg" class="img img-fluid"/>
+            </div>
+            <div class="col-md-10">
+              <p>
+                <a
+                   [routerLink]="['/bedrijf/maker/', maker.makerID]">{{ maker.voornaam + " " + maker.achternaam }}</a>
+              </p>
+              <p >
+                {{maker.linkedIn}}
+              </p>
+              <p >
+                {{maker.geboortedatum}}
+              </p>
+              <button class="btn btn-primary buttonAccepDecline m-2" *ngIf="!maxAantalBerijkt"
+                      (click)="AccepteerOpdrachtVerzoek(maker.makerID)">Accepteer maker
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <p *ngIf="maxAantalBerijkt">U hebt al voldoende makers geaccepteerd.</p>
+      <p *ngIf="makers.length == 0">Er zijn momenteel geen makers die zich hebben opgegeven voor deze opdracht</p>
     </div>
-    <p *ngIf="geaccepteerdeMakers.length == 0">U hebt nog geen maker geselecteerd voor deze opdracht</p>
-  </div>
-  <div>
-    <h3>Makers</h3>
-    <div class="card mb-2" *ngFor="let maker of makers">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-2 text-left">
-            <img src="../assets/images/noProfile.jpg" class="img img-fluid"/>
-          </div>
-          <div class="col-md-10">
-            <p>
-              <a
-                 [routerLink]="['/bedrijf/maker/', maker.makerID]">{{ maker.voornaam + " " + maker.achternaam }}</a>
-            </p>
-            <p >
-              {{maker.linkedIn}}
-            </p>
-            <p >
-              {{maker.geboortedatum}}
-            </p>
-            <button class="btn btn-primary buttonAccepDecline m-2" *ngIf="!maxAantalBerijkt"
-                    (click)="AccepteerOpdrachtVerzoek(maker.makerID)">Accepter maker
-            </button>
-            <p *ngIf="maxaantal">U hebt al voldoende makers geaccepteerd.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p *ngIf="makers.length == 0">Er zijn momenteel geen makers die zich hebben opgegeven voor deze opdracht</p>
   </div>
 
 </div>

@@ -44,6 +44,13 @@ export class SelecteerLijstComponent implements OnInit {
     private router: Router
   ) {
 
+    // Controleer of gebruiker permissie heeft om deze pagina te bekijken
+    this._userService.getPermissions().subscribe(result => {
+      if (result.indexOf('EDIT_OPDRACHT') == -1) {
+        this.router.navigate(['/forbidden']);
+      }
+    });
+
     this.bedrijfID = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
     this.opdrachtID = parseInt(this._Activatedroute.snapshot.paramMap.get('opdrachtid'));
     this.GetOpdrachtverzoeken();

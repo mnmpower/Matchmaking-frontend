@@ -31,6 +31,8 @@ import { BedrijfProfielComponent as AdminBedrijfProfielComponent } from './admin
 import { MakerProfielComponent as AdminMakerProfielComponent } from './admin/maker-profiel/maker-profiel.component';
 import { SelecteerLijstComponent} from './bedrijf/selecteer-lijst/selecteer-lijst.component';
 import {EditOpdrachtComponent} from './bedrijf/edit-opdracht/edit-opdracht.component';
+import { OpdrachtComponent as BedrijfOpdrachtComponent } from './bedrijf/opdracht/opdracht.component';
+import { ReviewSchrijvenComponent } from './bedrijf/review-schrijven/review-schrijven.component';
 
 
 const routes: Routes = [
@@ -57,6 +59,8 @@ const routes: Routes = [
   {path: 'bedrijf/profiel/:id', component: ProfielBedrijf, canActivate: [NeedAuthGuard]},
   {path: 'bedrijf/maker/:makerID', component: MakerProfielComponent},
   {path: 'bedrijf/opdracht/selecteerlijst/:opdrachtid/:id', component: SelecteerLijstComponent, canActivate: [NeedAuthGuard]},
+  {path: 'bedrijf/opdracht/:opdrachtID', component: BedrijfOpdrachtComponent},
+  {path: 'bedrijf/review-schrijven/:makerID/:bedrijfID', component: ReviewSchrijvenComponent},
 
   {path: 'admin/overzicht/:id', component: AdminComponent, canActivate: [NeedAuthGuard]},
   {path: 'admin/bedrijven', component: AdminbedrijvenbeherenComponent},

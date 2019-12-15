@@ -1,0 +1,25 @@
+<div class="container stickyfooter">
+    <h3 class="mt-3 mb-3">Reviews schrijven</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Schrijf een review over {{ maker?.voornaam + " " + maker?.achternaam }}</h5>
+                            <div class="clearfix"></div>
+                            <form [formGroup]="ReviewForm" (ngSubmit)="onSubmit()">
+                                <textarea type="text" class="form-control" id="text"
+                                    placeholder="Schrijf hier uw review" formControlName="text"></textarea>
+                                <button type="submit" class="btn btn-primary mt-2">Plaats review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <p *ngIf="isEmpty">Er hebben nog geen makers een review over jouw bedrijf geschreven.</p>
+            </div>
+        </div>
+    </div>
+</div>

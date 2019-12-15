@@ -36,6 +36,18 @@ export class ReviewService {
     });
   }
 
+  addReviewMaker(review: Review) {
+    return this.http.post<Review>('https://localhost:44316/api/review/maker', review, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  addReviewBedrijf(review: Review) {
+    return this.http.post<Review>('https://localhost:44316/api/review/bedrijf', review, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
   updateReview(review: Review) {
     return this.http.put<Review>('https://localhost:44316/api/review/' + review.reviewID, review, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-6 col-md-3">
       <button class="btn btn-primary buttonAccepDecline m-2"
-              (click)="ToggleDraft()">Toggle draft
+              (click)="ToggleDraft()">Toggle concepten
       </button>
     </div>
     <div class="col-sm-6 col-md-3">
@@ -17,12 +17,12 @@
     </div>
     <div class="col-sm-6 col-md-3">
       <button class="btn btn-primary buttonAccepDecline m-2"
-              (click)="ToggleClosed()">Toggle closed
+              (click)="ToggleClosed()">Toggle gesloten
       </button>
     </div>
 
     <div class="col-sm-12 ">
-      <h3 class="mt-3 mb-3">Bewerkbare opdrachten (draft)</h3>
+      <h3 class="mt-3 mb-3">Opdrachten in conceptfase</h3>
       <div *ngIf="draft">
         <div class="card mb-2" *ngIf="bewerkbareOpdrachten.length > 0">
           <div class="card-body">
@@ -50,7 +50,7 @@
 
 
     <div class="col-sm-12 ">
-      <h3 class="mt-3 mb-3">Open opdrachten (open)</h3>
+      <h3 class="mt-3 mb-3">Open opdrachten</h3>
       <div *ngIf="open">
         <div class="card mb-2" *ngIf="openOpdrachten.length > 0">
           <div class="card-body">
@@ -58,7 +58,7 @@
               <h4>{{opdracht.titel}}</h4>
               <p>{{opdracht.omschrijving}}</p>
               <p>{{opdracht.locatie}}</p>
-              <a [routerLink]="['/maker/opdracht/', opdracht.opdrachtID]">Meer details</a>
+              <a [routerLink]="['/bedrijf/opdracht/', opdracht.opdrachtID]">Meer details</a>
               <button class="btn btn-primary buttonAccepDecline m-2"
                       (click)="SelectieOpdracht(opdracht.opdrachtID)">Naar selectie fase
               </button>
@@ -72,7 +72,7 @@
 
 
     <div class="col-sm-12 ">
-      <h3 class="mt-3 mb-3">Selecteer makers (selectie)</h3>
+      <h3 class="mt-3 mb-3">Opdrachten in selectiefase</h3>
       <div *ngIf="selectie">
         <div class="card mb-2" *ngIf="selecteerOpdrachten.length > 0">
           <div class="card-body">
@@ -93,7 +93,7 @@
 
 
     <div class="col-sm-12 ">
-      <h3 class="mt-3 mb-3">Gesloten opdrachten (closed)</h3>
+      <h3 class="mt-3 mb-3">Gesloten opdrachten</h3>
       <div *ngIf="closed">
         <div class="card mb-2" *ngIf="geslotenOpdrachten.length > 0">
           <div class="card-body">
@@ -101,7 +101,9 @@
               <h4>{{opdracht.titel}}</h4>
               <p>{{opdracht.omschrijving}}</p>
               <p>{{opdracht.locatie}}</p>
-             <p>HIER NOG SCHRIJVEN VAN REVIEWS TOEVOEGEN!!!!!! PER MAKER EEN, kijk bij selecteer-lisjt hoe je aan de geacepteerde makers komt</p>
+              <div *ngFor="let maker of opdracht.makers">
+                <a [routerLink]="['/bedrijf/review-schrijven/' + maker.makerID + '/' + bedrijfID]">Schrijf een review over de {{ maker.voornaam + " " + maker.achternaam}}</a>
+              </div>
               <hr>
             </div>
           </div>
