@@ -18,17 +18,18 @@ ng serve --open
 ## Team
 
 Om alle delen van de applicatie te kunnen bekijken kan u inloggen met volgende accounts:
-| Type  | Email  | Wachtwoord  |
-| ---  | ---  | ---  |
-| Gebruiker  | maarten@michiels.be  | test  |
-| Gebruiker  | bart@ooms.be  | test  |
-| Gebruiker  | midas@wouters.be  | test  |
-| Gebruiker  | jinte@michiels.be  | test  |
-| Bedrijf  | amazon@amazon.amazon  | test  |
-| Bedrijf  | google@google.google  | test  |
-| Bedrijf  | vanroey@vanroey.vanroey  | test  |
-| Admin  | admin@admin.admin  | admin  |
-| Admin  | root@root.root  | root  |
+
+| Type | Email | Wachtwoord |
+| --- | --- | --- |
+| Gebruiker | maarten@michiels.be | test |
+| Gebruiker | bart@ooms.be | test |
+| Gebruiker | midas@wouters.be | test |
+| Gebruiker | jinte@michiels.be | test |
+| Bedrijf | amazon@amazon.amazon | test |
+| Bedrijf | google@google.google | test |
+| Bedrijf | vanroey@vanroey.vanroey | test |
+| Admin | admin@admin.admin | admin |
+| Admin | root@root.root | root |
 
 ## Team
 
