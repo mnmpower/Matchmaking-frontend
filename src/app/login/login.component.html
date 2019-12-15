@@ -7,6 +7,7 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Welkom terug!</h3>
+              <p *ngIf="errorMsg" class="alert alert-danger" role="alert">{{errorMsg}}</p>
               <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
                 <div class="form-label-group">
                   <input type="email" id="Email" class="form-control" formControlName="Email"  required autofocus>

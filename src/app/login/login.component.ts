@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitted: boolean = false;
+  errorMsg: string = '';
 
   onSubmitLogin() {
     this.submitted = true;
@@ -70,10 +71,8 @@ export class LoginComponent implements OnInit {
           });
           break;
       }
-
-    
-
-
+    }, error => {
+      this.errorMsg = error.error.message;
     });
   }
 
