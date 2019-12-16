@@ -41,6 +41,7 @@
                     <ng-container *ngIf="opdracht?.status?.naam == 'Closed' && opdrachtVerzoek?.bevestiging">
                         <p class="card-text">Je deelname werd geaccepteerd!</p>
                         <button class="btn btn-primary"><i class="material-icons">done_all</i> Deelgenomen</button>
+                      <p>Contacteer: {{user.email}}</p>
                     </ng-container>
                     <!-- Opdracht open/selecting & niet geaccepteerd -->
                     <ng-container

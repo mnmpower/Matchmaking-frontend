@@ -3,6 +3,7 @@ import { Status } from './status.model';
 import { Maker } from './maker.model';
 
 export class Opdracht {
+  bedrijf: Bedrijf;
   constructor(
     public opdrachtID: number,
     public titel: string,

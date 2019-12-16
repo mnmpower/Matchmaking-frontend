@@ -28,6 +28,10 @@
                         <p class="card-text"><a [href]="maker.linkedIn" target="_blank">{{maker.linkedIn}}</a></p>
                     </li>
                     <li class="list-group-item">
+                        <h5 class="card-title">Email</h5>
+                        <p class="card-text">{{user.email}}</p>
+                    </li>
+                    <li class="list-group-item">
                         <h5 class="card-title">Skills</h5>
                         <div *ngFor="let skill of skills">
                             <div class="list-group text-center col-sm-12 col-md-6 float-left mt-3">

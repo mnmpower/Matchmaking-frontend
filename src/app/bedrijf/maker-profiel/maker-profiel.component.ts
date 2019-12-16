@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Maker } from 'src/app/models/maker.model';
-import { Skill } from 'src/app/models/skill.model';
-import { MakerService } from 'src/app/services/maker.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SkillService } from 'src/app/services/skill.service';
-import { UserService } from 'src/app/services/user.service';
-import { ReviewService } from 'src/app/services/review.service';
+import {Component, OnInit} from '@angular/core';
+import {Maker} from 'src/app/models/maker.model';
+import {Skill} from 'src/app/models/skill.model';
+import {MakerService} from 'src/app/services/maker.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SkillService} from 'src/app/services/skill.service';
+import {UserService} from 'src/app/services/user.service';
+import {ReviewService} from 'src/app/services/review.service';
+import {User} from '../../models/user.model';
 
 @Component({
   selector: 'app-maker-profiel',
@@ -17,6 +18,7 @@ export class MakerProfielComponent implements OnInit {
   makerID = 0;
   maker: Maker = new Maker(null, null, null, null, null, null, null, null, null, null);
   skills: Skill[] = [];
+  user: User = new User(null, null, null, null, null);
 
   constructor(
     private _makerService: MakerService,
@@ -44,19 +46,22 @@ export class MakerProfielComponent implements OnInit {
   laadMaker() {
     this._makerService.getMaker(this.makerID).subscribe(r => {
       this.maker = r;
-      
+      this._userService.getUser(r.userID).subscribe(re => {
+        this.user = re;
+      });
+
       this.maker.reviews.forEach(element => {
         this._reviewService.getReviewLike(element.reviewID).subscribe(rl => {
-            console.log("ReviewLike: ", rl);
-            if(rl != null) {
-              element.magLiken = false;
-            } else {
-              element.magLiken = true;
-            }
+          console.log('ReviewLike: ', rl);
+          if (rl != null) {
+            element.magLiken = false;
+          } else {
+            element.magLiken = true;
+          }
         });
       });
 
-      console.log(this.maker)
+      console.log(this.maker);
 
       this._skillService.getSkillsByMakerID(this.makerID).subscribe(re => {
         this.skills = re;
@@ -67,7 +72,7 @@ export class MakerProfielComponent implements OnInit {
 
   like(reviewID: number) {
     this._reviewService.addReviewLike(reviewID).subscribe(rl => {
-      console.log("Review geliket");
+      console.log('Review geliket');
       this.laadMaker();
     });
   }
